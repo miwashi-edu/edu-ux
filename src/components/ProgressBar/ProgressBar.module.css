@@ -1,1 +1,244 @@
-/* CSS Module */
+/* ProgressBar Component Styles */
+.progressBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Size variants */
+.progressBar--small .progressContainer {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.progressBar--medium .progressContainer {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progressBar--large .progressContainer {
+  height: 12px;
+  border-radius: 6px;
+}
+
+/* Progress container */
+.progressContainer {
+  position: relative;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 8px;
+}
+
+/* Progress fill */
+.progressFill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: inherit;
+  transition: width 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Variant styles */
+.progressBar--success .progressFill {
+  background-color: #10b981;
+}
+
+.progressBar--warning .progressFill {
+  background-color: #f59e0b;
+}
+
+.progressBar--error .progressFill {
+  background-color: #ef4444;
+}
+
+.progressBar--gradient .progressFill {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: gradientShift 2s ease-in-out infinite;
+}
+
+/* Striped pattern */
+.stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: stripes 1s linear infinite;
+}
+
+/* Animated variant */
+.progressBar--animated .progressFill {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background-size: 200% 100%;
+  animation: gradientShift 2s ease-in-out infinite;
+}
+
+/* Indeterminate progress bar */
+.indeterminate {
+  width: 100% !important;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+  background-size: 200% 100%;
+  animation: indeterminate 1.5s ease-in-out infinite;
+}
+
+.indeterminateBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: indeterminateBar 1.5s ease-in-out infinite;
+}
+
+/* Label styles */
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+}
+
+.progressBar--small .label {
+  font-size: 0.75rem;
+}
+
+.progressBar--large .label {
+  font-size: 1rem;
+}
+
+/* Animation keyframes */
+@keyframes stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes indeterminateBar {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Focus styles for accessibility */
+.progressBar:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .progressContainer {
+    border: 1px solid #000;
+  }
+  
+  .progressFill {
+    border: 1px solid #000;
+  }
+  
+  .label {
+    color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .progressFill {
+    transition: none;
+  }
+  
+  .stripes {
+    animation: none;
+  }
+  
+  .progressBar--animated .progressFill,
+  .progressBar--gradient .progressFill {
+    animation: none;
+  }
+  
+  .indeterminate {
+    animation: none;
+  }
+  
+  .indeterminateBar {
+    animation: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .progressContainer {
+    background-color: #374151;
+  }
+  
+  .progressFill {
+    background-color: #60a5fa;
+  }
+  
+  .progressBar--success .progressFill {
+    background-color: #34d399;
+  }
+  
+  .progressBar--warning .progressFill {
+    background-color: #fbbf24;
+  }
+  
+  .progressBar--error .progressFill {
+    background-color: #f87171;
+  }
+  
+  .label {
+    color: #d1d5db;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .progressBar--large .progressContainer {
+    height: 10px;
+  }
+  
+  .progressBar--large .label {
+    font-size: 0.875rem;
+  }
+}

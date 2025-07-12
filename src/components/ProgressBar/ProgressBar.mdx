@@ -1,7 +1,310 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ProgressBarStories from './ProgressBar.stories.jsx';
 
-<Meta title="Overlays And Feedback/ProgressBar" />
+<Meta of={ProgressBarStories} />
 
 # ProgressBar
 
-Indicates task or loading progress.
+A progress bar component for indicating task or loading progress with accessibility features, smooth animations, and multiple visual variants.
+
+## What is a ProgressBar?
+
+A progress bar is a UI component that visually represents the completion status of a task or process. It's commonly used for:
+
+- **File uploads**: Showing upload progress to users
+- **Downloads**: Indicating download completion status
+- **Processing tasks**: Displaying long-running operation progress
+- **Form completion**: Showing multi-step form progress
+- **Loading states**: Providing visual feedback during data loading
+- **Installation processes**: Indicating software installation progress
+
+## Features
+
+- **Multiple Variants**: Default, striped, animated, gradient, and status-based styles
+- **Size Options**: Small, medium, and large progress bars
+- **Accessibility**: Full ARIA support and screen reader compatibility
+- **Animations**: Smooth progress transitions with reduced motion support
+- **Indeterminate Mode**: For unknown progress durations
+- **Labels**: Optional percentage labels with configurable positioning
+- **Dark Mode**: Automatic dark mode support
+- **Responsive**: Mobile-first design with adaptive sizing
+
+## Basic Usage
+
+```jsx
+import React, { useState } from 'react';
+import ProgressBar from './components/ProgressBar';
+
+function BasicProgressBar() {
+  const [progress, setProgress] = useState(50);
+
+  return (
+    <div>
+      <ProgressBar value={progress} max={100} />
+      <button onClick={() => setProgress(progress + 10)}>
+        Increase Progress
+      </button>
+    </div>
+  );
+}
+```
+
+## Sizes
+
+### Small
+Compact progress bar for space-constrained layouts.
+
+```jsx
+<ProgressBar
+  value={75}
+  size="small"
+  showLabel={true}
+/>
+```
+
+### Medium (Default)
+Standard progress bar size for most use cases.
+
+```jsx
+<ProgressBar
+  value={50}
+  size="medium"
+  showLabel={true}
+/>
+```
+
+### Large
+Prominent progress bar for important operations.
+
+```jsx
+<ProgressBar
+  value={25}
+  size="large"
+  showLabel={true}
+/>
+```
+
+## Variants
+
+### Default
+Standard progress bar with solid color.
+
+```jsx
+<ProgressBar
+  value={60}
+  variant="default"
+  showLabel={true}
+/>
+```
+
+### Success
+Green progress bar for completed or successful operations.
+
+```jsx
+<ProgressBar
+  value={100}
+  variant="success"
+  showLabel={true}
+/>
+```
+
+### Warning
+Yellow progress bar for operations that need attention.
+
+```jsx
+<ProgressBar
+  value={75}
+  variant="warning"
+  showLabel={true}
+/>
+```
+
+### Error
+Red progress bar for failed or problematic operations.
+
+```jsx
+<ProgressBar
+  value={30}
+  variant="error"
+  showLabel={true}
+/>
+```
+
+### Striped
+Progress bar with animated striped pattern.
+
+```jsx
+<ProgressBar
+  value={45}
+  variant="striped"
+  showLabel={true}
+/>
+```
+
+### Animated
+Progress bar with animated gradient background.
+
+```jsx
+<ProgressBar
+  value={80}
+  variant="animated"
+  showLabel={true}
+/>
+```
+
+### Gradient
+Progress bar with colorful gradient background.
+
+```jsx
+<ProgressBar
+  value={90}
+  variant="gradient"
+  showLabel={true}
+/>
+```
+
+## Label Positioning
+
+### Top Label
+Show percentage above the progress bar.
+
+```jsx
+<ProgressBar
+  value={65}
+  showLabel={true}
+  labelPosition="top"
+/>
+```
+
+### Bottom Label
+Show percentage below the progress bar.
+
+```jsx
+<ProgressBar
+  value={35}
+  showLabel={true}
+  labelPosition="bottom"
+/>
+```
+
+## Indeterminate Progress
+
+For operations where the duration is unknown.
+
+```jsx
+<ProgressBar
+  value={null}
+  showLabel={true}
+/>
+```
+
+## File Upload Example
+
+A practical example showing file upload progress.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import ProgressBar from './components/ProgressBar';
+
+function FileUploadProgress() {
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+
+  const simulateUpload = () => {
+    setUploading(true);
+    setUploadProgress(0);
+    
+    const interval = setInterval(() => {
+      setUploadProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setUploading(false);
+          return 100;
+        }
+        return prev + Math.random() * 15;
+      });
+    }, 200);
+  };
+
+  return (
+    <div>
+      <ProgressBar
+        value={uploadProgress}
+        variant={uploadProgress === 100 ? 'success' : 'default'}
+        showLabel={true}
+        labelPosition="top"
+      />
+      
+      <button 
+        onClick={simulateUpload}
+        disabled={uploading}
+      >
+        {uploading ? 'Uploading...' : 'Start Upload'}
+      </button>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`value\` | \`number\` | \`0\` | Current progress value |
+| \`max\` | \`number\` | \`100\` | Maximum progress value |
+| \`variant\` | \`'default' \\| 'striped' \\| 'animated' \\| 'gradient' \\| 'success' \\| 'warning' \\| 'error'\` | \`'default'\` | Visual variant of the progress bar |
+| \`size\` | \`'small' \\| 'medium' \\| 'large'\` | \`'medium'\` | Size of the progress bar |
+| \`animated\` | \`boolean\` | \`true\` | Whether to animate progress changes |
+| \`showLabel\` | \`boolean\` | \`false\` | Whether to show the progress label |
+| \`labelPosition\` | \`'top' \\| 'bottom'\` | \`'top'\` | Position of the progress label |
+| \`className\` | \`string\` | \`''\` | Additional CSS class name |
+| \`style\` | \`object\` | \`{}\` | Additional inline styles |
+| \`aria-label\` | \`string\` | \`'Progress'\` | Accessibility label |
+`}</Markdown>
+
+## Best Practices
+
+### Choose Appropriate Variants
+- **Default**: General progress indicators
+- **Success**: Completed operations or successful outcomes
+- **Warning**: Operations that need attention or are taking longer than expected
+- **Error**: Failed operations or problematic processes
+- **Striped/Animated**: Long-running operations to show activity
+- **Gradient**: Modern, visually appealing progress indicators
+
+### Use Indeterminate Progress Wisely
+- Use for operations where duration is truly unknown
+- Provide additional context about what's happening
+- Consider using spinners for very short operations
+
+### Provide Meaningful Labels
+- Always include labels for important operations
+- Use descriptive text instead of just percentages when helpful
+- Position labels where they won't interfere with the progress bar
+
+### Consider Accessibility
+- Always provide meaningful `aria-label` for screen readers
+- Test with screen readers and keyboard navigation
+- Ensure sufficient color contrast for all variants
+- Respect reduced motion preferences
+
+### Performance Considerations
+- Avoid updating progress too frequently (more than 10 times per second)
+- Use indeterminate progress for operations under 1 second
+- Consider disabling animations on low-end devices
+
+### Mobile Considerations
+- Ensure touch targets are appropriately sized
+- Test with different screen sizes and orientations
+- Consider mobile-specific progress patterns
+- Test with different text sizes and zoom levels
+
+### Real-world Usage
+- **File uploads**: Show progress with estimated time remaining
+- **Downloads**: Display download speed and completion percentage
+- **Processing**: Indicate current step and overall progress
+- **Installation**: Show installation phases and completion status
+- **Form completion**: Display multi-step form progress
