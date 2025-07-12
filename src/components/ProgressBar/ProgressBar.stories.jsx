@@ -2,7 +2,7 @@ import React from 'react';
 import { ProgressBar } from './ProgressBar';
 
 export default {
-  title: 'OverlaysAndFeedback/ProgressBar',
+  title: 'Overlays and Feedback/ProgressBar',
   component: ProgressBar,
 };
 

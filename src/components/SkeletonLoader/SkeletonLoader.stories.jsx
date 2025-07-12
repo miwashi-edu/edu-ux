@@ -2,7 +2,7 @@ import React from 'react';
 import { SkeletonLoader } from './SkeletonLoader';
 
 export default {
-  title: 'OverlaysAndFeedback/SkeletonLoader',
+  title: 'Overlays and Feedback/SkeletonLoader',
   component: SkeletonLoader,
 };
 

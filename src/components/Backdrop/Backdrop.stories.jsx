@@ -2,7 +2,7 @@ import React from 'react';
 import { Backdrop } from './Backdrop';
 
 export default {
-  title: 'OverlaysAndFeedback/Backdrop',
+  title: 'Overlays and Feedback/Backdrop',
   component: Backdrop,
 };
 

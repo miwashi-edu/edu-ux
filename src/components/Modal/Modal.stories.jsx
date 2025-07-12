@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from './Modal';
 
 export default {
-  title: 'OverlaysAndFeedback/Modal',
+  title: 'Overlays and Feedback/Modal',
   component: Modal,
 };
 

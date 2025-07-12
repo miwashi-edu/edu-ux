@@ -2,7 +2,7 @@ import React from 'react';
 import { Toast } from './Toast';
 
 export default {
-  title: 'OverlaysAndFeedback/Toast',
+  title: 'Overlays and Feedback/Toast',
   component: Toast,
 };
 

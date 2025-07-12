@@ -2,7 +2,7 @@ import React from 'react';
 import { Spinner } from './Spinner';
 
 export default {
-  title: 'OverlaysAndFeedback/Spinner',
+  title: 'Overlays and Feedback/Spinner',
   component: Spinner,
 };
 

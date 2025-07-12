@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from './Alert';
 
 export default {
-  title: 'OverlaysAndFeedback/Alert',
+  title: 'Overlays and Feedback/Alert',
   component: Alert,
 };
 
