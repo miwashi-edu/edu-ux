@@ -1,7 +1,357 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ModalStories from './Modal.stories.jsx';
 
-<Meta title="Overlays And Feedback/Modal" />
+<Meta of={ModalStories} />
 
 # Modal
 
-Dialog that overlays the page for focused interaction.
+A modal component for focused dialog interactions with accessibility features, smooth animations, and comprehensive customization options.
+
+## ⚠️ WARNING: Use Modals with Extreme Care
+
+**Modals disrupt user flow and work very poorly with human cognition.** Before using a modal, consider these UX principles:
+
+### Why Modals Are Problematic
+- **Interruption**: They force users to stop their current task
+- **Context Loss**: Users lose their place in the original workflow
+- **Cognitive Load**: Require users to remember what they were doing
+- **Accessibility Issues**: Can be difficult for screen readers and keyboard users
+- **Mobile Problems**: Often don't work well on small screens
+- **User Frustration**: Most users dislike unexpected modal interruptions
+
+### Better Alternatives to Consider
+- **Inline forms** or **expanding sections**
+- **Progressive disclosure** with accordions or tabs
+- **Side panels** or **drawers** that don't block the main content
+- **Toast notifications** for non-critical messages
+- **Page-level forms** for complex data entry
+- **Wizard flows** for multi-step processes
+
+### When Modals Might Be Acceptable
+- **Critical confirmations** (deleting data, confirming purchases)
+- **Authentication flows** (login, password reset)
+- **Legal agreements** that require focused attention
+- **Error states** that need immediate user action
+- **Onboarding** that guides new users
+
+**Always ask: "Is this the best way to present this information to my users?"**
+
+---
+
+## What is a Modal?
+
+A modal is a dialog box or popup window that appears on top of the main content, requiring user interaction before they can return to the parent application. It's commonly used for:
+
+- **Confirmation dialogs**: Asking users to confirm important actions
+- **Forms**: Collecting user input in a focused environment
+- **Content display**: Showing detailed information or media
+- **User onboarding**: Guiding users through setup processes
+- **Error handling**: Displaying critical messages that need attention
+
+### Important: True Modal Behavior
+
+**True modals only close through explicit user action within the modal itself** (close button, form submission, etc.). They do NOT close when clicking outside.
+
+If you need something that closes when clicking outside, use the **Backdrop component** instead - that's what it's designed for.
+
+## Features
+
+- **Multiple Sizes**: Small, medium, large, and full-screen options
+- **Visual Variants**: Default, centered, and fullscreen layouts
+- **Accessibility**: Full ARIA support, keyboard navigation, and focus management
+- **Backdrop Integration**: Seamless integration with the Backdrop component
+- **Responsive**: Mobile-first design with adaptive sizing
+- **Dark Mode**: Automatic dark mode support
+- **Animations**: Smooth slide-in/out animations with reduced motion support
+- **True Modal Behavior**: Only closes through explicit user action
+
+## Basic Usage
+
+```jsx
+import React, { useState } from 'react';
+import Modal from './components/Modal';
+
+function BasicModal() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+      
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Basic Modal"
+      >
+        <p>This is the modal content. You can put any content here.</p>
+        <p>This modal only closes through the close button or Escape key.</p>
+      </Modal>
+    </>
+  );
+}
+```
+
+## Sizes
+
+### Small
+Compact modal suitable for simple confirmations or brief messages.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Small Modal"
+  size="small"
+>
+  <p>This is a small modal with limited content.</p>
+</Modal>
+```
+
+### Medium (Default)
+Standard modal size for most use cases.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Medium Modal"
+  size="medium"
+>
+  <p>This is the default medium-sized modal.</p>
+</Modal>
+```
+
+### Large
+Spacious modal for complex forms or detailed content.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Large Modal"
+  size="large"
+>
+  <p>This large modal provides plenty of space for complex content.</p>
+</Modal>
+```
+
+### Full
+Full-screen modal for immersive experiences.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Full Modal"
+  size="full"
+>
+  <p>This modal takes up most of the screen space.</p>
+</Modal>
+```
+
+## Variants
+
+### Default
+Standard modal with header and content areas.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Default Modal"
+  variant="default"
+>
+  <p>Standard modal layout with header and content.</p>
+</Modal>
+```
+
+### Centered
+Modal with centered content layout.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Centered Modal"
+  variant="centered"
+>
+  <p>Content is centered both horizontally and vertically.</p>
+</Modal>
+```
+
+### Fullscreen
+Full-screen modal without borders.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Fullscreen Modal"
+  variant="fullscreen"
+>
+  <p>Full-screen modal for immersive experiences.</p>
+</Modal>
+```
+
+## Behavior Options
+
+### Without Escape Key
+Prevent closing when pressing the Escape key.
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="Modal Without Escape Key"
+  closeOnEscape={false}
+>
+  <p>This modal won't close when pressing Escape.</p>
+</Modal>
+```
+
+## Form Example
+
+A more complex modal with form elements and actions.
+
+```jsx
+import React, { useState } from 'react';
+import Modal from './components/Modal';
+
+function FormModal() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    setIsOpen(false);
+  };
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>
+        Open Form Modal
+      </button>
+      
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Contact Form"
+        size="large"
+      >
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              rows={4}
+              required
+            />
+          </div>
+          
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
+            <button type="button" onClick={() => setIsOpen(false)}>
+              Cancel
+            </button>
+            <button type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </Modal>
+    </>
+  );
+}
+```
+
+## API Reference
+
+### Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`isOpen\` | \`boolean\` | \`false\` | Whether the modal is visible |
+| \`onClose\` | \`function\` | - | Callback fired when modal should close |
+| \`children\` | \`node\` | - | Modal content |
+| \`title\` | \`string\` | - | Modal title |
+| \`size\` | \`'small' \\| 'medium' \\| 'large' \\| 'full'\` | \`'medium'\` | Size of the modal |
+| \`variant\` | \`'default' \\| 'centered' \\| 'fullscreen'\` | \`'default'\` | Visual variant of the modal |
+| \`closeOnBackdropClick\` | \`boolean\` | \`false\` | Whether clicking backdrop closes the modal |
+| \`closeOnEscape\` | \`boolean\` | \`true\` | Whether pressing escape closes the modal |
+| \`showCloseButton\` | \`boolean\` | \`true\` | Whether to show the close button |
+| \`className\` | \`string\` | \`''\` | Additional CSS class name |
+| \`style\` | \`object\` | \`{}\` | Additional inline styles |
+`}</Markdown>
+
+## Best Practices
+
+### ⚠️ UX Considerations (Most Important)
+- **Question every modal**: Do you really need to interrupt the user?
+- **Test alternatives**: Try inline forms, side panels, or progressive disclosure first
+- **Measure impact**: Track how modals affect user completion rates
+- **User research**: Ask users how they feel about modal interruptions
+- **A/B test**: Compare modal vs. non-modal approaches
+
+### Use the Right Component
+- **Use Modal** for focused, required interactions that must be completed
+- **Use Backdrop** for optional content that can be dismissed by clicking outside
+- **Use inline forms** for most data collection scenarios
+
+### Always Provide Close Handlers
+Implement the `onClose` callback to handle modal dismissal properly.
+
+### Choose Appropriate Sizes
+- Use **small** for simple confirmations
+- Use **medium** for most content
+- Use **large** for forms or complex content
+- Use **full** for immersive experiences
+
+### Consider Accessibility
+- Always provide a title for screen readers
+- Test keyboard navigation (Tab, Escape)
+- Ensure focus management works correctly
+- Test with screen readers
+
+### Handle Form Submissions
+- Prevent form submission from closing modal unexpectedly
+- Provide clear success/error feedback
+- Consider loading states for async operations
+
+### Mobile Considerations
+- Test modal behavior on various screen sizes
+- Ensure touch targets are appropriately sized
+- Consider mobile-specific interaction patterns
+- Test with different text sizes and zoom levels
+
+### Performance
+- Avoid complex animations on low-end devices
+- Consider lazy loading for large modal content
+- Implement proper cleanup for event listeners
+- Test with multiple modals open simultaneously
