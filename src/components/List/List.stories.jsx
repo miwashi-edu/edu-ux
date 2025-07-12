@@ -2,7 +2,7 @@ import React from 'react';
 import { List } from './List';
 
 export default {
-  title: 'DataDisplay/List',
+  title: 'Data Display/List',
   component: List,
 };
 

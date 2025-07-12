@@ -2,7 +2,7 @@ import React from 'react';
 import { StatCard } from './StatCard';
 
 export default {
-  title: 'DataDisplay/StatCard',
+  title: 'Data Display/StatCard',
   component: StatCard,
 };
 

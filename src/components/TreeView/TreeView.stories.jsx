@@ -2,7 +2,7 @@ import React from 'react';
 import { TreeView } from './TreeView';
 
 export default {
-  title: 'DataDisplay/TreeView',
+  title: 'Data Display/TreeView',
   component: TreeView,
 };
 

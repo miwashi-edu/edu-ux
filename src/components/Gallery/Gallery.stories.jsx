@@ -2,7 +2,7 @@ import React from 'react';
 import { Gallery } from './Gallery';
 
 export default {
-  title: 'DataDisplay/Gallery',
+  title: 'Data Display/Gallery',
   component: Gallery,
 };
 

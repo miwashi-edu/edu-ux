@@ -2,7 +2,7 @@ import React from 'react';
 import { Meter } from './Meter';
 
 export default {
-  title: 'DataDisplay/Meter',
+  title: 'Data Display/Meter',
   component: Meter,
 };
 
