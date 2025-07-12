@@ -1,1 +1,282 @@
-/* CSS Module */
+/* Alert Container */
+.alert {
+  position: relative;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+  animation: alertSlideIn 0.3s ease-out;
+}
+
+/* Alert Content Layout */
+.alertContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Alert Message */
+.alertMessage {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Alert Icon */
+.alertIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+/* Alert Close Button */
+.alertClose {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.alertClose:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.alertClose:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Alert Types */
+.info {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.info .alertIcon {
+  color: #3b82f6;
+}
+
+.success {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.success .alertIcon {
+  color: #22c55e;
+}
+
+.warning {
+  background-color: #fffbeb;
+  border-color: #fed7aa;
+  color: #92400e;
+}
+
+.warning .alertIcon {
+  color: #f59e0b;
+}
+
+.error {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.error .alertIcon {
+  color: #ef4444;
+}
+
+/* Alert Variants */
+.default {
+  /* Default styles already applied above */
+}
+
+.bordered {
+  border-width: 2px;
+}
+
+.flat {
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.compact {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.compact .alertIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.compact .alertClose {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .info {
+    background-color: #1e3a8a;
+    border-color: #3b82f6;
+    color: #dbeafe;
+  }
+
+  .info .alertIcon {
+    color: #60a5fa;
+  }
+
+  .success {
+    background-color: #14532d;
+    border-color: #22c55e;
+    color: #dcfce7;
+  }
+
+  .success .alertIcon {
+    color: #4ade80;
+  }
+
+  .warning {
+    background-color: #78350f;
+    border-color: #f59e0b;
+    color: #fef3c7;
+  }
+
+  .warning .alertIcon {
+    color: #fbbf24;
+  }
+
+  .error {
+    background-color: #7f1d1d;
+    border-color: #ef4444;
+    color: #fee2e2;
+  }
+
+  .error .alertIcon {
+    color: #f87171;
+  }
+
+  .alertClose:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .alert {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .alertContent {
+    gap: 10px;
+  }
+
+  .alertIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .alertClose {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .alertContent {
+    gap: 8px;
+  }
+
+  .alertIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .alertClose {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Animations */
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes alertSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.alert.alertExiting {
+  animation: alertSlideOut 0.2s ease-in forwards;
+}
+
+/* Focus styles for accessibility */
+.alert:focus-within {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .alert {
+    border-width: 2px;
+  }
+
+  .alertClose {
+    border: 1px solid currentColor;
+  }
+
+  .alertClose:focus {
+    outline: 3px solid currentColor;
+    outline-offset: 1px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .alert,
+  .alertClose {
+    animation: none;
+    transition: none;
+  }
+}

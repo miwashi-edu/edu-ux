@@ -1,7 +1,300 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Markdown } from '@storybook/addon-docs/blocks';
+import * as AlertStories from './Alert.stories.jsx';
 
-<Meta title="Overlays And Feedback/Alert" />
+<Meta of={AlertStories} />
 
 # Alert
 
-Persistent notification for warning or info.
+A versatile alert component for displaying notifications, warnings, and feedback messages with multiple types and variants.
+
+## Features
+
+- **Multiple Types**: Info, success, warning, and error alerts
+- **Visual Variants**: Default, bordered, flat, and compact styles
+- **Dismissible**: Optional close button with callback support
+- **Auto-Dismiss**: Configurable automatic dismissal with timeouts
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **Responsive**: Mobile-first design with adaptive sizing
+- **Dark Theme**: Automatic dark mode support
+- **Animations**: Smooth slide-in/out animations
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Default">
+    <AlertStories.Default />
+  </Story>
+</Canvas>
+
+## Alert Types
+
+The Alert component supports four types to communicate different levels of importance.
+
+### Info
+<Canvas>
+  <Story name="Info">
+    <AlertStories.Info />
+  </Story>
+</Canvas>
+
+### Success
+<Canvas>
+  <Story name="Success">
+    <AlertStories.Success />
+  </Story>
+</Canvas>
+
+### Warning
+<Canvas>
+  <Story name="Warning">
+    <AlertStories.Warning />
+  </Story>
+</Canvas>
+
+### Error
+<Canvas>
+  <Story name="Error">
+    <AlertStories.Error />
+  </Story>
+</Canvas>
+
+## Visual Variants
+
+The Alert component supports four visual variants to match different design contexts.
+
+### Default
+<Canvas>
+  <Story name="Default Variant">
+    <AlertStories.Default />
+  </Story>
+</Canvas>
+
+### Bordered
+<Canvas>
+  <Story name="Bordered">
+    <AlertStories.Bordered />
+  </Story>
+</Canvas>
+
+### Flat
+<Canvas>
+  <Story name="Flat">
+    <AlertStories.Flat />
+  </Story>
+</Canvas>
+
+### Compact
+<Canvas>
+  <Story name="Compact">
+    <AlertStories.Compact />
+  </Story>
+</Canvas>
+
+## Dismissible Alerts
+
+Make alerts dismissible by adding the `dismissible` prop.
+
+<Canvas>
+  <Story name="Dismissible">
+    <AlertStories.Dismissible />
+  </Story>
+</Canvas>
+
+## Auto-Dismiss Alerts
+
+Configure alerts to automatically dismiss after a specified timeout.
+
+<Canvas>
+  <Story name="AutoDismiss">
+    <AlertStories.AutoDismiss />
+  </Story>
+</Canvas>
+
+## Interactive Examples
+
+<Canvas>
+  <Story name="Interactive">
+    <AlertStories.Interactive />
+  </Story>
+</Canvas>
+
+## Auto-Dismiss Examples
+
+<Canvas>
+  <Story name="AutoDismissExample">
+    <AlertStories.AutoDismissExample />
+  </Story>
+</Canvas>
+
+## Variant Showcase
+
+<Canvas>
+  <Story name="VariantShowcase">
+    <AlertStories.VariantShowcase />
+  </Story>
+</Canvas>
+
+## Type Showcase
+
+<Canvas>
+  <Story name="TypeShowcase">
+    <AlertStories.TypeShowcase />
+  </Story>
+</Canvas>
+
+## Controlled Usage
+
+For advanced use cases, you can control the alert visibility externally.
+
+```jsx
+import React, { useState } from 'react';
+import { Alert } from './Alert';
+
+function ControlledAlert() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+    console.log('Alert dismissed');
+  };
+
+  return (
+    <div>
+      {isVisible && (
+        <Alert 
+          type="warning"
+          dismissible={true}
+          onDismiss={handleDismiss}
+        >
+          This alert state is controlled externally.
+        </Alert>
+      )}
+      
+      <button onClick={() => setIsVisible(true)}>
+        Show Alert
+      </button>
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+The Alert component follows WCAG guidelines and includes:
+
+- **ARIA Roles**: Proper `role="alert"` and `aria-live="polite"` attributes
+- **Keyboard Navigation**: Full keyboard support for dismissible alerts
+- **Focus Management**: Clear focus indicators and logical tab order
+- **Screen Reader Support**: Semantic HTML structure and descriptive labels
+- **High Contrast**: Support for high contrast mode preferences
+- **Reduced Motion**: Respects user's motion preferences
+
+## API Reference
+
+### Alert Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Alert message content |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+| \`type\` | \`'info' \\| 'success' \\| 'warning' \\| 'error'\` | \`'info'\` | Type of alert to display |
+| \`variant\` | \`'default' \\| 'bordered' \\| 'flat' \\| 'compact'\` | \`'default'\` | Visual variant of the alert |
+| \`dismissible\` | \`boolean\` | \`false\` | Whether the alert can be dismissed |
+| \`autoDismiss\` | \`boolean\` | \`false\` | Whether the alert should auto-dismiss |
+| \`dismissTimeout\` | \`number\` | \`5000\` | Timeout in milliseconds for auto-dismiss |
+| \`onDismiss\` | \`() => void\` | - | Callback fired when alert is dismissed |
+| \`show\` | \`boolean\` | \`true\` | Control alert visibility externally |
+`}</Markdown>
+
+### Alert.Icon Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`type\` | \`'info' \\| 'success' \\| 'warning' \\| 'error'\` | \`'info'\` | Type of alert icon to display |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+### Alert.Close Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`onClose\` | \`(event: Event) => void\` | - | Callback fired when close button is clicked |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+| \`aria-label\` | \`string\` | \`'Close alert'\` | Accessibility label for the close button |
+`}</Markdown>
+
+## Best Practices
+
+### Content Guidelines
+- Use clear, concise messages that are easy to understand
+- Include actionable information when appropriate
+- Avoid using alerts for non-critical information
+- Keep messages under 2-3 lines when possible
+
+### Type Usage
+- **Info**: General information, tips, or helpful context
+- **Success**: Confirmation of completed actions or positive outcomes
+- **Warning**: Important notices that require attention but aren't errors
+- **Error**: Critical issues that need immediate attention
+
+### Accessibility
+- Ensure each alert has meaningful content
+- Test with screen readers and keyboard navigation
+- Use appropriate alert types for the content
+- Provide alternative ways to access information in alerts
+
+### Performance
+- Limit the number of visible alerts at once
+- Use auto-dismiss for temporary notifications
+- Consider using a toast system for multiple alerts
+- Implement proper cleanup for auto-dismiss timers
+
+### Responsive Design
+- Test alert behavior on various screen sizes
+- Ensure touch targets are appropriately sized (minimum 44px)
+- Consider mobile-first design principles
+- Test with different text sizes and zoom levels
+
+## Examples
+
+### Form Validation
+```jsx
+<Alert type="error" variant="bordered">
+  Please correct the following errors:
+  <ul>
+    <li>Email address is required</li>
+    <li>Password must be at least 8 characters</li>
+  </ul>
+</Alert>
+```
+
+### Success Notification
+```jsx
+<Alert 
+  type="success" 
+  variant="flat"
+  dismissible={true}
+  autoDismiss={true}
+  dismissTimeout={3000}
+  onDismiss={() => console.log('Success alert dismissed')}
+>
+  Your profile has been updated successfully!
+</Alert>
+```
+
+### System Maintenance
+```jsx
+<Alert type="warning" variant="compact">
+  <strong>Scheduled Maintenance:</strong> The system will be unavailable from 2:00 AM to 4:00 AM EST.
+</Alert>
+```
+
+### Information Notice
+```jsx
+<Alert type="info">
+  New features are available! Check out our updated dashboard for improved analytics.
+</Alert>
+```
