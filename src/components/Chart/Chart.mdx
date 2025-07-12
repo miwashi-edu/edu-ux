@@ -1,8 +1,280 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as ChartStories from './Chart.stories.jsx';
 
 <Meta of={ChartStories} />
 
 # Chart
 
-Graphical data representation.
+A flexible data visualization component that supports multiple chart types including bar charts, line charts, and pie charts. Built with accessibility and interactivity in mind.
+
+## What is a Chart?
+
+A chart is a graphical representation of data that helps users understand patterns, trends, and relationships in information. Charts are essential for:
+
+- **Data Analysis** - Identifying trends and patterns in datasets
+- **Business Intelligence** - Presenting key metrics and KPIs
+- **User Research** - Visualizing survey results and user behavior
+- **Performance Monitoring** - Tracking system metrics over time
+- **Decision Making** - Supporting data-driven choices
+
+## Chart Types
+
+### Bar Charts
+Best for comparing quantities across categories. Use when you have:
+- Discrete categories to compare
+- Numerical values that can be ranked
+- Need to show relative differences
+
+### Line Charts
+Ideal for showing trends over time. Use when you have:
+- Continuous data points
+- Time-series data
+- Need to show progression or trends
+
+### Pie Charts
+Perfect for showing parts of a whole. Use when you have:
+- Proportions that sum to 100%
+- 2-6 categories (avoid too many slices)
+- Need to emphasize relative sizes
+
+## Usage
+
+```jsx
+import Chart from './components/Chart';
+
+function MyComponent() {
+  const barData = [
+    { label: 'Q1', value: 45 },
+    { label: 'Q2', value: 67 },
+    { label: 'Q3', value: 34 },
+    { label: 'Q4', value: 89 },
+  ];
+
+  return (
+    <Chart
+      type="bar"
+      data={barData}
+      width={600}
+      height={400}
+      showLegend={true}
+      showTooltip={true}
+    />
+  );
+}
+```
+
+## Data Formats
+
+### Bar Chart Data
+```jsx
+const barData = [
+  { label: 'Category 1', value: 45 },
+  { label: 'Category 2', value: 67 },
+  { label: 'Category 3', value: 34 },
+];
+```
+
+### Line Chart Data
+```jsx
+const lineData = [
+  {
+    name: 'Series 1',
+    data: [
+      { x: 0, y: 20, label: 'Jan' },
+      { x: 1, y: 35, label: 'Feb' },
+      { x: 2, y: 28, label: 'Mar' },
+    ],
+  },
+  {
+    name: 'Series 2',
+    data: [
+      { x: 0, y: 15, label: 'Jan' },
+      { x: 1, y: 30, label: 'Feb' },
+      { x: 2, y: 25, label: 'Mar' },
+    ],
+  },
+];
+```
+
+### Pie Chart Data
+```jsx
+const pieData = [
+  { label: 'Desktop', value: 45 },
+  { label: 'Mobile', value: 35 },
+  { label: 'Tablet', value: 15 },
+  { label: 'Other', value: 5 },
+];
+```
+
+## Features
+
+- **Multiple Chart Types** - Bar, line, and pie charts
+- **Interactive Tooltips** - Hover to see detailed information
+- **Customizable Colors** - Flexible color palettes
+- **Responsive Design** - Adapts to different screen sizes
+- **Accessibility** - Screen reader support and keyboard navigation
+- **Legend Support** - Optional legend with color coding
+- **Empty States** - Graceful handling of no data scenarios
+
+## Best Practices
+
+### Choosing the Right Chart Type
+
+✅ **Bar Charts for:**
+- Comparing quantities across categories
+- Showing rankings or distributions
+- Categorical data with numerical values
+
+✅ **Line Charts for:**
+- Time-series data and trends
+- Continuous data over intervals
+- Multiple series comparisons
+
+✅ **Pie Charts for:**
+- Parts of a whole (percentages)
+- 2-6 categories maximum
+- Relative proportions
+
+### Data Visualization Principles
+
+- **Keep it Simple** - Don't overload charts with too much information
+- **Use Appropriate Scales** - Start axes at zero when possible
+- **Choose Colors Wisely** - Ensure sufficient contrast and colorblind-friendly palettes
+- **Provide Context** - Include titles, labels, and legends
+- **Consider Accessibility** - Use descriptive labels and provide alternative text
+
+### Performance Considerations
+
+- **Limit Data Points** - Too many points can make charts unreadable
+- **Optimize for Mobile** - Consider touch interactions and screen size
+- **Lazy Loading** - Load chart data as needed for large datasets
+- **Caching** - Cache processed data to avoid recalculation
+
+## API Reference
+
+### Chart Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`type\` | \`'bar' \\| 'line' \\| 'pie'\` | \`'bar'\` | Type of chart to display |
+| \`data\` | \`array\` | \`[]\` | **Required.** Chart data in appropriate format |
+| \`width\` | \`number\` | \`600\` | Chart width in pixels |
+| \`height\` | \`number\` | \`400\` | Chart height in pixels |
+| \`margin\` | \`object\` | \`{ top: 20, right: 20, bottom: 40, left: 60 }\` | Chart margins |
+| \`colors\` | \`array\` | \`['#4f46e5', '#059669', '#dc2626', '#ea580c', '#7c3aed']\` | Color palette |
+| \`showLegend\` | \`boolean\` | \`true\` | Show chart legend |
+| \`showTooltip\` | \`boolean\` | \`true\` | Show interactive tooltips |
+| \`className\` | \`string\` | - | Additional CSS class name |
+`}</Markdown>
+
+### Data Formats
+
+<Markdown>{`
+| Chart Type | Data Format | Example |
+|------------|-------------|---------|
+| \`bar\` | \`[{ label: string, value: number }]\` | \`[{ label: 'Q1', value: 45 }]\` |
+| \`line\` | \`[{ name: string, data: [{ x: number, y: number, label?: string }] }]\` | \`[{ name: 'Sales', data: [{ x: 0, y: 20, label: 'Jan' }] }]\` |
+| \`pie\` | \`[{ label: string, value: number }]\` | \`[{ label: 'Desktop', value: 45 }]\` |
+`}</Markdown>
+
+### Subcomponents
+
+The Chart component also exports subcomponents for advanced customization:
+
+<Markdown>{`
+- \`Chart.Canvas\` - Main SVG container
+- \`Chart.Axis\` - X and Y axis components
+- \`Chart.Bar\` - Individual bar elements
+- \`Chart.Line\` - Line path elements
+- \`Chart.Pie\` - Pie slice elements
+- \`Chart.Legend\` - Legend container
+- \`Chart.Tooltip\` - Tooltip component
+`}</Markdown>
+
+## Examples
+
+### Basic Bar Chart
+
+```jsx
+<Chart
+  type="bar"
+  data={[
+    { label: 'Jan', value: 45 },
+    { label: 'Feb', value: 67 },
+    { label: 'Mar', value: 34 },
+  ]}
+/>
+```
+
+### Line Chart with Multiple Series
+
+```jsx
+<Chart
+  type="line"
+  data={[
+    {
+      name: 'Sales',
+      data: [
+        { x: 0, y: 20, label: 'Jan' },
+        { x: 1, y: 35, label: 'Feb' },
+        { x: 2, y: 28, label: 'Mar' },
+      ],
+    },
+    {
+      name: 'Revenue',
+      data: [
+        { x: 0, y: 15, label: 'Jan' },
+        { x: 1, y: 30, label: 'Feb' },
+        { x: 2, y: 25, label: 'Mar' },
+      ],
+    },
+  ]}
+/>
+```
+
+### Pie Chart with Custom Colors
+
+```jsx
+<Chart
+  type="pie"
+  data={[
+    { label: 'Desktop', value: 45 },
+    { label: 'Mobile', value: 35 },
+    { label: 'Tablet', value: 15 },
+    { label: 'Other', value: 5 },
+  ]}
+  colors={['#ef4444', '#f97316', '#eab308', '#22c55e']}
+/>
+```
+
+### Responsive Chart
+
+```jsx
+<Chart
+  type="bar"
+  data={barData}
+  width={window.innerWidth - 40}
+  height={400}
+  showLegend={false}
+/>
+```
+
+### Interactive Chart with State
+
+```jsx
+function InteractiveChart() {
+  const [data, setData] = useState(initialData);
+  
+  const updateData = () => {
+    setData(generateNewData());
+  };
+  
+  return (
+    <div>
+      <button onClick={updateData}>Update Data</button>
+      <Chart type="bar" data={data} />
+    </div>
+  );
+}
+```

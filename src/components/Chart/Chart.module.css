@@ -1,1 +1,364 @@
-/* CSS Module */
+/* Chart Container */
+.chart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--chart-bg, #ffffff);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Chart Canvas */
+.chartCanvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chart Axis */
+.chartAxis {
+  pointer-events: none;
+}
+
+.axisLine {
+  stroke: var(--chart-axis-color, #e2e8f0);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.tickLine {
+  stroke: var(--chart-axis-color, #e2e8f0);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.tickLabel {
+  fill: var(--chart-text-color, #64748b);
+  font-size: 12px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Chart Bar */
+.chartBar {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+
+.chartBar:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.chartBar:focus {
+  outline: 2px solid var(--chart-focus-color, #007bff);
+  outline-offset: 2px;
+}
+
+/* Chart Line */
+.chartLine {
+  transition: stroke-width 0.2s ease-in-out;
+  cursor: pointer;
+  shape-rendering: geometricPrecision;
+}
+
+.chartLine:hover {
+  stroke-width: 3;
+}
+
+/* Chart Pie */
+.chartPie {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  shape-rendering: geometricPrecision;
+}
+
+.chartPie:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.chartPie:focus {
+  outline: 2px solid var(--chart-focus-color, #007bff);
+  outline-offset: 2px;
+}
+
+/* Data Points */
+.dataPoint {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.dataPoint:hover {
+  r: 6;
+  opacity: 0.8;
+}
+
+/* Chart Legend */
+.chartLegend {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--chart-border-color, #e2e8f0);
+  max-width: 200px;
+  z-index: 10;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.legendItem:last-child {
+  margin-bottom: 0;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  color: var(--chart-text-color, #374151);
+  font-weight: 500;
+  flex: 1;
+}
+
+.legendValue {
+  color: var(--chart-text-secondary, #6b7280);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Chart Tooltip */
+.chartTooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+.chartTooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pie Chart Center */
+.pieCenter {
+  fill: var(--chart-text-color, #374151);
+  font-size: 14px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* No Data State */
+.noData {
+  fill: var(--chart-text-secondary, #9ca3af);
+  font-size: 16px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chartLegend {
+    position: static;
+    margin-top: 16px;
+    max-width: none;
+    background: rgba(255, 255, 255, 0.98);
+  }
+  
+  .tickLabel {
+    font-size: 10px;
+  }
+  
+  .chartTooltip {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart {
+    border-radius: 4px;
+  }
+  
+  .legendItem {
+    font-size: 12px;
+  }
+  
+  .legendColor {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .chart {
+    border: 2px solid #000;
+  }
+  
+  .axisLine,
+  .tickLine {
+    stroke: #000;
+    stroke-width: 2;
+  }
+  
+  .tickLabel {
+    fill: #000;
+    font-weight: 600;
+  }
+  
+  .chartLegend {
+    border: 2px solid #000;
+    background: #fff;
+  }
+  
+  .chartTooltip {
+    background: #000;
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .chartBar,
+  .chartLine,
+  .chartPie,
+  .dataPoint,
+  .chartTooltip {
+    transition: none;
+  }
+  
+  .chartBar:hover,
+  .chartPie:hover {
+    transform: none;
+  }
+  
+  .dataPoint:hover {
+    r: 4;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .chart {
+    background: var(--chart-bg-dark, #1f2937);
+    color: var(--chart-text-dark, #f9fafb);
+  }
+  
+  .axisLine,
+  .tickLine {
+    stroke: var(--chart-axis-color-dark, #4b5563);
+  }
+  
+  .tickLabel {
+    fill: var(--chart-text-color-dark, #d1d5db);
+  }
+  
+  .chartLegend {
+    background: rgba(31, 41, 55, 0.95);
+    border-color: var(--chart-border-color-dark, #4b5563);
+  }
+  
+  .legendLabel {
+    color: var(--chart-text-color-dark, #f9fafb);
+  }
+  
+  .legendValue {
+    color: var(--chart-text-secondary-dark, #9ca3af);
+  }
+  
+  .pieCenter {
+    fill: var(--chart-text-color-dark, #f9fafb);
+  }
+  
+  .noData {
+    fill: var(--chart-text-secondary-dark, #6b7280);
+  }
+  
+  .chartTooltip {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Focus Visible */
+.chartBar:focus-visible,
+.chartPie:focus-visible {
+  outline: 2px solid var(--chart-focus-color, #007bff);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .chartLegend,
+  .chartTooltip {
+    display: none;
+  }
+  
+  .chart {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .chartBar,
+  .chartLine,
+  .chartPie {
+    transition: none;
+  }
+}
