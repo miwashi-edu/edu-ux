@@ -1,1 +1,103 @@
-/* CSS Module */
+/* Backdrop Component Styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Base backdrop styles */
+.backdrop--dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.backdrop--light {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.backdrop--transparent {
+  background-color: transparent;
+}
+
+/* Blur effect */
+.backdrop--blur {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Animation states */
+.backdrop--animated {
+  animation: backdropFadeIn 0.3s ease-in-out;
+}
+
+.backdrop--animated.backdrop--exiting {
+  animation: backdropFadeOut 0.3s ease-in-out;
+}
+
+/* Animation keyframes */
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Focus styles for accessibility */
+.backdrop:focus {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .backdrop--dark {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .backdrop--light {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    transition: none;
+  }
+  
+  .backdrop--animated {
+    animation: none;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .backdrop {
+    padding: 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .backdrop {
+    /* Ensure backdrop is easily tappable on touch devices */
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+}

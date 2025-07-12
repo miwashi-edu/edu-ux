@@ -1,7 +1,167 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import * as BackdropStories from './Backdrop.stories.jsx';
 
-<Meta title="Overlays And Feedback/Backdrop" />
+<Meta of={BackdropStories} />
 
 # Backdrop
 
-Dimmed screen behind a modal or drawer.
+A backdrop component that provides a dimmed overlay behind modals, drawers, and other overlay components. It serves as a visual and interactive layer that helps focus user attention on the foreground content while providing a way to dismiss the overlay.
+
+## What is a Backdrop?
+
+A backdrop is a semi-transparent overlay that appears behind modal dialogs, drawers, or other floating content. It serves several important purposes:
+
+- **Visual Focus**: Dims the background content to draw attention to the foreground
+- **Interaction Layer**: Provides a clickable area to dismiss the overlay
+- **Accessibility**: Helps screen readers understand the modal context
+- **User Experience**: Creates a clear visual hierarchy and prevents background interaction
+
+## Features
+
+- **Multiple Variants**: Dark, light, and transparent backdrop options
+- **Accessibility**: Proper ARIA attributes, keyboard navigation, and focus management
+- **Animations**: Smooth fade-in/fade-out animations with reduced motion support
+- **Blur Effect**: Optional backdrop blur for modern glass-morphism effects
+- **Click Handling**: Built-in click outside to close functionality
+- **Keyboard Support**: Escape key handling for closing
+- **Body Scroll Lock**: Prevents background scrolling when backdrop is open
+
+## When to Use Backdrop
+
+### Modal Dialogs
+Use backdrop for confirmation dialogs, forms, or content that requires user attention.
+
+### Drawers and Sidebars
+Provide backdrop for slide-out navigation or settings panels.
+
+### Image Galleries
+Use backdrop for full-screen image viewing with navigation controls.
+
+### Custom Overlays
+Create custom overlay experiences with transparent backdrop for click handling.
+
+## Basic Usage
+
+```jsx
+import React, { useState } from 'react';
+import Backdrop from './components/Backdrop';
+
+function ModalExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+      
+      <Backdrop
+        isOpen={isOpen}
+        onClick={() => setIsOpen(false)}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            setIsOpen(false);
+          }
+        }}
+      >
+        <div className="modal-content">
+          <h2>Modal Title</h2>
+          <p>Modal content goes here...</p>
+          <button onClick={() => setIsOpen(false)}>
+            Close
+          </button>
+        </div>
+      </Backdrop>
+    </>
+  );
+}
+```
+
+## Variants
+
+### Dark Backdrop (Default)
+The standard dark backdrop with 50% opacity, suitable for most modal dialogs.
+
+```jsx
+<Backdrop isOpen={isOpen} variant="dark" onClick={handleClose}>
+  {/* Modal content */}
+</Backdrop>
+```
+
+### Light Backdrop
+A light backdrop suitable for dark-themed applications or when you need a subtle overlay.
+
+```jsx
+<Backdrop isOpen={isOpen} variant="light" onClick={handleClose}>
+  {/* Modal content */}
+</Backdrop>
+```
+
+### Transparent Backdrop
+A transparent backdrop that only provides click handling without visual overlay.
+
+```jsx
+<Backdrop isOpen={isOpen} variant="transparent" onClick={handleClose}>
+  {/* Content that needs click-outside-to-close behavior */}
+</Backdrop>
+```
+
+## Effects
+
+### With Blur Effect
+Add a backdrop blur effect for modern glass-morphism designs.
+
+```jsx
+<Backdrop isOpen={isOpen} blur={true} onClick={handleClose}>
+  {/* Modal content */}
+</Backdrop>
+```
+
+### Without Animation
+Disable animations for performance-critical applications.
+
+```jsx
+<Backdrop isOpen={isOpen} animated={false} onClick={handleClose}>
+  {/* Modal content */}
+</Backdrop>
+```
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isOpen` | `boolean` | `false` | Whether the backdrop is visible |
+| `onClick` | `function` | - | Click handler for backdrop clicks |
+| `onKeyDown` | `function` | - | Key down handler for keyboard events |
+| `children` | `node` | - | Content to render inside the backdrop |
+| `variant` | `'dark' \| 'light' \| 'transparent'` | `'dark'` | Visual variant of the backdrop |
+| `blur` | `boolean` | `false` | Whether to apply blur effect |
+| `animated` | `boolean` | `true` | Whether to animate the backdrop |
+| `className` | `string` | `''` | Additional CSS class name |
+| `style` | `object` | `{}` | Additional inline styles |
+
+## Best Practices
+
+### Always Provide Close Handlers
+Implement both `onClick` and `onKeyDown` handlers for proper accessibility and user experience.
+
+### Choose Appropriate Variants
+- Use **dark** backdrop for most modal dialogs
+- Use **light** backdrop for dark-themed applications
+- Use **transparent** backdrop when you need only click handling
+
+### Consider Performance
+Disable animations on low-end devices or when performance is critical.
+
+### Test Keyboard Navigation
+Ensure your modal content is properly focusable and navigable with keyboard.
+
+### Handle Focus Restoration
+When closing the backdrop, restore focus to the triggering element for better accessibility.
+
+### Mobile Considerations
+- Ensure backdrop is easily tappable on touch devices
+- Test with different screen sizes and orientations
+- Consider mobile-specific interaction patterns
