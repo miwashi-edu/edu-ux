@@ -1,8 +1,196 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as CarouselStories from './Carousel.stories.jsx';
 
 <Meta of={CarouselStories} />
 
 # Carousel
 
-Horizontally scrollable group of content.
+A horizontally scrollable carousel component that displays content in a slideshow format. Perfect for showcasing images, content cards, or any sequential information.
+
+## What is a Carousel?
+
+A carousel (also known as a slideshow or image slider) is a UI component that displays multiple items one at a time, allowing users to navigate through them using controls like arrows, dots, or swipe gestures. Carousels are commonly used for:
+
+- **Image galleries** - Showcasing product photos or portfolio images
+- **Content presentation** - Highlighting features, testimonials, or announcements
+- **Navigation** - Browsing through categories or sections
+- **Storytelling** - Sequential content presentation
+
+## Usage
+
+```jsx
+import Carousel from './components/Carousel';
+
+function MyComponent() {
+  return (
+    <div style={{ height: '400px' }}>
+      <Carousel autoPlay showControls showIndicators>
+        <div style={{ backgroundColor: '#4f46e5', color: 'white', padding: '2rem' }}>
+          <h2>Slide 1</h2>
+          <p>This is the first slide content.</p>
+        </div>
+        <div style={{ backgroundColor: '#059669', color: 'white', padding: '2rem' }}>
+          <h2>Slide 2</h2>
+          <p>This is the second slide content.</p>
+        </div>
+        <div style={{ backgroundColor: '#dc2626', color: 'white', padding: '2rem' }}>
+          <h2>Slide 3</h2>
+          <p>This is the third slide content.</p>
+        </div>
+      </Carousel>
+    </div>
+  );
+}
+```
+
+## Features
+
+- **Touch/Swipe Support** - Navigate by swiping on mobile devices
+- **Auto-play** - Automatic slide advancement with configurable intervals
+- **Accessibility** - Full keyboard navigation and screen reader support
+- **Responsive Design** - Adapts to different screen sizes
+- **Customizable Controls** - Show/hide arrows and indicators
+- **Infinite Loop** - Seamless navigation from last to first slide
+- **Pause on Hover** - Pause auto-play when hovering over the carousel
+
+## Best Practices
+
+### When to Use Carousels
+
+✅ **Good Use Cases:**
+- Image galleries with clear navigation
+- Feature showcases with limited content
+- Product photo collections
+- Sequential storytelling
+- Content that benefits from visual progression
+
+❌ **Avoid Using For:**
+- Critical navigation elements
+- Primary content that users need to see immediately
+- Information that should be accessible without interaction
+- Long lists of items (use pagination instead)
+
+### Accessibility Considerations
+
+- Always provide alternative navigation methods (arrows, indicators)
+- Ensure sufficient color contrast for controls
+- Use descriptive labels for screen readers
+- Consider users who prefer reduced motion
+- Test with keyboard-only navigation
+
+### Performance Tips
+
+- Optimize images for web use
+- Limit the number of slides (5-7 is ideal)
+- Use lazy loading for image-heavy carousels
+- Consider disabling auto-play on mobile to save battery
+
+## API Reference
+
+### Carousel Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | **Required.** The slide content to display |
+| \`autoPlay\` | \`boolean\` | \`false\` | Enable automatic slide advancement |
+| \`autoPlayInterval\` | \`number\` | \`5000\` | Interval between auto-play transitions (ms) |
+| \`showControls\` | \`boolean\` | \`true\` | Show navigation arrows |
+| \`showIndicators\` | \`boolean\` | \`true\` | Show dot indicators |
+| \`infinite\` | \`boolean\` | \`true\` | Enable infinite loop navigation |
+| \`swipeable\` | \`boolean\` | \`true\` | Enable touch/swipe navigation |
+| \`pauseOnHover\` | \`boolean\` | \`true\` | Pause auto-play on hover |
+| \`onSlideChange\` | \`function\` | - | Callback fired when slide changes |
+| \`defaultActiveIndex\` | \`number\` | \`0\` | Initial active slide index |
+| \`className\` | \`string\` | - | Additional CSS class name |
+`}</Markdown>
+
+### Events
+
+<Markdown>{`
+| Event | Type | Description |
+|-------|------|-------------|
+| \`onSlideChange\` | \`(index: number) => void\` | Fired when the active slide changes |
+`}</Markdown>
+
+### Subcomponents
+
+The Carousel component also exports subcomponents for advanced customization:
+
+<Markdown>{`
+- \`Carousel.Item\` - Individual slide container
+- \`Carousel.Track\` - Container for all slides
+- \`Carousel.Controls\` - Navigation arrows container
+- \`Carousel.Indicators\` - Dot indicators container
+`}</Markdown>
+
+## Examples
+
+### Basic Carousel
+
+A simple carousel with default settings:
+
+```jsx
+<Carousel>
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</Carousel>
+```
+
+### Auto-playing Carousel
+
+Carousel that automatically advances every 3 seconds:
+
+```jsx
+<Carousel autoPlay autoPlayInterval={3000}>
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</Carousel>
+```
+
+### Minimal Carousel
+
+Carousel without controls or indicators:
+
+```jsx
+<Carousel showControls={false} showIndicators={false}>
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</Carousel>
+```
+
+### Non-infinite Carousel
+
+Carousel that stops at the first and last slides:
+
+```jsx
+<Carousel infinite={false}>
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</Carousel>
+```
+
+### Interactive Carousel
+
+Carousel with external state control:
+
+```jsx
+function InteractiveCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  return (
+    <div>
+      <p>Current slide: {currentSlide + 1}</p>
+      <Carousel onSlideChange={setCurrentSlide}>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </Carousel>
+    </div>
+  );
+}
+```
