@@ -1,8 +1,336 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as AvatarStories from './Avatar.stories.jsx';
 
 <Meta of={AvatarStories} />
 
 # Avatar
 
-User icon, photo, or initials.
+A versatile avatar component for displaying user images, initials, icons, and status indicators with comprehensive accessibility features and multiple visual variants.
+
+## What is an Avatar?
+
+An avatar is a visual representation of a user, typically displayed as a profile picture, initials, or icon. Avatars are commonly used in:
+
+- **User profiles**: Display user identity and profile pictures
+- **Chat applications**: Show who sent a message
+- **Team collaboration**: Identify team members in discussions
+- **Social media**: Represent users in comments and posts
+- **Dashboard interfaces**: Show user status and presence
+
+## Key Features
+
+- **Multiple Content Types**: Images, initials, icons, and fallback states
+- **Flexible Sizing**: 5 different sizes from extra small to extra large
+- **Visual Variants**: Default, filled, outlined, and minimal styles
+- **Shape Options**: Circle, square, and rounded shapes
+- **Status Indicators**: Online, offline, away, and busy states
+- **Accessibility**: Proper ARIA attributes and keyboard navigation
+- **Responsive**: Works well across different screen sizes
+- **Fallback Handling**: Graceful degradation when images fail to load
+
+## Usage
+
+```jsx
+import Avatar from './components/Avatar';
+
+// Basic usage with initials
+<Avatar
+  alt="John Doe"
+  initials="JD"
+  size="medium"
+/>
+
+// With profile image
+<Avatar
+  src="https://example.com/profile.jpg"
+  alt="Jane Smith"
+  size="large"
+  status="online"
+/>
+
+// With custom icon
+<Avatar
+  icon={<UserIcon />}
+  variant="filled"
+  shape="square"
+/>
+
+// Clickable avatar
+<Avatar
+  initials="CL"
+  onClick={() => handleAvatarClick()}
+  alt="Clickable Avatar"
+/>
+```
+
+## Content Types
+
+### Images
+Display user profile pictures with automatic fallback handling.
+
+```jsx
+<Avatar
+  src="https://randomuser.me/api/portraits/women/44.jpg"
+  alt="Jane Doe"
+  size="large"
+/>
+```
+
+### Initials
+Show user initials when no image is available.
+
+```jsx
+<Avatar
+  alt="John Smith"
+  initials="JS"
+  variant="filled"
+  size="medium"
+/>
+```
+
+### Icons
+Use custom icons for special cases or system avatars.
+
+```jsx
+<Avatar
+  icon={<UserIcon />}
+  variant="outlined"
+  shape="square"
+/>
+```
+
+### Fallback
+Automatic fallback to initials or default user icon when image fails.
+
+```jsx
+<Avatar
+  src="broken-image-url.jpg"
+  alt="User Name"
+  initials="UN"
+/>
+```
+
+## Sizes
+
+Choose from 5 different sizes to match your design needs.
+
+```jsx
+<div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+  <Avatar initials="XS" size="xs" />
+  <Avatar initials="SM" size="small" />
+  <Avatar initials="MD" size="medium" />
+  <Avatar initials="LG" size="large" />
+  <Avatar initials="XL" size="xl" />
+</div>
+```
+
+## Variants
+
+### Default
+Standard avatar with subtle background and border.
+
+```jsx
+<Avatar initials="D" variant="default" />
+```
+
+### Filled
+Solid background with contrasting text color.
+
+```jsx
+<Avatar initials="F" variant="filled" />
+```
+
+### Outlined
+Transparent background with colored border and text.
+
+```jsx
+<Avatar initials="O" variant="outlined" />
+```
+
+### Minimal
+Clean, minimal styling with white background.
+
+```jsx
+<Avatar initials="M" variant="minimal" />
+```
+
+## Shapes
+
+### Circle
+Traditional circular avatar (default).
+
+```jsx
+<Avatar initials="C" shape="circle" />
+```
+
+### Square
+Modern square avatar with rounded corners.
+
+```jsx
+<Avatar initials="S" shape="square" />
+```
+
+### Rounded
+Slightly rounded rectangle shape.
+
+```jsx
+<Avatar initials="R" shape="rounded" />
+```
+
+## Status Indicators
+
+Add status indicators to show user availability.
+
+```jsx
+<div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+  <Avatar initials="ON" status="online" />
+  <Avatar initials="OFF" status="offline" />
+  <Avatar initials="AW" status="away" />
+  <Avatar initials="BS" status="busy" />
+</div>
+```
+
+## Interactive Avatars
+
+Make avatars clickable for user interactions.
+
+```jsx
+<Avatar
+  initials="CL"
+  onClick={() => openUserProfile()}
+  alt="Click to view profile"
+/>
+```
+
+## Best Practices
+
+### Content Priority
+1. **Profile images** - Use actual user photos when available
+2. **Initials** - Fall back to user initials for personalization
+3. **Icons** - Use for system accounts or special cases
+4. **Default icon** - Final fallback for unknown users
+
+### Accessibility
+- Always provide meaningful `alt` text for screen readers
+- Use descriptive text for clickable avatars
+- Ensure sufficient color contrast for text and backgrounds
+- Test with keyboard navigation
+
+### Performance
+- Optimize images for web use (compress, resize)
+- Use appropriate image formats (WebP, JPEG, PNG)
+- Consider lazy loading for large avatar lists
+- Implement proper error handling for broken images
+
+### Design Guidelines
+- Maintain consistent sizing within your application
+- Use status indicators sparingly to avoid visual clutter
+- Choose variants that match your design system
+- Consider dark mode compatibility
+
+## API Reference
+
+### Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`src\` | \`string\` | \`''\` | Image source URL |
+| \`alt\` | \`string\` | \`''\` | Alt text for the image |
+| \`initials\` | \`string\` | \`''\` | Initials to display when no image is available |
+| \`icon\` | \`ReactNode\` | \`null\` | Custom icon to display |
+| \`size\` | \`'xs' \\| 'small' \\| 'medium' \\| 'large' \\| 'xl'\` | \`'medium'\` | Size of the avatar |
+| \`variant\` | \`'default' \\| 'filled' \\| 'outlined' \\| 'minimal'\` | \`'default'\` | Visual variant of the avatar |
+| \`shape\` | \`'circle' \\| 'square' \\| 'rounded'\` | \`'circle'\` | Shape of the avatar |
+| \`status\` | \`'online' \\| 'offline' \\| 'away' \\| 'busy'\` | \`null\` | Status indicator |
+| \`fallbackIcon\` | \`ReactNode\` | \`null\` | Fallback icon when no image or initials are available |
+| \`className\` | \`string\` | \`''\` | Additional CSS class name |
+| \`style\` | \`object\` | \`{}\` | Additional inline styles |
+| \`onClick\` | \`function\` | \`null\` | Click handler |
+`}</Markdown>
+
+### Size Options
+
+- **`xs`** - 1.5rem (24px) - Extra small for compact layouts
+- **`small`** - 2rem (32px) - Small for lists and comments
+- **`medium`** - 2.5rem (40px) - Default size for most use cases
+- **`large`** - 3.5rem (56px) - Large for profile pages
+- **`xl`** - 5rem (80px) - Extra large for hero sections
+
+### Status Colors
+
+- **`online`** - Green (#10b981) - User is currently active
+- **`offline`** - Gray (#9ca3af) - User is not available
+- **`away`** - Yellow (#f59e0b) - User is away or idle
+- **`busy`** - Red (#ef4444) - User is busy or in a meeting
+
+## Examples
+
+### User Profile
+```jsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+  <Avatar
+    src="https://randomuser.me/api/portraits/men/32.jpg"
+    alt="John Doe"
+    size="large"
+    status="online"
+  />
+  <div>
+    <h3>John Doe</h3>
+    <p>Software Engineer</p>
+  </div>
+</div>
+```
+
+### Team Member List
+```jsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+  {teamMembers.map(member => (
+    <div key={member.id} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Avatar
+        src={member.avatar}
+        alt={member.name}
+        initials={member.initials}
+        size="small"
+        status={member.status}
+      />
+      <span>{member.name}</span>
+    </div>
+  ))}
+</div>
+```
+
+### Chat Interface
+```jsx
+<div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+  <Avatar
+    src={message.author.avatar}
+    alt={message.author.name}
+    size="medium"
+    status={message.author.status}
+  />
+  <div>
+    <div style={{ fontWeight: 'bold' }}>{message.author.name}</div>
+    <div>{message.content}</div>
+  </div>
+</div>
+```
+
+## Implementation Notes
+
+### Image Loading
+The Avatar component handles image loading states internally:
+- Shows loading state while image loads
+- Falls back to initials/icon if image fails to load
+- Maintains aspect ratio and proper sizing
+
+### Accessibility Features
+- Uses `role="img"` for non-interactive avatars
+- Uses `role="button"` for clickable avatars
+- Provides proper `aria-label` attributes
+- Supports keyboard navigation for interactive avatars
+
+### Performance Considerations
+- Images are loaded with `object-fit: cover` for consistent sizing
+- Fallback content is rendered immediately for better perceived performance
+- Status indicators use CSS-only animations for smooth performance

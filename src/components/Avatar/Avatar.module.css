@@ -1,1 +1,209 @@
-/* CSS Module */
+/* Avatar Component Styles */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  overflow: hidden;
+  user-select: none;
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* Sizes */
+.avatar.xs { width: 1.5rem; height: 1.5rem; font-size: 0.75rem; }
+.avatar.small { width: 2rem; height: 2rem; font-size: 0.875rem; }
+.avatar.medium { width: 2.5rem; height: 2.5rem; font-size: 1rem; }
+.avatar.large { width: 3.5rem; height: 3.5rem; font-size: 1.5rem; }
+.avatar.xl { width: 5rem; height: 5rem; font-size: 2rem; }
+
+/* Shapes */
+.avatar.circle { 
+  border-radius: 50%; 
+  /* Ensure perfect circle with border-box */
+  box-sizing: border-box;
+}
+.avatar.square { 
+  border-radius: 0.375rem; 
+  /* Subtle rounded corners for square */
+}
+.avatar.rounded { 
+  border-radius: 0.75rem; 
+  /* More rounded corners for rounded variant */
+}
+
+/* Variants */
+.avatar.default { 
+  background-color: #f3f4f6; 
+  border: 1px solid #e5e7eb; 
+  color: #374151; 
+}
+.avatar.filled { 
+  background-color: #3b82f6; 
+  color: #fff; 
+  border: none; 
+}
+.avatar.outlined { 
+  background-color: transparent; 
+  border: 2px solid #3b82f6; 
+  color: #3b82f6; 
+}
+.avatar.minimal { 
+  background-color: #fff; 
+  border: 1px solid #e5e7eb; 
+  color: #374151; 
+}
+
+/* Image - Enhanced for perfect round effect */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* Ensure image respects the avatar's border-radius */
+  border-radius: inherit;
+  /* Smooth transitions for image loading */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Initials */
+.initials {
+  font-size: 1em;
+  font-weight: 600;
+  color: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* Ensure initials respect the avatar's border-radius */
+  border-radius: inherit;
+}
+
+/* Icon */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* Ensure icon container respects the avatar's border-radius */
+  border-radius: inherit;
+}
+.defaultIcon {
+  width: 60%;
+  height: 60%;
+  color: #9ca3af;
+}
+
+/* Status indicator */
+.status {
+  position: absolute;
+  bottom: 0.1em;
+  right: 0.1em;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #fff;
+  z-index: 1;
+}
+.status--online { background-color: #10b981; }
+.status--offline { background-color: #9ca3af; }
+.status--away { background-color: #f59e0b; }
+.status--busy { background-color: #ef4444; }
+
+/* Clickable */
+.clickable {
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+  border-color: #3b82f6;
+}
+.clickable:hover {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+  transform: translateY(-1px);
+}
+.clickable:active {
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.12);
+  transform: translateY(0);
+}
+
+/* Focus styles for accessibility */
+.avatar:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading state for images */
+.avatar.loading .image {
+  opacity: 0.7;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .avatar {
+    border: 2px solid #000;
+  }
+  
+  .avatar.filled {
+    border: 2px solid #000;
+  }
+  
+  .avatar.outlined {
+    border: 3px solid #000;
+  }
+  
+  .status {
+    border: 2px solid #000;
+    box-shadow: 0 0 0 2px #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .avatar,
+  .image,
+  .clickable {
+    transition: none;
+  }
+  
+  .clickable:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .avatar.default, .avatar.minimal {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
+  }
+  
+  .avatar.filled {
+    background-color: #2563eb;
+    color: #fff;
+  }
+  
+  .avatar.outlined {
+    border-color: #2563eb;
+    color: #2563eb;
+  }
+  
+  .dismissButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .status {
+    border-color: #1f2937;
+    box-shadow: 0 0 0 2px #1f2937;
+  }
+}
