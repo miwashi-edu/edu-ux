@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Markdown } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as AccordionStories from './Accordion.stories.jsx';
 
 <Meta of={AccordionStories} />
@@ -6,6 +6,15 @@ import * as AccordionStories from './Accordion.stories.jsx';
 # Accordion
 
 A versatile accordion component that provides collapsible content sections with smooth animations and comprehensive accessibility features.
+
+## What is an Accordion?
+
+An accordion is a UI component that displays a list of items where each item can be expanded or collapsed to show or hide its content. It's commonly used for:
+
+- **FAQ sections**: Organizing frequently asked questions and answers
+- **Navigation menus**: Creating collapsible navigation structures
+- **Content organization**: Breaking down large content into digestible sections
+- **Settings panels**: Grouping related settings and options
 
 ## Features
 
@@ -18,93 +27,114 @@ A versatile accordion component that provides collapsible content sections with 
 
 ## Basic Usage
 
-<Canvas>
-  <Story name="Default">
-    <AccordionStories.Default />
-  </Story>
-</Canvas>
+```jsx
+import React from 'react';
+import { Accordion } from './Accordion';
+
+function BasicAccordion() {
+  return (
+    <Accordion>
+      <Accordion.Item itemId="item-1">
+        <Accordion.Header itemId="item-1">What is an accordion?</Accordion.Header>
+        <Accordion.Content itemId="item-1">
+          <p>An accordion is a collapsible content component that helps organize information into expandable sections.</p>
+        </Accordion.Content>
+      </Accordion.Item>
+      
+      <Accordion.Item itemId="item-2">
+        <Accordion.Header itemId="item-2">How do I use it?</Accordion.Header>
+        <Accordion.Content itemId="item-2">
+          <p>Simply wrap your content in Accordion.Item components with Accordion.Header and Accordion.Content.</p>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
 
 ## Variants
 
-The Accordion component supports four visual variants to match different design contexts.
-
 ### Default
-<Canvas>
-  <Story name="Default Variant">
-    <AccordionStories.Default />
-  </Story>
-</Canvas>
+The standard accordion with subtle borders and hover effects.
+
+```jsx
+<Accordion variant="default">
+  {/* Accordion items */}
+</Accordion>
+```
 
 ### Bordered
-<Canvas>
-  <Story name="Bordered Variant">
-    <AccordionStories.Bordered />
-  </Story>
-</Canvas>
+Accordion with clear borders around each item for better visual separation.
+
+```jsx
+<Accordion variant="bordered">
+  {/* Accordion items */}
+</Accordion>
+```
 
 ### Flat
-<Canvas>
-  <Story name="Flat Variant">
-    <AccordionStories.Flat />
-  </Story>
-</Canvas>
+Minimal accordion without borders or shadows for clean, modern designs.
+
+```jsx
+<Accordion variant="flat">
+  {/* Accordion items */}
+</Accordion>
+```
 
 ### Card
-<Canvas>
-  <Story name="Card Variant">
-    <AccordionStories.Card />
-  </Story>
-</Canvas>
+Accordion with card-like styling including shadows and rounded corners.
+
+```jsx
+<Accordion variant="card">
+  {/* Accordion items */}
+</Accordion>
+```
 
 ## Multiple Expansion
 
-Enable multiple items to be expanded simultaneously with the `allowMultiple` prop.
+Enable multiple items to be expanded simultaneously.
 
-<Canvas>
-  <Story name="Multiple Expansion">
-    <AccordionStories.MultipleExpanded />
-  </Story>
-</Canvas>
+```jsx
+<Accordion allowMultiple={true}>
+  <Accordion.Item itemId="item-1">
+    <Accordion.Header itemId="item-1">First Item</Accordion.Header>
+    <Accordion.Content itemId="item-1">
+      <p>This content can be expanded alongside other items.</p>
+    </Accordion.Content>
+  </Accordion.Item>
+  
+  <Accordion.Item itemId="item-2">
+    <Accordion.Header itemId="item-2">Second Item</Accordion.Header>
+    <Accordion.Content itemId="item-2">
+      <p>Multiple items can be open at the same time.</p>
+    </Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+```
 
 ## Custom Icons
 
-Replace the default chevron icon with custom icons for enhanced visual communication.
+Replace the default chevron icon with custom icons.
 
-<Canvas>
-  <Story name="Custom Icons">
-    <AccordionStories.WithCustomIcons />
-  </Story>
-</Canvas>
-
-## Disabled State
-
-Disable specific accordion items to prevent interaction while maintaining visual consistency.
-
-<Canvas>
-  <Story name="Disabled Items">
-    <AccordionStories.WithDisabledItems />
-  </Story>
-</Canvas>
-
-## Interactive Example
-
-<Canvas>
-  <Story name="Interactive">
-    <AccordionStories.Interactive />
-  </Story>
-</Canvas>
-
-## Responsive Example
-
-<Canvas>
-  <Story name="Responsive Example">
-    <AccordionStories.ResponsiveExample />
-  </Story>
-</Canvas>
+```jsx
+<Accordion>
+  <Accordion.Item itemId="item-1">
+    <Accordion.Header 
+      itemId="item-1" 
+      icon={<span>📖</span>}
+    >
+      Documentation
+    </Accordion.Header>
+    <Accordion.Content itemId="item-1">
+      <p>Documentation content here...</p>
+    </Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+```
 
 ## Controlled Usage
 
-For advanced use cases, you can control the accordion state externally.
+For advanced use cases, control the accordion state externally.
 
 ```jsx
 import React, { useState } from 'react';
@@ -134,17 +164,6 @@ function ControlledAccordion() {
   );
 }
 ```
-
-## Accessibility
-
-The Accordion component follows WCAG guidelines and includes:
-
-- **Keyboard Navigation**: Tab, Enter, and Space key support
-- **ARIA Attributes**: Proper `aria-expanded`, `aria-disabled`, and `role` attributes
-- **Focus Management**: Clear focus indicators and logical tab order
-- **Screen Reader Support**: Semantic HTML structure and descriptive labels
-- **High Contrast**: Support for high contrast mode preferences
-- **Reduced Motion**: Respects user's motion preferences
 
 ## API Reference
 
@@ -215,59 +234,3 @@ The Accordion component follows WCAG guidelines and includes:
 - Test accordion behavior on various screen sizes
 - Ensure touch targets are appropriately sized (minimum 44px)
 - Consider mobile-first design principles
-
-## Examples
-
-### FAQ Section
-```jsx
-<Accordion variant="card" allowMultiple={true}>
-  <Accordion.Item itemId="faq-1">
-    <Accordion.Header itemId="faq-1">How do I get started?</Accordion.Header>
-    <Accordion.Content itemId="faq-1">
-      <p>Follow our quick start guide to get up and running in minutes.</p>
-    </Accordion.Content>
-  </Accordion.Item>
-  
-  <Accordion.Item itemId="faq-2">
-    <Accordion.Header itemId="faq-2">What are the system requirements?</Accordion.Header>
-    <Accordion.Content itemId="faq-2">
-      <p>Check our system requirements page for detailed specifications.</p>
-    </Accordion.Content>
-  </Accordion.Item>
-</Accordion>
-```
-
-### Navigation Menu
-```jsx
-<Accordion variant="flat">
-  <Accordion.Item itemId="nav-1">
-    <Accordion.Header itemId="nav-1">Products</Accordion.Header>
-    <Accordion.Content itemId="nav-1">
-      <nav>
-        <ul>
-          <li><a href="/products/featured">Featured</a></li>
-          <li><a href="/products/new">New Arrivals</a></li>
-          <li><a href="/products/sale">Sale</a></li>
-        </ul>
-      </nav>
-    </Accordion.Content>
-  </Accordion.Item>
-</Accordion>
-```
-
-### Settings Panel
-```jsx
-<Accordion variant="bordered">
-  <Accordion.Item itemId="settings-1">
-    <Accordion.Header 
-      itemId="settings-1"
-      icon={<SettingsIcon />}
-    >
-      General Settings
-    </Accordion.Header>
-    <Accordion.Content itemId="settings-1">
-      <SettingsForm />
-    </Accordion.Content>
-  </Accordion.Item>
-</Accordion>
-```

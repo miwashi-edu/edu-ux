@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Markdown } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as AlertStories from './Alert.stories.jsx';
 
 <Meta of={AlertStories} />
@@ -6,6 +6,16 @@ import * as AlertStories from './Alert.stories.jsx';
 # Alert
 
 A versatile alert component for displaying notifications, warnings, and feedback messages with multiple types and variants.
+
+## What is an Alert?
+
+An alert is a UI component that displays important messages to users. It's commonly used for:
+
+- **Notifications**: Informing users about system events or updates
+- **Warnings**: Alerting users to potential issues or important information
+- **Success messages**: Confirming successful actions or operations
+- **Error messages**: Displaying critical errors that need attention
+- **Feedback**: Providing immediate response to user actions
 
 ## Features
 
@@ -20,131 +30,131 @@ A versatile alert component for displaying notifications, warnings, and feedback
 
 ## Basic Usage
 
-<Canvas>
-  <Story name="Default">
-    <AlertStories.Default />
-  </Story>
-</Canvas>
+```jsx
+import React from 'react';
+import { Alert } from './Alert';
+
+function BasicAlert() {
+  return (
+    <Alert type="info">
+      This is an informational alert message.
+    </Alert>
+  );
+}
+```
 
 ## Alert Types
 
-The Alert component supports four types to communicate different levels of importance.
-
 ### Info
-<Canvas>
-  <Story name="Info">
-    <AlertStories.Info />
-  </Story>
-</Canvas>
+Use for general information, tips, or helpful context.
+
+```jsx
+<Alert type="info">
+  New features are available! Check out our updated dashboard.
+</Alert>
+```
 
 ### Success
-<Canvas>
-  <Story name="Success">
-    <AlertStories.Success />
-  </Story>
-</Canvas>
+Use for confirmation of completed actions or positive outcomes.
+
+```jsx
+<Alert type="success">
+  Your profile has been updated successfully!
+</Alert>
+```
 
 ### Warning
-<Canvas>
-  <Story name="Warning">
-    <AlertStories.Warning />
-  </Story>
-</Canvas>
+Use for important notices that require attention but aren't errors.
+
+```jsx
+<Alert type="warning">
+  <strong>Scheduled Maintenance:</strong> The system will be unavailable from 2:00 AM to 4:00 AM EST.
+</Alert>
+```
 
 ### Error
-<Canvas>
-  <Story name="Error">
-    <AlertStories.Error />
-  </Story>
-</Canvas>
+Use for critical issues that need immediate attention.
+
+```jsx
+<Alert type="error">
+  Please correct the following errors:
+  <ul>
+    <li>Email address is required</li>
+    <li>Password must be at least 8 characters</li>
+  </ul>
+</Alert>
+```
 
 ## Visual Variants
 
-The Alert component supports four visual variants to match different design contexts.
-
 ### Default
-<Canvas>
-  <Story name="Default Variant">
-    <AlertStories.Default />
-  </Story>
-</Canvas>
+The standard alert with background color and subtle styling.
+
+```jsx
+<Alert type="info" variant="default">
+  Default alert styling
+</Alert>
+```
 
 ### Bordered
-<Canvas>
-  <Story name="Bordered">
-    <AlertStories.Bordered />
-  </Story>
-</Canvas>
+Alert with clear borders for better visual separation.
+
+```jsx
+<Alert type="warning" variant="bordered">
+  Bordered alert styling
+</Alert>
+```
 
 ### Flat
-<Canvas>
-  <Story name="Flat">
-    <AlertStories.Flat />
-  </Story>
-</Canvas>
+Minimal alert without background color for clean designs.
+
+```jsx
+<Alert type="success" variant="flat">
+  Flat alert styling
+</Alert>
+```
 
 ### Compact
-<Canvas>
-  <Story name="Compact">
-    <AlertStories.Compact />
-  </Story>
-</Canvas>
+Smaller alert for space-constrained layouts.
+
+```jsx
+<Alert type="info" variant="compact">
+  Compact alert styling
+</Alert>
+```
 
 ## Dismissible Alerts
 
 Make alerts dismissible by adding the `dismissible` prop.
 
-<Canvas>
-  <Story name="Dismissible">
-    <AlertStories.Dismissible />
-  </Story>
-</Canvas>
+```jsx
+<Alert 
+  type="info" 
+  dismissible={true}
+  onDismiss={() => console.log('Alert dismissed')}
+>
+  This alert can be dismissed by clicking the close button.
+</Alert>
+```
 
 ## Auto-Dismiss Alerts
 
 Configure alerts to automatically dismiss after a specified timeout.
 
-<Canvas>
-  <Story name="AutoDismiss">
-    <AlertStories.AutoDismiss />
-  </Story>
-</Canvas>
-
-## Interactive Examples
-
-<Canvas>
-  <Story name="Interactive">
-    <AlertStories.Interactive />
-  </Story>
-</Canvas>
-
-## Auto-Dismiss Examples
-
-<Canvas>
-  <Story name="AutoDismissExample">
-    <AlertStories.AutoDismissExample />
-  </Story>
-</Canvas>
-
-## Variant Showcase
-
-<Canvas>
-  <Story name="VariantShowcase">
-    <AlertStories.VariantShowcase />
-  </Story>
-</Canvas>
-
-## Type Showcase
-
-<Canvas>
-  <Story name="TypeShowcase">
-    <AlertStories.TypeShowcase />
-  </Story>
-</Canvas>
+```jsx
+<Alert 
+  type="success" 
+  autoDismiss={true}
+  dismissTimeout={5000}
+  onDismiss={() => console.log('Auto-dismissed')}
+>
+  This alert will automatically disappear in 5 seconds.
+</Alert>
+```
 
 ## Controlled Usage
 
-For advanced use cases, you can control the alert visibility externally.
+For advanced use cases, control the alert visibility externally.
 
 ```jsx
 import React, { useState } from 'react';
@@ -177,17 +187,6 @@ function ControlledAlert() {
   );
 }
 ```
-
-## Accessibility
-
-The Alert component follows WCAG guidelines and includes:
-
-- **ARIA Roles**: Proper `role="alert"` and `aria-live="polite"` attributes
-- **Keyboard Navigation**: Full keyboard support for dismissible alerts
-- **Focus Management**: Clear focus indicators and logical tab order
-- **Screen Reader Support**: Semantic HTML structure and descriptive labels
-- **High Contrast**: Support for high contrast mode preferences
-- **Reduced Motion**: Respects user's motion preferences
 
 ## API Reference
 
@@ -257,44 +256,3 @@ The Alert component follows WCAG guidelines and includes:
 - Ensure touch targets are appropriately sized (minimum 44px)
 - Consider mobile-first design principles
 - Test with different text sizes and zoom levels
-
-## Examples
-
-### Form Validation
-```jsx
-<Alert type="error" variant="bordered">
-  Please correct the following errors:
-  <ul>
-    <li>Email address is required</li>
-    <li>Password must be at least 8 characters</li>
-  </ul>
-</Alert>
-```
-
-### Success Notification
-```jsx
-<Alert 
-  type="success" 
-  variant="flat"
-  dismissible={true}
-  autoDismiss={true}
-  dismissTimeout={3000}
-  onDismiss={() => console.log('Success alert dismissed')}
->
-  Your profile has been updated successfully!
-</Alert>
-```
-
-### System Maintenance
-```jsx
-<Alert type="warning" variant="compact">
-  <strong>Scheduled Maintenance:</strong> The system will be unavailable from 2:00 AM to 4:00 AM EST.
-</Alert>
-```
-
-### Information Notice
-```jsx
-<Alert type="info">
-  New features are available! Check out our updated dashboard for improved analytics.
-</Alert>
-```
