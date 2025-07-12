@@ -1,7 +1,317 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ToastStories from './Toast.stories.jsx';
 
-<Meta title="Overlays And Feedback/Toast" />
+<Meta of={ToastStories} />
 
 # Toast
 
-Brief message that auto-dismisses.
+A toast component for displaying brief notifications with accessibility features, smooth animations, and auto-dismiss functionality.
+
+## What is a Toast?
+
+A toast is a non-disruptive notification that appears temporarily on the screen to provide feedback to users. Unlike modals or alerts, toasts don't require user interaction and typically auto-dismiss after a few seconds. They're perfect for:
+
+- Success confirmations
+- Error notifications
+- Status updates
+- Brief informational messages
+
+## Key Features
+
+- **Non-disruptive**: Doesn't interrupt user workflow
+- **Auto-dismiss**: Automatically disappears after a set duration
+- **Accessible**: Proper ARIA attributes and keyboard navigation
+- **Flexible positioning**: Can be placed in any corner or center
+- **Multiple variants**: Different visual styles for different contexts
+- **Action buttons**: Optional interactive elements
+- **Smooth animations**: Professional slide-in/out effects
+
+## Usage
+
+```jsx
+import Toast from './components/Toast';
+
+// Basic usage
+<Toast
+  type="success"
+  title="Success!"
+  message="Your action was completed successfully."
+/>
+
+// With action button
+<Toast
+  type="error"
+  title="Upload Failed"
+  message="There was an error uploading your file."
+  actionLabel="Retry"
+  onAction={() => handleRetry()}
+/>
+
+// Custom duration and position
+<Toast
+  type="info"
+  title="Information"
+  message="This will stay visible for 10 seconds."
+  duration={10000}
+  position="bottom-center"
+/>
+```
+
+## Best Practices
+
+### When to Use Toasts
+
+✅ **Good use cases:**
+- Form submission confirmations
+- File upload status
+- Network connection status
+- Brief success/error messages
+- System notifications
+
+❌ **Avoid using toasts for:**
+- Critical errors that require immediate attention
+- Complex information that needs detailed explanation
+- Actions that require user confirmation
+- Information that users need to reference later
+
+### UX Guidelines
+
+1. **Keep messages brief** - Toasts should be scannable in 2-3 seconds
+2. **Use appropriate types** - Match the visual style to the message importance
+3. **Position consistently** - Stick to one position throughout your app
+4. **Don't stack too many** - Limit to 2-3 toasts at once
+5. **Provide actions when needed** - Use action buttons for recoverable errors
+
+### Accessibility
+
+- Toasts use `role="alert"` and `aria-live="polite"` for screen readers
+- Dismiss buttons have proper `aria-label` attributes
+- Focus management ensures keyboard navigation works correctly
+- High contrast mode support is included
+- Reduced motion preferences are respected
+
+## API Reference
+
+### Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`type\` | \`'info' \\| 'success' \\| 'warning' \\| 'error'\` | \`'info'\` | Type of toast notification |
+| \`variant\` | \`'default' \\| 'filled' \\| 'outlined' \\| 'minimal'\` | \`'default'\` | Visual variant of the toast |
+| \`title\` | \`string\` | \`''\` | Title of the toast |
+| \`message\` | \`string\` | \`''\` | Message content of the toast |
+| \`duration\` | \`number\` | \`5000\` | Duration in milliseconds before auto-dismiss |
+| \`dismissible\` | \`boolean\` | \`true\` | Whether the toast can be dismissed manually |
+| \`autoDismiss\` | \`boolean\` | \`true\` | Whether the toast auto-dismisses |
+| \`position\` | \`'top-left' \\| 'top-right' \\| 'top-center' \\| 'bottom-left' \\| 'bottom-right' \\| 'bottom-center'\` | \`'top-right'\` | Position of the toast |
+| \`onDismiss\` | \`function\` | \`() => {}\` | Callback when toast is dismissed |
+| \`onAction\` | \`function\` | \`() => {}\` | Callback when action button is clicked |
+| \`actionLabel\` | \`string\` | \`''\` | Label for the action button |
+| \`className\` | \`string\` | \`''\` | Additional CSS class name |
+| \`style\` | \`object\` | \`{}\` | Additional inline styles |
+`}</Markdown>
+
+### Type Variants
+
+- **`info`** - Blue styling for informational messages
+- **`success`** - Green styling for successful actions
+- **`warning`** - Yellow/orange styling for warnings
+- **`error`** - Red styling for error messages
+
+### Visual Variants
+
+- **`default`** - Standard toast with colored left border
+- **`filled`** - Colored background with matching text
+- **`outlined`** - Transparent background with colored border and text
+- **`minimal`** - Subtle styling with minimal visual impact
+
+### Position Options
+
+- **`top-left`** - Top-left corner of the screen
+- **`top-right`** - Top-right corner of the screen (default)
+- **`top-center`** - Top center of the screen
+- **`bottom-left`** - Bottom-left corner of the screen
+- **`bottom-right`** - Bottom-right corner of the screen
+- **`bottom-center`** - Bottom center of the screen
+
+## Examples
+
+### Basic Types
+
+```jsx
+// Info toast
+<Toast
+  type="info"
+  title="Information"
+  message="This is an informational message."
+/>
+
+// Success toast
+<Toast
+  type="success"
+  title="Success!"
+  message="Your action was completed successfully."
+/>
+
+// Warning toast
+<Toast
+  type="warning"
+  title="Warning"
+  message="Please review your input before proceeding."
+/>
+
+// Error toast
+<Toast
+  type="error"
+  title="Error"
+  message="Something went wrong. Please try again."
+/>
+```
+
+### Visual Variants
+
+```jsx
+// Default variant (colored border)
+<Toast
+  type="success"
+  variant="default"
+  title="Default Style"
+  message="Standard toast with colored left border."
+/>
+
+// Filled variant (colored background)
+<Toast
+  type="success"
+  variant="filled"
+  title="Filled Style"
+  message="Toast with colored background."
+/>
+
+// Outlined variant (colored border and text)
+<Toast
+  type="success"
+  variant="outlined"
+  title="Outlined Style"
+  message="Toast with colored border and text."
+/>
+
+// Minimal variant (subtle styling)
+<Toast
+  type="success"
+  variant="minimal"
+  title="Minimal Style"
+  message="Toast with subtle styling."
+/>
+```
+
+### With Action Buttons
+
+```jsx
+// Toast with retry action
+<Toast
+  type="error"
+  title="Upload Failed"
+  message="There was an error uploading your file."
+  actionLabel="Retry"
+  onAction={() => handleRetry()}
+/>
+
+// Toast with view action
+<Toast
+  type="success"
+  title="File Uploaded"
+  message="Your file has been uploaded successfully."
+  actionLabel="View File"
+  onAction={() => openFile()}
+/>
+```
+
+### Custom Duration and Behavior
+
+```jsx
+// Short duration (2 seconds)
+<Toast
+  type="info"
+  title="Quick Message"
+  message="This will disappear quickly."
+  duration={2000}
+/>
+
+// Long duration (10 seconds)
+<Toast
+  type="warning"
+  title="Important Message"
+  message="This will stay visible longer."
+  duration={10000}
+/>
+
+// No auto-dismiss
+<Toast
+  type="error"
+  title="Critical Error"
+  message="This requires manual dismissal."
+  autoDismiss={false}
+/>
+
+// Not dismissible
+<Toast
+  type="info"
+  title="System Notice"
+  message="This cannot be dismissed."
+  dismissible={false}
+  autoDismiss={false}
+/>
+```
+
+### Different Positions
+
+```jsx
+// Top-left
+<Toast
+  type="info"
+  position="top-left"
+  title="Top Left"
+  message="Positioned in top-left corner."
+/>
+
+// Top-center
+<Toast
+  type="info"
+  position="top-center"
+  title="Top Center"
+  message="Positioned in top-center."
+/>
+
+// Bottom-right
+<Toast
+  type="info"
+  position="bottom-right"
+  title="Bottom Right"
+  message="Positioned in bottom-right corner."
+/>
+```
+
+## Implementation Notes
+
+### State Management
+
+The Toast component manages its own visibility state internally. When `autoDismiss` is enabled, it automatically hides after the specified duration. The `onDismiss` callback is called after the exit animation completes.
+
+### Animation
+
+Toasts use CSS animations for smooth slide-in and slide-out effects. The animation direction depends on the position:
+- Right-positioned toasts slide in from the right
+- Left-positioned toasts slide in from the left
+- Center-positioned toasts slide in from the top
+
+### Progress Bar
+
+When `autoDismiss` is enabled, a progress bar appears at the bottom of the toast showing the remaining time before dismissal.
+
+### Multiple Toasts
+
+When displaying multiple toasts, consider:
+- Staggering their appearance to avoid overwhelming users
+- Using different positions for different types of messages
+- Implementing a toast manager to handle stacking and positioning

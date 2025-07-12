@@ -1,1 +1,476 @@
-/* CSS Module */
+/* Toast Component Styles */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+/* Position variants */
+.toast--top-left {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+}
+
+.toast--top-right {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.toast--top-center {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast--bottom-left {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.toast--bottom-right {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.toast--bottom-center {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Type variants */
+.toast--info {
+  border-left: 4px solid #3b82f6;
+}
+
+.toast--success {
+  border-left: 4px solid #10b981;
+}
+
+.toast--warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+/* Variant styles */
+.toast--filled {
+  border: none;
+}
+
+.toast--filled.toast--info {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+.toast--filled.toast--success {
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.toast--filled.toast--warning {
+  background-color: #fffbeb;
+  color: #92400e;
+}
+
+.toast--filled.toast--error {
+  background-color: #fef2f2;
+  color: #991b1b;
+}
+
+.toast--outlined {
+  background-color: transparent;
+  border: 2px solid;
+}
+
+.toast--outlined.toast--info {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.toast--outlined.toast--success {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.toast--outlined.toast--warning {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.toast--outlined.toast--error {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.toast--minimal {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Icon container */
+.iconContainer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: inherit;
+}
+
+.message {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: inherit;
+  opacity: 0.9;
+}
+
+/* Action button */
+.actionButton {
+  flex-shrink: 0;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+}
+
+.actionButton:hover {
+  background-color: currentColor;
+  color: #ffffff;
+}
+
+.toast--filled .actionButton {
+  background-color: currentColor;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.toast--filled .actionButton:hover {
+  opacity: 0.9;
+}
+
+/* Dismiss button */
+.dismissButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  color: inherit;
+  opacity: 0.6;
+}
+
+.dismissButton:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dismissIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Progress bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: currentColor;
+  opacity: 0.3;
+  animation: progressShrink linear forwards;
+}
+
+/* Animation states */
+.animating {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes progressShrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Position-specific animations */
+.toast--top-left,
+.toast--bottom-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.toast--top-left.animating,
+.toast--bottom-left.animating {
+  animation: slideOutLeft 0.3s ease-in forwards;
+}
+
+.toast--top-center,
+.toast--bottom-center {
+  animation: slideInCenter 0.3s ease-out;
+}
+
+.toast--top-center.animating,
+.toast--bottom-center.animating {
+  animation: slideOutCenter 0.3s ease-in forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInCenter {
+  from {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutCenter {
+  from {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Focus styles for accessibility */
+.toast:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.actionButton:focus,
+.dismissButton:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .toast {
+    border: 2px solid #000;
+  }
+  
+  .toast--info {
+    border-left-color: #0066cc;
+  }
+  
+  .toast--success {
+    border-left-color: #006600;
+  }
+  
+  .toast--warning {
+    border-left-color: #cc6600;
+  }
+  
+  .toast--error {
+    border-left-color: #cc0000;
+  }
+  
+  .actionButton,
+  .dismissButton {
+    border: 1px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+  
+  .toast.animating {
+    animation: none;
+  }
+  
+  .progressBar {
+    animation: none;
+  }
+  
+  .actionButton,
+  .dismissButton {
+    transition: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .toast {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .toast--minimal {
+    background-color: #111827;
+    border-color: #374151;
+  }
+  
+  .toast--filled.toast--info {
+    background-color: #1e3a8a;
+    color: #dbeafe;
+  }
+  
+  .toast--filled.toast--success {
+    background-color: #065f46;
+    color: #d1fae5;
+  }
+  
+  .toast--filled.toast--warning {
+    background-color: #92400e;
+    color: #fef3c7;
+  }
+  
+  .toast--filled.toast--error {
+    background-color: #991b1b;
+    color: #fee2e2;
+  }
+  
+  .dismissButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .toast {
+    max-width: calc(100vw - 2rem);
+    min-width: auto;
+    margin: 0 1rem;
+  }
+  
+  .toast--top-center,
+  .toast--bottom-center {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+  }
+  
+  .toast--top-center.animating,
+  .toast--bottom-center.animating {
+    transform: none;
+  }
+  
+  @keyframes slideInCenter {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutCenter {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+}
