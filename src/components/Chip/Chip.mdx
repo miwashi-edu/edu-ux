@@ -1,7 +1,181 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as ChipStories from './Chip.stories.jsx';
 
-<Meta title="Interactive Elements/Chip" />
+<Meta of={ChipStories} />
 
 # Chip
 
-Small element showing tags or selections.
+A compact component for displaying labels, tags, or selectable items with various visual styles.
+
+## Overview
+
+The Chip component is a versatile element used to display small pieces of information, such as tags, categories, or status indicators. It supports multiple variants, sizes, and can include a remove button for interactive functionality.
+
+## Features
+
+- **Multiple variants**: Default, primary, success, warning, error, and outline styles
+- **Three sizes**: Small, medium, and large
+- **Interactive states**: Hover effects and focus indicators
+- **Removable option**: Optional remove button with callback
+- **Accessibility**: ARIA attributes and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+
+## Usage
+
+```jsx
+import Chip from './components/Chip';
+
+// Basic usage
+<Chip label="React" variant="primary" />
+
+// Removable chip
+<Chip 
+  label="TypeScript" 
+  variant="success" 
+  removable={true}
+  onRemove={() => console.log('Removed')}
+/>
+
+// Different sizes
+<Chip label="Small" size="small" />
+<Chip label="Large" size="large" />
+```
+
+## Examples
+
+### Variants
+
+<Markdown>{`
+The component supports six different visual variants:
+
+- **Default**: Gray background for general use
+- **Primary**: Blue background for primary actions
+- **Success**: Green background for success states
+- **Warning**: Yellow background for warnings
+- **Error**: Red background for errors
+- **Outline**: Transparent background with border
+`}</Markdown>
+
+<Canvas>
+  <Story of={ChipStories.AllVariants} />
+</Canvas>
+
+### Individual Variants
+
+<Canvas>
+  <Story of={ChipStories.Default} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Primary} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Success} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Warning} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Error} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Outline} />
+</Canvas>
+
+### Sizes
+
+<Markdown>{`
+The component comes in three sizes to fit different contexts:
+`}</Markdown>
+
+<Canvas>
+  <Story of={ChipStories.AllSizes} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Large} />
+</Canvas>
+
+### Interactive Features
+
+<Markdown>{`
+Chips can be made removable with a built-in remove button:
+`}</Markdown>
+
+<Canvas>
+  <Story of={ChipStories.Removable} />
+</Canvas>
+
+<Canvas>
+  <Story of={ChipStories.Interactive} />
+</Canvas>
+
+### States
+
+<Markdown>{`
+Chips can be disabled to prevent interaction:
+`}</Markdown>
+
+<Canvas>
+  <Story of={ChipStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`label\` | \`string\` | - | The text content of the chip |
+| \`variant\` | \`'default' \| 'primary' \| 'success' \| 'warning' \| 'error' \| 'outline'\` | \`'default'\` | The visual variant of the chip |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the chip |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the chip is disabled |
+| \`removable\` | \`boolean\` | \`false\` | Whether the chip has a remove button |
+| \`onRemove\` | \`function\` | - | Callback function when remove button is clicked |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### ChipAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The content to display |
+| \`variant\` | \`'default' \| 'primary' \| 'success' \| 'warning' \| 'error' \| 'outline'\` | \`'default'\` | The visual variant of the chip |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the chip |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the chip is disabled |
+| \`removable\` | \`boolean\` | \`false\` | Whether the chip has a remove button |
+| \`onRemove\` | \`function\` | - | Callback function when remove button is clicked |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses `role="button"` for interactive chips
+- Implements proper focus management with `tabIndex`
+- Includes `aria-disabled` for disabled state
+- Remove button has `aria-label` for screen readers
+- Supports keyboard navigation
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Use appropriate variants**: Choose colors that match your design system
+2. **Keep labels concise**: Short, descriptive text works best
+3. **Consider context**: Use chips in appropriate contexts like tags, filters, or status indicators
+4. **Handle removal**: Always provide feedback when chips are removed
+5. **Test accessibility**: Ensure chips work with keyboard navigation and screen readers
+
+## Related Components
+
+- [Badge](./Badge.mdx) - For status indicators and notifications
+- [Button](./Button.mdx) - For primary actions
+- [Tag](./Tag.mdx) - For categorization and labeling
