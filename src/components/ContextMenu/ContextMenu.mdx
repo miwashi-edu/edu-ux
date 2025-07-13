@@ -1,7 +1,100 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as ContextMenuStories from './ContextMenu.stories.jsx';
 
-<Meta title="Interactive Elements/ContextMenu" />
+<Meta of={ContextMenuStories} />
 
 # ContextMenu
 
-Right-click menu with options.
+A contextual menu that appears on right-click or trigger, supporting keyboard navigation, nested menus, and disabled items.
+
+## Overview
+
+The ContextMenu component provides a flexible, accessible way to display a menu of actions at a specific screen location. It supports keyboard navigation, nested submenus, and disabled menu items for a complete UX experience.
+
+## Features
+
+- **Keyboard accessible**: Full arrow key and escape support
+- **Nested menus**: Support for submenus
+- **Disabled items**: Prevent interaction on certain actions
+- **Customizable**: Style and content flexibility
+- **Responsive**: Adapts to different screen sizes
+
+## Usage
+
+```jsx
+import ContextMenu, { ContextMenuItemAtom } from './components/ContextMenu';
+
+<ContextMenu open={open} anchorPoint={{ x: 100, y: 100 }} onClose={handleClose}>
+  <ContextMenuItemAtom onClick={handleEdit}>Edit</ContextMenuItemAtom>
+  <ContextMenuItemAtom onClick={handleDelete} disabled>Delete</ContextMenuItemAtom>
+  <ContextMenuItemAtom>Export
+    <ContextMenu open={submenuOpen} anchorPoint={{ x: 160, y: 100 }}>
+      <ContextMenuItemAtom onClick={handleExportPDF}>PDF</ContextMenuItemAtom>
+      <ContextMenuItemAtom onClick={handleExportCSV}>CSV</ContextMenuItemAtom>
+    </ContextMenu>
+  </ContextMenuItemAtom>
+</ContextMenu>
+```
+
+## Examples
+
+### Basic Context Menu
+<Canvas>
+  <Story of={ContextMenuStories.Basic} />
+</Canvas>
+
+### Nested Menu
+<Canvas>
+  <Story of={ContextMenuStories.WithNestedMenu} />
+</Canvas>
+
+### Keyboard Accessibility
+<Canvas>
+  <Story of={ContextMenuStories.KeyboardAccessible} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### ContextMenu Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`open\` | \`boolean\` | - | Whether the menu is open |
+| \`anchorPoint\` | \`{ x: number, y: number }\` | { x: 0, y: 0 } | Screen coordinates for menu position |
+| \`onClose\` | \`function\` | - | Callback when menu should close |
+| \`children\` | \`ReactNode\` | - | Menu items (ContextMenuItemAtom) |
+| \`className\` | \`string\` | '' | Additional CSS classes |
+| \`style\` | \`object\` | {} | Inline styles for the menu |
+
+### ContextMenuItemAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The menu item content |
+| \`onClick\` | \`function\` | - | Click handler for the item |
+| \`disabled\` | \`boolean\` | false | Whether the item is disabled |
+| \`className\` | \`string\` | '' | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses `role="menu"` and `role="menuitem"` for ARIA support
+- Keyboard navigation with arrow keys and Escape
+- Focus management for menu items
+- Disabled items are not focusable or clickable
+- High contrast and reduced motion support
+
+## Best Practices
+
+1. **Use for contextual actions**: Show relevant actions for the user's context
+2. **Support keyboard and mouse**: Ensure all actions are accessible
+3. **Disable unavailable actions**: Use the `disabled` prop for unavailable items
+4. **Close on outside click or Escape**: Always provide a way to dismiss the menu
+5. **Test with screen readers**: Ensure menu structure is announced properly
+
+## Related Components
+
+- [Dropdown](./Dropdown.mdx) - For dropdown menus
+- [Popover](./Popover.mdx) - For floating panels
+- [Button](./Button.mdx) - For menu triggers

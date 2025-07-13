@@ -1,3 +1,2 @@
-import ContextMenu from './ContextMenu';
-
-export { ContextMenu };
+export { default } from './ContextMenu.jsx';
+export { ContextMenuItemAtom } from './ContextMenu.jsx';
