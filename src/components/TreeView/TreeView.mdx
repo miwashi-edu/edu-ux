@@ -1,8 +1,266 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as TreeViewStories from './TreeView.stories.jsx';
 
 <Meta of={TreeViewStories} />
 
 # TreeView
 
-Expandable hierarchy of items.
+A hierarchical tree view component for displaying nested data structures with expand/collapse, selection, and custom rendering capabilities.
+
+## What is a TreeView?
+
+A TreeView is a UI component that displays hierarchical data in a tree-like structure. It's commonly used for:
+
+- File explorers and directory navigation
+- Organization charts and hierarchies
+- Nested data visualization
+- Navigation menus with sub-items
+- Category browsing and filtering
+
+## Features
+
+- **Multiple Variants**: Default, compact, and large visual styles
+- **Flexible Sizing**: Small, medium, and large sizes
+- **Selection Support**: Single and multi-select modes
+- **Expand/Collapse**: Interactive tree navigation
+- **Custom Icons**: Folder, file, and custom icon variants
+- **Atomic Subcomponents**: Item, Content, Icon, Label, Toggle, Children
+- **Custom Rendering**: Flexible item renderer function
+- **Controlled/Uncontrolled**: External or internal state management
+- **Accessibility**: Full keyboard navigation and ARIA support
+- **Loading States**: Built-in loading indicators
+- **Dark Mode & High Contrast**: Adaptive styling
+
+## Basic Usage
+
+```jsx
+import { TreeView } from '@edu-ux/components';
+
+const data = [
+  {
+    id: '1',
+    label: 'Documents',
+    icon: '📁',
+    iconVariant: 'folder',
+    children: [
+      {
+        id: '1-1',
+        label: 'Work',
+        icon: '📁',
+        iconVariant: 'folder',
+        children: [
+          { id: '1-1-1', label: 'Report.pdf', icon: '📄', iconVariant: 'file' },
+        ]
+      }
+    ]
+  }
+];
+
+function FileExplorer() {
+  return (
+    <TreeView
+      data={data}
+      selectable={true}
+      onSelectionChange={(selected) => console.log('Selected:', selected)}
+    />
+  );
+}
+```
+
+## Variants
+
+TreeView supports three visual variants:
+
+- **default**: Standard tree view with balanced spacing
+- **compact**: Reduced padding for dense layouts
+- **large**: Increased padding for better readability
+
+```jsx
+<TreeView variant="default" data={data} />
+<TreeView variant="compact" data={data} />
+<TreeView variant="large" data={data} />
+```
+
+## Sizes
+
+Choose from three size variants:
+
+```jsx
+<TreeView size="sm" data={data} />
+<TreeView size="md" data={data} />
+<TreeView size="lg" data={data} />
+```
+
+## Selection
+
+Enable single or multi-select functionality:
+
+```jsx
+// Single selection
+<TreeView
+  data={data}
+  selectable={true}
+  multiSelect={false}
+  onSelectionChange={(selected) => console.log(selected)}
+/>
+
+// Multi-selection
+<TreeView
+  data={data}
+  selectable={true}
+  multiSelect={true}
+  onSelectionChange={(selected) => console.log(selected)}
+/>
+```
+
+## Controlled State
+
+Manage expansion and selection state externally:
+
+```jsx
+function ControlledTreeView() {
+  const [selectedItems, setSelectedItems] = useState(['1-1-1']);
+  const [expandedItems, setExpandedItems] = useState(['1', '1-1']);
+
+  return (
+    <TreeView
+      data={data}
+      selectedItems={selectedItems}
+      expandedItems={expandedItems}
+      onSelectionChange={setSelectedItems}
+      onExpansionChange={setExpandedItems}
+    />
+  );
+}
+```
+
+## Custom Rendering
+
+Use the `renderItem` prop for complete customization:
+
+```jsx
+const customRenderer = (item, level, isExpanded, isSelected, hasChildren) => (
+  <TreeView.Item
+    key={item.id}
+    level={level}
+    expanded={isExpanded}
+    selected={isSelected}
+  >
+    <TreeView.Content
+      hasChildren={hasChildren}
+      expanded={isExpanded}
+      onToggle={(expanded) => console.log('Toggle:', expanded)}
+    >
+      <TreeView.Icon icon={item.icon} variant={item.iconVariant} />
+      <TreeView.Label variant={item.labelVariant}>
+        {item.label}
+      </TreeView.Label>
+      {isSelected && <span>✓</span>}
+    </TreeView.Content>
+    
+    {hasChildren && (
+      <TreeView.Children expanded={isExpanded}>
+        {item.children.map(child => 
+          customRenderer(child, level + 1, false, false, child.children?.length > 0)
+        )}
+      </TreeView.Children>
+    )}
+  </TreeView.Item>
+);
+
+<TreeView data={data} renderItem={customRenderer} />
+```
+
+## Data Structure
+
+Each tree item should have the following structure:
+
+```jsx
+{
+  id: 'unique-id',           // Required: Unique identifier
+  label: 'Item Label',       // Required: Display text
+  icon: '📁',               // Optional: Icon (string or component)
+  iconVariant: 'folder',     // Optional: Icon variant (default, folder, file, custom)
+  labelVariant: 'folder',    // Optional: Label variant (default, folder, file, custom)
+  children: [],              // Optional: Array of child items
+  disabled: false,           // Optional: Disable the item
+}
+```
+
+## API Reference
+
+### TreeView Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`data\` | \`TreeItem[]\` | \`[]\` | Array of tree items |
+| \`variant\` | \`'default' \\| 'compact' \\| 'large'\` | \`'default'\` | Visual variant |
+| \`size\` | \`'sm' \\| 'md' \\| 'lg'\` | \`'md'\` | Size variant |
+| \`selectable\` | \`boolean\` | \`false\` | Whether items can be selected |
+| \`multiSelect\` | \`boolean\` | \`false\` | Allow multiple selections |
+| \`selectedItems\` | \`string[]\` | \`[]\` | Array of selected item IDs |
+| \`expandedItems\` | \`string[]\` | \`[]\` | Array of expanded item IDs |
+| \`onSelectionChange\` | \`(selected: string[]) => void\` | - | Selection change handler |
+| \`onExpansionChange\` | \`(expanded: string[]) => void\` | - | Expansion change handler |
+| \`renderItem\` | \`(item, level, expanded, selected, hasChildren) => ReactNode\` | - | Custom item renderer |
+| \`loading\` | \`boolean\` | \`false\` | Whether to show loading state |
+| \`className\` | \`string\` | - | Additional CSS classes |
+| \`style\` | \`object\` | - | Inline styles |
+`}</Markdown>
+
+### TreeItem Structure
+
+<Markdown>{`
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| \`id\` | \`string\` | Yes | Unique identifier for the item |
+| \`label\` | \`string\` | Yes | Display text for the item |
+| \`icon\` | \`string \\| ReactNode\` | No | Icon to display |
+| \`iconVariant\` | \`'default' \\| 'folder' \\| 'file' \\| 'custom'\` | No | Icon visual variant |
+| \`labelVariant\` | \`'default' \\| 'folder' \\| 'file' \\| 'custom'\` | No | Label visual variant |
+| \`children\` | \`TreeItem[]\` | No | Array of child items |
+| \`disabled\` | \`boolean\` | No | Whether the item is disabled |
+`}</Markdown>
+
+### Atomic Subcomponents
+
+- **TreeView.Item**: Individual tree item container
+- **TreeView.Content**: Content wrapper with toggle button
+- **TreeView.Icon**: Icon display component
+- **TreeView.Label**: Label text component
+- **TreeView.Toggle**: Expand/collapse button
+- **TreeView.Children**: Container for child items
+
+## Best Practices
+
+### Data Organization
+- Use clear, descriptive labels for tree items
+- Keep nesting levels reasonable (3-4 levels max)
+- Provide meaningful icons for different item types
+- Use consistent naming conventions
+
+### Performance
+- Avoid deeply nested structures
+- Consider lazy loading for large datasets
+- Use React.memo for custom renderers
+- Implement virtualization for very large trees
+
+### Accessibility
+- Ensure keyboard navigation works properly
+- Provide meaningful ARIA labels
+- Use sufficient color contrast
+- Test with screen readers
+
+### User Experience
+- Provide visual feedback for interactions
+- Use appropriate icons for different content types
+- Maintain consistent indentation levels
+- Consider the user's mental model
+
+## Related Components
+
+- **Accordion**: For collapsible content sections
+- **List**: For simple list displays
+- **Menu**: For navigation menus
+- **Breadcrumbs**: For hierarchical navigation paths

@@ -1,1 +1,392 @@
-/* CSS Module */
+/* TreeView Container */
+.treeView {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  line-height: 1.5;
+  color: #111827;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* Variants */
+.variantDefault {}
+
+.variantCompact {
+  padding: 0.25rem;
+}
+
+.variantCompact .treeViewItem {
+  margin: 0.125rem 0;
+}
+
+.variantCompact .treeViewContent {
+  padding: 0.25rem 0.5rem;
+}
+
+.variantLarge {
+  padding: 1rem;
+}
+
+.variantLarge .treeViewItem {
+  margin: 0.5rem 0;
+}
+
+.variantLarge .treeViewContent {
+  padding: 0.75rem 1rem;
+}
+
+/* Sizes */
+.sizeSm {
+  font-size: 0.875rem;
+}
+
+.sizeSm .treeViewIcon {
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.75rem;
+}
+
+.sizeSm .treeViewToggle {
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
+}
+
+.sizeMd {
+  font-size: 1rem;
+}
+
+.sizeMd .treeViewIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1rem;
+}
+
+.sizeMd .treeViewToggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.sizeLg {
+  font-size: 1.125rem;
+}
+
+.sizeLg .treeViewIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.sizeLg .treeViewToggle {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 1rem;
+}
+
+/* TreeViewItem */
+.treeViewItem {
+  display: flex;
+  flex-direction: column;
+  margin: 0.125rem 0;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.treeViewItem:hover {
+  background: #f9fafb;
+}
+
+.treeViewItem.selected {
+  background: #eff6ff;
+  border: 1px solid #3b82f6;
+}
+
+.treeViewItem.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Level indentation */
+.level0 { margin-left: 0; }
+.level1 { margin-left: 1.5rem; }
+.level2 { margin-left: 3rem; }
+.level3 { margin-left: 4.5rem; }
+.level4 { margin-left: 6rem; }
+.level5 { margin-left: 7.5rem; }
+
+/* TreeViewContent */
+.treeViewContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.treeViewContent:hover {
+  background: #f3f4f6;
+}
+
+.treeViewContent.hasChildren {
+  font-weight: 500;
+}
+
+/* TreeViewIcon */
+.treeViewIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+}
+
+.iconDefault {
+  color: #6b7280;
+}
+
+.iconFolder {
+  color: #f59e0b;
+}
+
+.iconFile {
+  color: #6b7280;
+}
+
+.iconCustom {
+  color: #8b5cf6;
+}
+
+.iconText {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* TreeViewLabel */
+.treeViewLabel {
+  flex: 1;
+  user-select: none;
+}
+
+.labelDefault {
+  color: #111827;
+}
+
+.labelFolder {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.labelFile {
+  color: #374151;
+}
+
+.labelCustom {
+  color: #7c3aed;
+}
+
+/* TreeViewToggle */
+.treeViewToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.treeViewToggle:hover {
+  background: #e5e7eb;
+}
+
+.treeViewToggle:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.treeViewToggle.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggleIcon {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  line-height: 1;
+}
+
+.treeViewToggle.expanded .toggleIcon {
+  transform: rotate(90deg);
+}
+
+/* TreeViewChildren */
+.treeViewChildren {
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.treeViewChildren.expanded {
+  display: flex;
+}
+
+/* Selection states */
+.selectable .treeViewContent {
+  cursor: pointer;
+}
+
+.selectable .treeViewItem.selected .treeViewContent {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.selectable .treeViewItem.selected .treeViewLabel {
+  color: #1e40af;
+  font-weight: 500;
+}
+
+/* Loading state */
+.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.loadingItem {
+  height: 1.5rem;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: loadingShimmer 1.5s infinite;
+  border-radius: 0.25rem;
+}
+
+@keyframes loadingShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .treeView {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .treeViewItem:hover {
+    background: #374151;
+  }
+  
+  .treeViewItem.selected {
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+  
+  .treeViewContent:hover {
+    background: #374151;
+  }
+  
+  .treeViewToggle:hover {
+    background: #4b5563;
+  }
+  
+  .labelDefault {
+    color: #f9fafb;
+  }
+  
+  .labelFolder {
+    color: #e5e7eb;
+  }
+  
+  .labelFile {
+    color: #d1d5db;
+  }
+  
+  .iconDefault {
+    color: #9ca3af;
+  }
+  
+  .loadingItem {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .treeView {
+    border-width: 2px;
+  }
+  
+  .treeViewItem.selected {
+    border-width: 2px;
+  }
+  
+  .treeViewToggle:focus {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .treeViewItem,
+  .treeViewContent,
+  .treeViewToggle,
+  .treeViewChildren,
+  .toggleIcon {
+    transition: none;
+  }
+  
+  .loadingItem {
+    animation: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .treeView {
+    padding: 0.25rem;
+  }
+  
+  .treeViewContent {
+    padding: 0.375rem 0.5rem;
+  }
+  
+  .level1 { margin-left: 1rem; }
+  .level2 { margin-left: 2rem; }
+  .level3 { margin-left: 3rem; }
+  .level4 { margin-left: 4rem; }
+  .level5 { margin-left: 5rem; }
+}
+
+/* Print Styles */
+@media print {
+  .treeView {
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+  
+  .treeViewToggle {
+    display: none;
+  }
+  
+  .treeViewChildren {
+    display: flex !important;
+  }
+}
