@@ -1,7 +1,59 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as DateInputStories from './DateInput.stories.jsx';
 
-<Meta title="Interactive Elements/DateInput" />
+<Meta of={DateInputStories} />
 
 # DateInput
 
-Calendar interface for date selection.
+A flexible, accessible date input component for forms.
+
+## Usage
+
+```jsx
+import { DateInput } from 'edu-ux';
+
+<DateInput label="Birth Date" />
+```
+
+## Features
+
+- Native date picker
+- Min/max date constraints
+- Keyboard accessible
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type         | Default   | Description                       |
+|--------------|--------------|-----------|-----------------------------------|
+| \`value\`        | \`string\`     | -         | Date value (YYYY-MM-DD)           |
+| \`placeholder\`  | \`string\`     | ''        | Placeholder text                  |
+| \`disabled\`     | \`boolean\`    | false     | Disable the input                 |
+| \`label\`        | \`ReactNode\`  | -         | Label text                        |
+| \`error\`        | \`ReactNode\`  | -         | Error message                     |
+| \`min\`          | \`string\`     | -         | Minimum date (YYYY-MM-DD)         |
+| \`max\`          | \`string\`     | -         | Maximum date (YYYY-MM-DD)         |
+| \`onChange\`     | \`function\`   | -         | Change event handler              |
+| \`className\`    | \`string\`     | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Use min/max to constrain date ranges
+- Consider timezone implications
+
+## UX Warning
+
+> **Do not use date inputs for time selection.**
+> Use separate time inputs or datetime-local for combined date/time selection.

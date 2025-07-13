@@ -1,7 +1,60 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as SearchInputStories from './SearchInput.stories.jsx';
 
-<Meta title="Interactive Elements/SearchInput" />
+<Meta of={SearchInputStories} />
 
 # SearchInput
 
-Field to enter search terms.
+A flexible, accessible search input component with clear functionality.
+
+## Usage
+
+```jsx
+import { SearchInput } from 'edu-ux';
+
+<SearchInput label="Search" onSearch={handleSearch} />
+```
+
+## Features
+
+- Search icon
+- Clear button (optional)
+- Enter key to search
+- Keyboard accessible
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Clear button has proper aria-label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type         | Default     | Description                       |
+|--------------|--------------|-------------|-----------------------------------|
+| \`value\`        | \`string\`     | ''          | Input value                       |
+| \`placeholder\`  | \`string\`     | 'Search...' | Placeholder text                  |
+| \`disabled\`     | \`boolean\`    | false       | Disable the input                 |
+| \`label\`        | \`ReactNode\`  | -           | Label text                        |
+| \`error\`        | \`ReactNode\`  | -           | Error message                     |
+| \`onSearch\`     | \`function\`   | -           | Search callback (Enter key)       |
+| \`clearable\`    | \`boolean\`    | true        | Show clear button                 |
+| \`onChange\`     | \`function\`   | -           | Change event handler              |
+| \`className\`    | \`string\`     | -           | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Use onSearch for search functionality
+- Consider debouncing for real-time search
+
+## UX Warning
+
+> **Avoid auto-search on every keystroke for large datasets.**
+> Use debouncing or require Enter key to prevent performance issues.
