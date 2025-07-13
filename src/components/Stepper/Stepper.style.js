@@ -1,1 +1,52 @@
-export const StepperStyles = {};
+export const stepperStyles = {
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2em',
+    fontSize: '1em',
+  },
+  steps: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    position: 'relative',
+  },
+  step: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.5em',
+    position: 'relative',
+    zIndex: 2,
+    flex: 1,
+  },
+  stepNumber: {
+    width: '3em',
+    height: '3em',
+    borderRadius: '50%',
+    background: '#f3f4f6',
+    border: '2px solid #d1d5db',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontWeight: 500,
+    color: '#6b7280',
+    transition: 'all 0.2s',
+  },
+  active: {
+    background: '#2563eb',
+    borderColor: '#2563eb',
+    color: '#fff',
+  },
+  completed: {
+    background: '#10b981',
+    borderColor: '#10b981',
+    color: '#fff',
+  },
+  content: {
+    padding: '1em',
+    border: '1px solid #e5e7eb',
+    borderRadius: 4,
+    background: '#fff',
+  },
+};

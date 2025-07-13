@@ -1,3 +1,2 @@
-import ValidationMessage from './ValidationMessage';
-
-export { ValidationMessage };
+export { default } from './ValidationMessage.jsx';
+export { ValidationMessageAtom } from './ValidationMessage.jsx';

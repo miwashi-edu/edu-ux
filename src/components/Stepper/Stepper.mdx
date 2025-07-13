@@ -1,7 +1,57 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as StepperStories from './Stepper.stories.jsx';
 
-<Meta title="Interactive Elements/Stepper" />
+<Meta of={StepperStories} />
 
 # Stepper
 
-Progress through a multi-part form.
+A flexible, accessible stepper component for multi-step processes.
+
+## Usage
+
+```jsx
+import { Stepper } from 'edu-ux';
+
+<Stepper steps={steps} currentStep={0} />
+```
+
+## Features
+
+- Visual progress indicator
+- Clickable steps (optional)
+- Content display
+- Keyboard accessible
+
+## States
+
+- **active**: Current step
+- **completed**: Finished steps
+- **disabled**: Non-interactive
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Clear visual indicators
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                        | Default   | Description                       |
+|--------------|-----------------------------|-----------|-----------------------------------|
+| \`steps\`        | \`Array<{label, content}>\` | []        | Array of step objects             |
+| \`currentStep\`  | \`number\`                  | 0         | Current step index                |
+| \`onStepChange\` | \`function\`                | -         | Step change handler               |
+| \`disabled\`     | \`boolean\`                 | false     | Disable step navigation           |
+| \`className\`    | \`string\`                  | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Keep steps clear and concise
+- Provide meaningful step labels
+- Consider step validation
+
+## UX Warning
+
+> **Do not use steppers for simple forms.**
+> Use steppers only for complex, multi-step processes that benefit from progress indication.

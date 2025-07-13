@@ -1,1 +1,78 @@
-/* CSS Module */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  font-size: 1em;
+}
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: 1;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+.stepNumber {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+.step.active .stepNumber {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.step.completed .stepNumber {
+  background: #10b981;
+  border-color: #10b981;
+  color: #fff;
+}
+.stepLabel {
+  font-size: 0.9em;
+  color: #6b7280;
+  text-align: center;
+  font-weight: 500;
+}
+.step.active .stepLabel {
+  color: #2563eb;
+}
+.step.completed .stepLabel {
+  color: #10b981;
+}
+.step.clickable {
+  cursor: pointer;
+}
+.step.clickable:hover .stepNumber {
+  transform: scale(1.1);
+}
+.content {
+  padding: 1em;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: #fff;
+}
