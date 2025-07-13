@@ -1,7 +1,53 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as TextareaStories from './Textarea.stories.jsx';
 
-<Meta title="Interactive Elements/Textarea" />
+<Meta of={TextareaStories} />
 
 # Textarea
 
-Multi-line text entry for longer input.
+A flexible, accessible textarea component for multi-line text input.
+
+## Usage
+
+```jsx
+import { Textarea } from 'edu-ux';
+
+<Textarea label="Description" placeholder="Enter description" />
+```
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type         | Default   | Description                       |
+|--------------|--------------|-----------|-----------------------------------|
+| \`value\`        | \`string\`     | -         | Textarea value                    |
+| \`placeholder\`  | \`string\`     | ''        | Placeholder text                  |
+| \`disabled\`     | \`boolean\`    | false     | Disable the textarea              |
+| \`label\`        | \`ReactNode\`  | -         | Label text                        |
+| \`error\`        | \`ReactNode\`  | -         | Error message                     |
+| \`rows\`         | \`number\`     | 4         | Number of visible rows            |
+| \`cols\`         | \`number\`     | -         | Number of visible columns         |
+| \`onChange\`     | \`function\`   | -         | Change event handler              |
+| \`className\`    | \`string\`     | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Show clear error messages for invalid input
+- Use appropriate rows for expected content length
+
+## UX Warning
+
+> **Do not use textareas for single-line input.**
+> Use InputField for short text input to save space and improve usability.

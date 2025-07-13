@@ -1,1 +1,49 @@
-/* CSS Module */
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 0.5em;
+}
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1em;
+  height: 1em;
+}
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid #2563eb;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.input:focus + .icon {
+  box-shadow: 0 0 0 2px #2563eb55;
+}
+.checked {
+  width: 0.75em;
+  height: 0.75em;
+  background: #2563eb;
+  border-radius: 2px;
+  display: block;
+}
+.indeterminate {
+  width: 0.75em;
+  height: 0.2em;
+  background: #2563eb;
+  border-radius: 1px;
+  display: block;
+}
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.label {
+  font-size: 1em;
+  color: #222;
+}

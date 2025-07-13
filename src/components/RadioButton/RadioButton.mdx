@@ -1,7 +1,51 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as RadioButtonStories from './RadioButton.stories.jsx';
 
-<Meta title="Interactive Elements/RadioButton" />
+<Meta of={RadioButtonStories} />
 
 # RadioButton
 
-Select one item from a group.
+A flexible, accessible radio button component for forms and groups.
+
+## Usage
+
+```jsx
+import { RadioButton } from 'edu-ux';
+
+<RadioButton label="Option" name="group" value="a" />
+```
+
+## States
+
+- **checked**: Selected
+- **disabled**: Non-interactive
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Use `name` to group radio buttons
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type         | Default   | Description                       |
+|--------------|--------------|-----------|-----------------------------------|
+| \`checked\`      | \`boolean\`    | false     | Whether the radio is checked      |
+| \`disabled\`     | \`boolean\`    | false     | Disable the radio                 |
+| \`label\`        | \`ReactNode\`  | -         | Label text                        |
+| \`name\`         | \`string\`     | -         | Group name                        |
+| \`value\`        | \`string\`     | -         | Value for the radio               |
+| \`onChange\`     | \`function\`   | -         | Change event handler              |
+| \`className\`    | \`string\`     | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Use radio buttons for mutually exclusive options
+- Always provide a label for accessibility
+- Group radios with the same `name` prop
+
+## UX Warning
+
+> **Do not use radio buttons for multi-select.**
+> Use checkboxes for selections where more than one option can be chosen.

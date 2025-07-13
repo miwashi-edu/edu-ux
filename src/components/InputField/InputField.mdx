@@ -1,7 +1,52 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as InputFieldStories from './InputField.stories.jsx';
 
-<Meta title="Interactive Elements/InputField" />
+<Meta of={InputFieldStories} />
 
 # InputField
 
-Standard one-line text entry.
+A flexible, accessible input field component for forms.
+
+## Usage
+
+```jsx
+import { InputField } from 'edu-ux';
+
+<InputField label="Name" placeholder="Enter your name" />
+```
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                        | Default   | Description                       |
+|--------------|-----------------------------|-----------|-----------------------------------|
+| \`type\`         | \`string\`                  | 'text'    | Input type                        |
+| \`value\`        | \`string \| number\`         | -         | Input value                       |
+| \`placeholder\`  | \`string\`                  | ''        | Placeholder text                  |
+| \`disabled\`     | \`boolean\`                 | false     | Disable the input                 |
+| \`label\`        | \`ReactNode\`               | -         | Label text                        |
+| \`error\`        | \`ReactNode\`               | -         | Error message                     |
+| \`onChange\`     | \`function\`                | -         | Change event handler              |
+| \`className\`    | \`string\`                  | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Show clear error messages for invalid input
+- Use appropriate input types for data
+
+## UX Warning
+
+> **Do not use input fields for selecting from a fixed set of options.**
+> Use dropdowns, radios, or checkboxes for predefined choices.

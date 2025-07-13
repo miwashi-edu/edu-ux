@@ -1,1 +1,37 @@
-/* CSS Module */
+.textareaField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: 1em;
+}
+.label {
+  font-weight: 500;
+  color: #222;
+}
+.textarea {
+  padding: 0.5em 1em;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 2.5em;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+.disabled .textarea {
+  background: #f3f4f6;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.error .textarea {
+  border-color: #dc2626;
+}
+.errorMsg {
+  color: #dc2626;
+  font-size: 0.9em;
+}

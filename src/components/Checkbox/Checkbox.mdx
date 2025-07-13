@@ -1,7 +1,51 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as CheckboxStories from './Checkbox.stories.jsx';
 
-<Meta title="Interactive Elements/Checkbox" />
+<Meta of={CheckboxStories} />
 
 # Checkbox
 
-Toggle selection of one or more options.
+A flexible, accessible checkbox component for forms and lists.
+
+## Usage
+
+```jsx
+import { Checkbox } from 'edu-ux';
+
+<Checkbox label="Accept terms" />
+```
+
+## States
+
+- **checked**: Selected
+- **indeterminate**: Mixed state (for parent/child selection)
+- **disabled**: Non-interactive
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Indeterminate state uses `aria-checked="mixed"`
+
+## API Reference
+
+<Markdown>{`
+| Prop            | Type         | Default   | Description                       |
+|-----------------|--------------|-----------|-----------------------------------|
+| \`checked\`         | \`boolean\`    | false     | Whether the checkbox is checked   |
+| \`indeterminate\`   | \`boolean\`    | false     | Mixed state (parent/child)        |
+| \`disabled\`        | \`boolean\`    | false     | Disable the checkbox              |
+| \`label\`           | \`ReactNode\`  | -         | Label text                        |
+| \`onChange\`        | \`function\`   | -         | Change event handler              |
+| \`className\`       | \`string\`     | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Use indeterminate for parent/child selection
+- Always provide a label for accessibility
+- Avoid disabling checkboxes unless necessary
+
+## UX Warning
+
+> **Avoid using checkboxes for mutually exclusive options.**
+> Use radio buttons for single-choice selections.
