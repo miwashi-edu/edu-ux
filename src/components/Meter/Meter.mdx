@@ -1,8 +1,299 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as MeterStories from './Meter.stories.jsx';
 
 <Meta of={MeterStories} />
 
 # Meter
 
-Graph showing a value relative to max.
+A progress indicator component for displaying values within a range with support for variants, thresholds, and animations.
+
+## Overview
+
+The Meter component provides a visual representation of progress, completion, or measurement within a defined range. It supports multiple visual variants, sizes, threshold indicators, and animations to create engaging and informative progress displays.
+
+## Basic Usage
+
+```jsx
+import { Meter } from '@edu-ux/components';
+
+<Meter value={75} max={100} label="Progress" />
+```
+
+## Visual Variants
+
+Meters come in multiple visual styles to match different contexts and importance levels.
+
+```jsx
+<Meter value={25} max={100} label="Success" variant="success" />
+<Meter value={50} max={100} label="Warning" variant="warning" />
+<Meter value={75} max={100} label="Danger" variant="danger" />
+<Meter value={90} max={100} label="Info" variant="info" />
+<Meter value={60} max={100} label="Default (auto)" variant="default" />
+```
+
+## Size Variants
+
+Meters support four different sizes to accommodate various design needs.
+
+```jsx
+<Meter value={60} max={100} label="Small" size="sm" />
+<Meter value={60} max={100} label="Medium" size="md" />
+<Meter value={60} max={100} label="Large" size="lg" />
+<Meter value={60} max={100} label="Extra Large" size="xl" />
+```
+
+## With Thresholds
+
+Add threshold indicators to show different levels or warning points.
+
+```jsx
+<Meter 
+  value={65} 
+  max={100} 
+  label="Storage Usage" 
+  thresholds={[
+    { value: 25, label: 'Low' },
+    { value: 50, label: 'Medium' },
+    { value: 75, label: 'High' },
+    { value: 90, label: 'Critical' },
+  ]}
+/>
+```
+
+## Animated and Striped
+
+Add visual effects to make meters more engaging.
+
+```jsx
+<Meter 
+  value={70} 
+  max={100} 
+  label="Animated Progress" 
+  animated={true}
+/>
+
+<Meter 
+  value={80} 
+  max={100} 
+  label="Striped Progress" 
+  striped={true}
+  variant="warning"
+/>
+
+<Meter 
+  value={90} 
+  max={100} 
+  label="Animated & Striped" 
+  animated={true}
+  striped={true}
+  variant="danger"
+/>
+```
+
+## Value Display Options
+
+Control how the meter value is displayed.
+
+```jsx
+<Meter 
+  value={75} 
+  max={100} 
+  label="Value Display" 
+  showPercentage={false}
+/>
+
+<Meter 
+  value={75} 
+  max={100} 
+  label="Percentage Display" 
+  showPercentage={true}
+/>
+
+<Meter 
+  value={75} 
+  max={100} 
+  label="No Value Display" 
+  showValue={false}
+/>
+```
+
+## Real-World Examples
+
+### System Resources
+```jsx
+<Meter 
+  value={45} 
+  max={100} 
+  label="CPU Usage" 
+  variant="info"
+  thresholds={[{ value: 80, label: 'High' }]}
+/>
+
+<Meter 
+  value={78} 
+  max={100} 
+  label="Memory Usage" 
+  variant="warning"
+  thresholds={[{ value: 75, label: 'Warning' }]}
+/>
+
+<Meter 
+  value={92} 
+  max={100} 
+  label="Disk Usage" 
+  variant="danger"
+  thresholds={[{ value: 90, label: 'Critical' }]}
+/>
+```
+
+### Project Progress
+```jsx
+<Meter 
+  value={85} 
+  max={100} 
+  label="Design Phase" 
+  variant="success"
+  showPercentage={true}
+/>
+
+<Meter 
+  value={60} 
+  max={100} 
+  label="Development" 
+  variant="info"
+  showPercentage={true}
+/>
+
+<Meter 
+  value={25} 
+  max={100} 
+  label="Testing" 
+  variant="warning"
+  showPercentage={true}
+/>
+```
+
+## API Reference
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+|  value |  number | - | Current value (required) |
+|  max |  number | - | Maximum value (required) |
+|  min |  number | 0 | Minimum value |
+|  variant |  string | 'default' | Visual variant (default, success, warning, danger, info) |
+|  size |  string | 'md' | Size variant (sm, md, lg, xl) |
+|  label |  string | - | Label text |
+|  showValue |  boolean | true | Whether to show the value |
+|  showPercentage |  boolean | false | Whether to show percentage instead of value |
+|  thresholds |  array | [] | Array of threshold objects with value and label |
+|  animated |  boolean | true | Whether to animate the fill |
+|  striped |  boolean | false | Whether to show striped pattern |
+|  className |  string | - | Additional CSS classes |
+|  style |  object | - | Inline styles |
+`}</Markdown>
+
+### Threshold Object Format
+
+```jsx
+{
+  value: number,    // Percentage value (0-100)
+  label: string     // Optional label for the threshold
+}
+```
+
+### Atomic Subcomponents
+
+- `MeterTrack` — The background track of the meter
+- `MeterFill` — The filled portion of the meter
+- `MeterLabel` — Label for the meter
+- `MeterValue` — Display the current value
+- `MeterThreshold` — Visual threshold indicators
+
+## Best Practices
+
+### When to Use Meters
+
+- **Progress Indicators**: Show completion status of tasks or processes
+- **Resource Monitoring**: Display system resource usage (CPU, memory, disk)
+- **Survey Results**: Visualize response percentages and statistics
+- **Performance Metrics**: Show performance scores and ratings
+- **Goal Tracking**: Display progress toward objectives or targets
+
+### Accessibility Considerations
+
+- Meters automatically include proper ARIA attributes
+- Use descriptive labels for screen readers
+- Ensure sufficient color contrast for all variants
+- Consider using thresholds to indicate warning levels
+- Provide alternative text for complex visualizations
+
+### Performance Tips
+
+- Use `animated={false}` for frequently updating meters
+- Limit the number of thresholds to avoid visual clutter
+- Consider using `striped={false}` for better performance
+- Use appropriate sizes for the context and available space
+
+### Design Guidelines
+
+- Choose variants based on the context and importance
+- Use thresholds to provide visual feedback for critical levels
+- Keep labels concise and descriptive
+- Use consistent sizing across related meters
+- Consider the visual hierarchy when using multiple meters
+
+## Common Use Cases
+
+### System Monitoring
+```jsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+  <Meter value={45} max={100} label="CPU Usage" variant="info" />
+  <Meter value={78} max={100} label="Memory Usage" variant="warning" />
+  <Meter value={92} max={100} label="Disk Usage" variant="danger" />
+</div>
+```
+
+### Survey Results
+```jsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+  <Meter value={85} max={100} label="Satisfaction Rate" variant="success" showPercentage={true} />
+  <Meter value={12} max={100} label="Dissatisfaction Rate" variant="danger" showPercentage={true} />
+</div>
+```
+
+### Project Progress
+```jsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+  <Meter value={85} max={100} label="Design Phase" variant="success" showPercentage={true} />
+  <Meter value={60} max={100} label="Development" variant="info" showPercentage={true} />
+  <Meter value={25} max={100} label="Testing" variant="warning" showPercentage={true} />
+</div>
+```
+
+## Related Components
+
+- **ProgressBar** - For simpler progress indicators
+- **Chart** - For more complex data visualizations
+- **Badge** - For status indicators
+- **StatCard** - For displaying metrics
+
+## Migration Guide
+
+### From v1.x
+
+The Meter component has been completely redesigned in v2.0:
+
+- `progress` prop replaced with `value` and `max`
+- `color` prop replaced with `variant`
+- New `thresholds` prop for visual indicators
+- New `animated` and `striped` props for visual effects
+- Enhanced accessibility with proper ARIA attributes
+
+```jsx
+// v1.x
+<Meter progress={75} color="blue" />
+
+// v2.x
+<Meter value={75} max={100} variant="info" />
+```

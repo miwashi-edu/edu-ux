@@ -1,1 +1,276 @@
-/* CSS Module */
+/* Base Meter Styles */
+.meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  position: relative;
+}
+
+/* Size Variants */
+.sizeSm {
+  gap: 0.25rem;
+}
+
+.sizeSm .meterTrack {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.sizeSm .meterLabel {
+  font-size: 0.75rem;
+}
+
+.sizeSm .meterValue {
+  font-size: 0.75rem;
+}
+
+.sizeMd {
+  gap: 0.5rem;
+}
+
+.sizeMd .meterTrack {
+  height: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.sizeMd .meterLabel {
+  font-size: 0.875rem;
+}
+
+.sizeMd .meterValue {
+  font-size: 0.875rem;
+}
+
+.sizeLg {
+  gap: 0.75rem;
+}
+
+.sizeLg .meterTrack {
+  height: 1rem;
+  border-radius: 0.5rem;
+}
+
+.sizeLg .meterLabel {
+  font-size: 1rem;
+}
+
+.sizeLg .meterValue {
+  font-size: 1rem;
+}
+
+.sizeXl {
+  gap: 1rem;
+}
+
+.sizeXl .meterTrack {
+  height: 1.25rem;
+  border-radius: 0.625rem;
+}
+
+.sizeXl .meterLabel {
+  font-size: 1.125rem;
+}
+
+.sizeXl .meterValue {
+  font-size: 1.125rem;
+}
+
+/* Meter Header */
+.meterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meterLabel {
+  font-weight: 500;
+  color: #374151;
+  flex: 1;
+}
+
+.meterValue {
+  font-weight: 600;
+  color: #6b7280;
+  text-align: right;
+  min-width: 3rem;
+}
+
+/* Meter Track */
+.meterTrack {
+  position: relative;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Meter Fill */
+.meterFill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease-in-out;
+  position: relative;
+}
+
+.fillDefault {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.fillSuccess {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.fillWarning {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.fillDanger {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.fillInfo {
+  background: linear-gradient(90deg, #06b6d4, #0891b2);
+}
+
+/* Animated Fill */
+.animated .meterFill {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Striped Pattern */
+.striped .meterFill {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: meterStripes 1s linear infinite;
+}
+
+@keyframes meterStripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Threshold Indicators */
+.meterThresholds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.meterThreshold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* Native Meter Element (Hidden but accessible) */
+.nativeMeter {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .meterTrack {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+  
+  .meterLabel {
+    color: #f9fafb;
+  }
+  
+  .meterValue {
+    color: #9ca3af;
+  }
+  
+  .meterThreshold {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .meterTrack {
+    border-width: 2px;
+  }
+  
+  .meterThreshold {
+    width: 3px;
+    background-color: #000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .meterFill {
+    transition: none;
+  }
+  
+  .striped .meterFill {
+    animation: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .meterHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .meterValue {
+    text-align: left;
+  }
+}
+
+/* Focus States */
+.meter:focus-within .meterTrack {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Hover Effects */
+.meter:hover .meterFill {
+  filter: brightness(1.1);
+}
+
+/* Print Styles */
+@media print {
+  .meter {
+    break-inside: avoid;
+  }
+  
+  .meterFill {
+    transition: none;
+  }
+  
+  .striped .meterFill {
+    animation: none;
+  }
+}
