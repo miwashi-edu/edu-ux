@@ -1,8 +1,175 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as ListStories from './List.stories.jsx';
 
 <Meta of={ListStories} />
 
 # List
 
-Vertical collection of items.
+A flexible, accessible component for displaying vertical collections of items, supporting icons, headers, footers, dividers, and nested groups.
+
+## Overview
+
+The List component provides a consistent way to display ordered and unordered lists, with support for custom icons, section headers/footers, dividers, and nested groups. It is highly customizable and accessible.
+
+## Basic Usage
+
+```jsx
+import { List, ListItem } from '@edu-ux/components';
+
+<List>
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</List>
+```
+
+## Ordered List
+
+```jsx
+<List as="ol">
+  <ListItem>Step one</ListItem>
+  <ListItem>Step two</ListItem>
+  <ListItem>Step three</ListItem>
+</List>
+```
+
+## With Icons
+
+```jsx
+<List>
+  <ListItem icon={<span>✅</span>}>Completed</ListItem>
+  <ListItem icon={<span>⏳</span>}>In Progress</ListItem>
+  <ListItem icon={<span>❌</span>}>Blocked</ListItem>
+</List>
+```
+
+## Variants
+
+```jsx
+<List variant="bordered">
+  <ListItem>Bordered item 1</ListItem>
+  <ListItem>Bordered item 2</ListItem>
+</List>
+
+<List variant="inset">
+  <ListItem>Inset item 1</ListItem>
+  <ListItem>Inset item 2</ListItem>
+</List>
+
+<List variant="elevated">
+  <ListItem>Elevated item 1</ListItem>
+  <ListItem>Elevated item 2</ListItem>
+</List>
+```
+
+## Sizes
+
+```jsx
+<List size="sm">
+  <ListItem>Small item 1</ListItem>
+  <ListItem>Small item 2</ListItem>
+</List>
+<List size="md">
+  <ListItem>Medium item 1</ListItem>
+  <ListItem>Medium item 2</ListItem>
+</List>
+<List size="lg">
+  <ListItem>Large item 1</ListItem>
+  <ListItem>Large item 2</ListItem>
+</List>
+```
+
+## Divided
+
+```jsx
+<List divided>
+  <ListItem>Divided item 1</ListItem>
+  <ListItem>Divided item 2</ListItem>
+  <ListItem>Divided item 3</ListItem>
+</List>
+```
+
+## Nested, Headers, Footers, and Groups
+
+```jsx
+<List>
+  <ListHeader>Fruits</ListHeader>
+  <ListItem>Apple</ListItem>
+  <ListItem>Banana</ListItem>
+  <ListGroup>
+    <ListHeader>Citrus</ListHeader>
+    <ListItem>Orange</ListItem>
+    <ListItem>Lemon</ListItem>
+    <ListFooter>End of citrus</ListFooter>
+  </ListGroup>
+  <ListDivider />
+  <ListHeader>Vegetables</ListHeader>
+  <ListItem>Carrot</ListItem>
+  <ListItem>Broccoli</ListItem>
+  <ListFooter>End of vegetables</ListFooter>
+</List>
+```
+
+## Real-World Example
+
+```jsx
+<List variant="bordered" size="md" divided>
+  <ListHeader>Team Members</ListHeader>
+  <ListItem icon={<span>👩‍💻</span>}>Alice - Developer</ListItem>
+  <ListItem icon={<span>🧑‍🎨</span>}>Bob - Designer</ListItem>
+  <ListItem icon={<span>🧑‍🔬</span>}>Carol - QA</ListItem>
+  <ListDivider />
+  <ListHeader>Guests</ListHeader>
+  <ListItem icon={<span>👤</span>}>Dave</ListItem>
+  <ListFooter>End of list</ListFooter>
+</List>
+```
+
+## API Reference
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+|  children |  ReactNode | - | List content (required) |
+|  as |  'ul' | 'ol' | 'ul' | List type (unordered or ordered) |
+|  variant |  string | 'plain' | Visual variant (plain, bordered, inset, elevated) |
+|  size |  string | 'md' | Size/density (sm, md, lg) |
+|  divided |  boolean | false | Show dividers between items |
+|  nested |  boolean | false | Is this a nested list? |
+|  className |  string | - | Additional CSS classes |
+|  style |  object | - | Inline styles |
+`}</Markdown>
+
+### Atomic Subcomponents
+
+- `ListItem` — A single item in the list
+- `ListIcon` — Icon for use in list items
+- `ListGroup` — Grouping for nested or sectioned lists
+- `ListDivider` — Visual divider between list sections
+- `ListHeader` — Section header for a list
+- `ListFooter` — Section footer for a list
+
+## Best Practices
+
+- Use `List` for any vertical collection of related items
+- Use `ListItem` for each entry; use `icon` for visual context
+- Use `ListHeader` and `ListFooter` to organize sections
+- Use `ListGroup` for nested lists or subcategories
+- Use `divided` for clear separation in dense lists
+- Prefer semantic `ul`/`ol` for accessibility
+- Keep list content concise and scannable
+
+## Accessibility
+
+- List uses semantic `ul`/`ol` elements by default
+- All items are keyboard accessible
+- Use headers and footers for screen reader context
+- Dividers use `role="separator"`
+- Nested lists are properly indented and grouped
+
+## Migration Guide
+
+If migrating from a previous List implementation:
+- Use `List` instead of plain `ul`/`ol` for consistent styling
+- Replace custom icons with `ListIcon` or the `icon` prop
+- Use atomic subcomponents for advanced layouts
