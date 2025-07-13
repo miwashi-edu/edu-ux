@@ -1,8 +1,269 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as GalleryStories from './Gallery.stories.jsx';
 
 <Meta of={GalleryStories} />
 
 # Gallery
 
-Grid of media or images.
+A responsive image gallery component that displays images in a grid layout with lightbox functionality, category filtering, and accessibility features.
+
+## What is a Gallery?
+
+A gallery is a UI component that displays multiple images in an organized grid layout. Galleries are commonly used for:
+
+- **Portfolio Showcases** - Displaying work samples and projects
+- **Photo Collections** - Browsing through image libraries
+- **Product Catalogs** - Showcasing products with multiple images
+- **Content Management** - Organizing and presenting media content
+- **Social Media Feeds** - Displaying user-generated content
+
+## Features
+
+- **Responsive Grid Layout** - Adapts to different screen sizes
+- **Lightbox Functionality** - Full-screen image viewing with navigation
+- **Category Filtering** - Filter images by categories
+- **Hover Overlays** - Display image information on hover
+- **Keyboard Navigation** - Full keyboard support for accessibility
+- **Touch Support** - Mobile-friendly interactions
+- **Lazy Loading** - Optimized image loading
+- **Customizable Layout** - Configurable columns, gaps, and aspect ratios
+
+## Usage
+
+```jsx
+import Gallery from './components/Gallery';
+
+function MyComponent() {
+  const images = [
+    {
+      src: 'https://example.com/image1.jpg',
+      alt: 'Mountain landscape',
+      title: 'Mountain Vista',
+      description: 'Breathtaking mountain landscape',
+      category: 'Nature',
+    },
+    {
+      src: 'https://example.com/image2.jpg',
+      alt: 'City skyline',
+      title: 'Urban Skyline',
+      description: 'Modern city skyline',
+      category: 'Urban',
+    },
+  ];
+
+  return (
+    <Gallery
+      images={images}
+      columns={3}
+      gap={16}
+      aspectRatio="1:1"
+      showFilter={true}
+      showLightbox={true}
+      showOverlay={true}
+    />
+  );
+}
+```
+
+## Image Data Format
+
+Each image in the gallery should have the following structure:
+
+```jsx
+{
+  src: string,           // Required: Image URL
+  alt: string,           // Required: Alt text for accessibility
+  title?: string,        // Optional: Image title
+  description?: string,  // Optional: Image description
+  category?: string,     // Optional: Category for filtering
+  overlayContent?: ReactNode, // Optional: Custom overlay content
+}
+```
+
+## Grid Layout Options
+
+### Column Configurations
+
+- **Compact** - 4 columns with small gaps (12px)
+- **Standard** - 3 columns with medium gaps (16px)
+- **Spacious** - 2 columns with large gaps (24px)
+- **Custom** - Any number of columns with custom gaps
+
+### Aspect Ratios
+
+- **Square** (`1:1`) - Perfect for social media-style galleries
+- **Portrait** (`3:4`) - Good for portrait photography
+- **Landscape** (`4:3`) - Ideal for landscape photography
+- **Wide** (`16:9`) - Perfect for cinematic content
+- **Ultrawide** (`21:9`) - For panoramic images
+
+## Best Practices
+
+### Image Optimization
+
+✅ **Good Practices:**
+- Use appropriate image formats (WebP, JPEG, PNG)
+- Optimize image sizes for web use
+- Provide meaningful alt text for accessibility
+- Use consistent aspect ratios when possible
+- Implement lazy loading for large galleries
+
+❌ **Avoid:**
+- Using extremely large image files
+- Missing alt text for images
+- Inconsistent image dimensions
+- Too many images without pagination
+
+### Accessibility Considerations
+
+- **Alt Text** - Always provide descriptive alt text for images
+- **Keyboard Navigation** - Ensure all interactions work with keyboard
+- **Screen Reader Support** - Use semantic HTML and ARIA labels
+- **Focus Management** - Maintain logical tab order
+- **Color Contrast** - Ensure sufficient contrast for text overlays
+
+### Performance Tips
+
+- **Lazy Loading** - Load images as they come into view
+- **Image Compression** - Optimize images for web delivery
+- **Responsive Images** - Use different sizes for different screen sizes
+- **Caching** - Implement proper caching strategies
+- **Pagination** - Consider pagination for very large galleries
+
+## API Reference
+
+### Gallery Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`images\` | \`array\` | \`[]\` | **Required.** Array of image objects |
+| \`columns\` | \`number\` | \`3\` | Number of columns in the grid |
+| \`gap\` | \`number\` | \`16\` | Gap between gallery items in pixels |
+| \`aspectRatio\` | \`string\` | \`'1:1'\` | Aspect ratio of gallery items |
+| \`showFilter\` | \`boolean\` | \`false\` | Show category filter buttons |
+| \`showLightbox\` | \`boolean\` | \`true\` | Enable lightbox functionality |
+| \`showOverlay\` | \`boolean\` | \`true\` | Show overlay with title and description |
+| \`categories\` | \`array\` | \`[]\` | Predefined categories for filtering |
+| \`className\` | \`string\` | - | Additional CSS class name |
+| \`onImageClick\` | \`function\` | - | Callback when image is clicked |
+`}</Markdown>
+
+### Image Object Structure
+
+<Markdown>{`
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| \`src\` | \`string\` | Yes | Image URL |
+| \`alt\` | \`string\` | Yes | Alt text for accessibility |
+| \`title\` | \`string\` | No | Image title displayed in overlay |
+| \`description\` | \`string\` | No | Image description displayed in overlay |
+| \`category\` | \`string\` | No | Category for filtering |
+| \`overlayContent\` | \`ReactNode\` | No | Custom overlay content |
+`}</Markdown>
+
+### Events
+
+<Markdown>{`
+| Event | Type | Description |
+|-------|------|-------------|
+| \`onImageClick\` | \`(image: object, index: number) => void\` | Fired when an image is clicked |
+`}</Markdown>
+
+### Subcomponents
+
+The Gallery component also exports subcomponents for advanced customization:
+
+<Markdown>{`
+- \`Gallery.Item\` - Individual gallery item container
+- \`Gallery.Grid\` - Grid container for gallery items
+- \`Gallery.Thumbnail\` - Image thumbnail with overlay
+- \`Gallery.Lightbox\` - Full-screen image viewer
+- \`Gallery.Filter\` - Category filter controls
+`}</Markdown>
+
+## Examples
+
+### Basic Gallery
+
+```jsx
+<Gallery
+  images={[
+    { src: 'image1.jpg', alt: 'Description 1' },
+    { src: 'image2.jpg', alt: 'Description 2' },
+  ]}
+/>
+```
+
+### Gallery with Filtering
+
+```jsx
+<Gallery
+  images={images}
+  showFilter={true}
+  categories={['Nature', 'Urban', 'Abstract']}
+/>
+```
+
+### Custom Aspect Ratio
+
+```jsx
+<Gallery
+  images={images}
+  aspectRatio="16:9"
+  columns={2}
+  gap={24}
+/>
+```
+
+### Without Lightbox
+
+```jsx
+<Gallery
+  images={images}
+  showLightbox={false}
+  onImageClick={(image, index) => {
+    console.log('Image clicked:', image.title);
+  }}
+/>
+```
+
+### Custom Overlay Content
+
+```jsx
+<Gallery
+  images={images.map(img => ({
+    ...img,
+    overlayContent: (
+      <div style={{ textAlign: 'center' }}>
+        <h3>{img.title}</h3>
+        <p>{img.description}</p>
+        <button>View Details</button>
+      </div>
+    ),
+  }))}
+/>
+```
+
+### Responsive Gallery
+
+```jsx
+function ResponsiveGallery() {
+  const [columns, setColumns] = useState(3);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 480) setColumns(1);
+      else if (window.innerWidth < 768) setColumns(2);
+      else if (window.innerWidth < 1024) setColumns(3);
+      else setColumns(4);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return <Gallery images={images} columns={columns} />;
+}
+```

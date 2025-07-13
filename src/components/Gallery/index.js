@@ -1,3 +1,1 @@
-import Gallery from './Gallery';
-
-export { Gallery };
+export { default } from './Gallery';
