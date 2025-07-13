@@ -1,8 +1,264 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as LabelStories from './Label.stories.jsx';
 
 <Meta of={LabelStories} />
 
 # Label
 
-Small markers for categories or info.
+A versatile label component for displaying text, icons, and badges with various visual styles and interactive features. Labels are commonly used for tags, categories, status indicators, and metadata display.
+
+## Overview
+
+The Label component provides a flexible way to display short text content with optional icons, badges, and interactive features. It supports multiple visual variants, sizes, and can be configured for different use cases.
+
+## Basic Usage
+
+```jsx
+import { Label } from '@edu-ux/components';
+
+function MyComponent() {
+  return (
+    <Label>Default Label</Label>
+  );
+}
+```
+
+## Visual Variants
+
+Labels come in multiple visual styles to match different contexts and importance levels.
+
+```jsx
+<Label variant="default">Default</Label>
+<Label variant="primary">Primary</Label>
+<Label variant="success">Success</Label>
+<Label variant="warning">Warning</Label>
+<Label variant="danger">Danger</Label>
+<Label variant="info">Info</Label>
+<Label variant="outline">Outline</Label>
+<Label variant="ghost">Ghost</Label>
+```
+
+## Size Variants
+
+Labels support five different sizes to accommodate various design needs.
+
+```jsx
+<Label size="xs">Extra Small</Label>
+<Label size="sm">Small</Label>
+<Label size="md">Medium</Label>
+<Label size="lg">Large</Label>
+<Label size="xl">Extra Large</Label>
+```
+
+## With Icons
+
+Add icons before or after the label text to provide visual context.
+
+```jsx
+// Icon before text
+<Label icon="🔔">Notification</Label>
+
+// Icon after text
+<Label iconAfter="→">Next Step</Label>
+
+// Both icons
+<Label icon="⭐" iconAfter="→">Featured</Label>
+```
+
+## With Badges
+
+Include badge indicators to show counts, status, or additional information.
+
+```jsx
+<Label badge="5" badgeVariant="primary">Inbox</Label>
+<Label badge="12" badgeVariant="success">Messages</Label>
+<Label badge="3" badgeVariant="warning">Alerts</Label>
+<Label badge="1" badgeVariant="danger">Errors</Label>
+```
+
+## Removable Labels
+
+Make labels interactive with remove functionality for tag management.
+
+```jsx
+import { useState } from 'react';
+
+function TagManager() {
+  const [tags, setTags] = useState(['React', 'TypeScript', 'JavaScript']);
+
+  const handleRemove = (tagToRemove) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
+  };
+
+  return (
+    <div>
+      {tags.map(tag => (
+        <Label
+          key={tag}
+          removable
+          onRemove={() => handleRemove(tag)}
+        >
+          {tag}
+        </Label>
+      ))}
+    </div>
+  );
+}
+```
+
+## Label Groups
+
+Use LabelGroup to organize multiple labels with consistent spacing and layout.
+
+```jsx
+import { Label, LabelGroup } from '@edu-ux/components';
+
+<LabelGroup spacing="md">
+  <Label variant="primary">Frontend</Label>
+  <Label variant="success">React</Label>
+  <Label variant="info">TypeScript</Label>
+  <Label variant="warning">CSS</Label>
+</LabelGroup>
+```
+
+## Complex Examples
+
+Real-world examples showing various use cases for labels.
+
+```jsx
+// Email Categories
+<LabelGroup>
+  <Label icon="📧" badge="23" badgeVariant="primary">Inbox</Label>
+  <Label icon="📤" badge="5" badgeVariant="info">Sent</Label>
+  <Label icon="📁" badge="12" badgeVariant="default">Drafts</Label>
+</LabelGroup>
+
+// Task Status
+<LabelGroup>
+  <Label icon="⏳" variant="warning">In Progress</Label>
+  <Label icon="✅" variant="success">Completed</Label>
+  <Label icon="❌" variant="danger">Blocked</Label>
+</LabelGroup>
+
+// User Tags
+<LabelGroup>
+  <Label icon="👤" variant="primary" removable>Admin</Label>
+  <Label icon="🔧" variant="warning" removable>Developer</Label>
+  <Label icon="🎨" variant="info" removable>Designer</Label>
+</LabelGroup>
+```
+
+## Disabled State
+
+Labels can be disabled to prevent interactions.
+
+```jsx
+<Label disabled>Disabled Label</Label>
+<Label disabled variant="primary">Disabled Primary</Label>
+```
+
+## API Reference
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+|  children |  ReactNode | - | Label content (required) |
+|  variant |  string |  'default' | Visual style variant |
+|  size |  string |  'md' | Size variant |
+|  icon |  ElementType | string | - | Icon to display before text |
+|  iconAfter |  ElementType | string | - | Icon to display after text |
+|  badge |  ReactNode | - | Badge content to display |
+|  badgeVariant |  string |  'default' | Badge variant |
+|  removable |  boolean |  false | Whether the label can be removed |
+|  onRemove |  function | - | Callback when remove button is clicked |
+|  disabled |  boolean |  false | Whether the label is disabled |
+|  className |  string | - | Additional CSS classes |
+|  style |  object | - | Inline styles |
+`}</Markdown>
+
+### Variant Options
+
+- `default` - Neutral gray background
+- `primary` - Blue background for primary actions
+- `success` - Green background for success states
+- `warning` - Yellow background for warnings
+- `danger` - Red background for errors/danger
+- `info` - Cyan background for informational content
+- `outline` - Transparent with border
+- `ghost` - Transparent without border
+
+### Size Options
+
+- `xs` - Extra small (0.75rem)
+- `sm` - Small (0.875rem)
+- `md` - Medium (0.875rem, default)
+- `lg` - Large (1rem)
+- `xl` - Extra large (1.125rem)
+
+### Badge Variant Options
+
+- `default` - Gray background
+- `primary` - Blue background
+- `success` - Green background
+- `warning` - Yellow background
+- `danger` - Red background
+- `info` - Cyan background
+
+## Best Practices
+
+### When to Use Labels
+
+- **Tags and Categories**: Use labels to categorize content, items, or users
+- **Status Indicators**: Show current status or state of items
+- **Metadata Display**: Display additional information like counts or types
+- **Filter Options**: Use removable labels for active filters
+- **Technology Stacks**: Show programming languages, frameworks, or tools
+
+### Accessibility Considerations
+
+- Labels with `removable` prop automatically get proper ARIA attributes
+- Use descriptive text for screen readers
+- Ensure sufficient color contrast for all variants
+- Provide keyboard navigation for interactive labels
+
+### Performance Tips
+
+- Use string icons when possible for better performance
+- Avoid excessive use of labels in lists (consider pagination)
+- Use `LabelGroup` for consistent spacing and layout
+
+### Design Guidelines
+
+- Keep label text concise and descriptive
+- Use consistent variants across your application
+- Consider the context when choosing colors
+- Use appropriate sizes for the content hierarchy
+- Ensure labels don't interfere with other interactive elements
+
+## Related Components
+
+- **Badge** - For standalone count indicators
+- **Chip** - For more prominent tag-like elements
+- **Tag** - For simple text-only labels
+- **Button** - For interactive actions
+
+## Migration Guide
+
+### From v1.x
+
+The Label component has been completely redesigned in v2.0:
+
+- `color` prop replaced with `variant`
+- `onClick` removed, use `removable` and `onRemove` instead
+- `iconLeft` renamed to `icon`
+- `iconRight` renamed to `iconAfter`
+- New `badge` and `badgeVariant` props added
+- New `LabelGroup` component for organizing multiple labels
+
+```jsx
+// v1.x
+<Label color="blue" iconLeft="star" onClick={handleClick}>Old Label</Label>
+
+// v2.x
+<Label variant="primary" icon="star" removable onRemove={handleRemove}>New Label</Label>
+```
