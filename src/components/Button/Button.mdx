@@ -5,4 +5,73 @@ import * as ButtonStories from './Button.stories.jsx';
 
 # Button
 
-Clickable element for actions.
+A flexible, accessible, and themeable button component for actions and forms.
+
+## Usage
+
+```jsx
+import { Button } from 'edu-ux';
+
+<Button variant="primary">Click me</Button>
+```
+
+## Variants
+
+- **primary**: Main call to action
+- **secondary**: Secondary action
+- **outline**: Minimal, outlined button
+- **ghost**: Subtle, backgroundless button
+- **danger**: Destructive action
+
+## Sizes
+
+- **sm**: Small
+- **md**: Medium (default)
+- **lg**: Large
+
+## States
+
+- **disabled**: Non-interactive
+- **loading**: Shows a spinner, disables interaction
+- **fullWidth**: Expands to container width
+
+## Icon Support
+
+- Add an icon to the left or right of the label
+- Icon-only buttons for toolbars, actions
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Focus ring for keyboard users
+- Use `aria-label` for icon-only buttons
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                                      | Default   | Description                       |
+|--------------|-------------------------------------------|-----------|-----------------------------------|
+| \`variant\`     | \`'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'danger'\` | 'primary' | Visual style                      |
+| \`size\`        | \`'sm' \| 'md' \| 'lg'\`                  | 'md'      | Button size                       |
+| \`disabled\`    | \`boolean\`                                | false     | Disable the button                |
+| \`loading\`     | \`boolean\`                                | false     | Show loading spinner              |
+| \`fullWidth\`   | \`boolean\`                                | false     | Expand to container width         |
+| \`icon\`        | \`ReactNode\`                               | -         | Icon element                      |
+| \`iconPosition\`| \`'left' \| 'right'\`                      | 'left'    | Icon position                     |
+| \`type\`        | \`'button' \| 'submit' \| 'reset'\`         | 'button'  | Button type                       |
+| \`children\`    | \`ReactNode\`                               | -         | Button label                      |
+| \`className\`   | \`string\`                                  | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Use primary buttons for main actions, secondary for less important
+- Avoid too many buttons in one view
+- Use icon-only buttons for toolbars, not main actions
+- Always provide accessible labels for icon-only buttons
+- Indicate loading state for async actions
+
+## UX Warning
+
+> **Avoid using too many primary buttons on a single screen.**
+> Overuse can reduce clarity and overwhelm users. Use secondary or ghost buttons for less important actions.
