@@ -1,1 +1,382 @@
-/* CSS Module */
+/* Base StatCard Styles */
+.statCard {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Size Variants */
+.sizeSm {
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.sizeSm .statCardValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sizeSm .statCardLabel {
+  font-size: 0.875rem;
+}
+
+.sizeSm .statCardIcon {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.sizeMd {
+  padding: 1.5rem;
+  gap: 0.75rem;
+}
+
+.sizeMd .statCardValue {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.sizeMd .statCardLabel {
+  font-size: 1rem;
+}
+
+.sizeMd .statCardIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+}
+
+.sizeLg {
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.sizeLg .statCardValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.sizeLg .statCardLabel {
+  font-size: 1.125rem;
+}
+
+.sizeLg .statCardIcon {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+.sizeXl {
+  padding: 2.5rem;
+  gap: 1.25rem;
+}
+
+.sizeXl .statCardValue {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.sizeXl .statCardLabel {
+  font-size: 1.25rem;
+}
+
+.sizeXl .statCardIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.75rem;
+}
+
+/* Visual Variants */
+.variantDefault {
+  border-color: #e5e7eb;
+}
+
+.variantDefault .statCardIcon {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.variantSuccess {
+  border-color: #10b981;
+}
+
+.variantSuccess .statCardIcon {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.variantWarning {
+  border-color: #f59e0b;
+}
+
+.variantWarning .statCardIcon {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.variantDanger {
+  border-color: #ef4444;
+}
+
+.variantDanger .statCardIcon {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.variantInfo {
+  border-color: #06b6d4;
+}
+
+.variantInfo .statCardIcon {
+  background-color: #cffafe;
+  color: #0891b2;
+}
+
+/* Header */
+.statCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.headerIcon {
+  flex-shrink: 0;
+}
+
+.headerLabel {
+  flex: 1;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* Content */
+.content {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mainValue {
+  color: #111827;
+  line-height: 1;
+}
+
+.trend {
+  flex-shrink: 0;
+}
+
+/* Value Variants */
+.valueDefault {
+  color: #111827;
+}
+
+.valueSuccess {
+  color: #059669;
+}
+
+.valueWarning {
+  color: #d97706;
+}
+
+.valueDanger {
+  color: #dc2626;
+}
+
+.valueInfo {
+  color: #0891b2;
+}
+
+/* Icon Styles */
+.statCardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+
+.iconText {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Trend Styles */
+.statCardTrend {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.trendUp {
+  color: #059669;
+}
+
+.trendDown {
+  color: #dc2626;
+}
+
+.trendNeutral {
+  color: #6b7280;
+}
+
+.trendIcon {
+  font-size: 0.75rem;
+}
+
+.trendValue {
+  font-weight: 600;
+}
+
+/* Footer */
+.statCardFooter {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f3f4f6;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Interactive States */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.clickable:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.clickable:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading State */
+.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .statCard {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .statCardLabel {
+    color: #9ca3af;
+  }
+  
+  .mainValue {
+    color: #f9fafb;
+  }
+  
+  .statCardFooter {
+    border-top-color: #374151;
+    color: #9ca3af;
+  }
+  
+  .variantDefault .statCardIcon {
+    background-color: #374151;
+    color: #9ca3af;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .statCard {
+    border-width: 2px;
+  }
+  
+  .clickable:focus {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .statCard {
+    transition: none;
+  }
+  
+  .clickable:hover {
+    transform: none;
+  }
+  
+  .loading::before {
+    animation: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .statCard {
+    padding: 1rem;
+  }
+  
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .trend {
+    align-self: flex-end;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .statCard {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .clickable:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

@@ -1,8 +1,214 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as StatCardStories from './StatCard.stories.jsx';
 
 <Meta of={StatCardStories} />
 
 # StatCard
 
-Key metrics in compact display.
+A card component for displaying key metrics and statistics with support for icons, trends, and interactive states.
+
+## What is a StatCard?
+
+A StatCard is a UI component that presents important data points in a visually appealing and informative way. It's perfect for dashboards, analytics displays, and any interface where you need to highlight key metrics.
+
+## Features
+
+- **Multiple Variants**: Success, warning, danger, info, and default visual styles
+- **Size Options**: Small, medium, large, and extra-large sizes
+- **Trend Indicators**: Built-in support for showing percentage changes with directional arrows
+- **Icon Support**: Display icons alongside your metrics
+- **Interactive States**: Clickable cards with hover effects
+- **Loading States**: Shimmer animation for loading content
+- **Accessibility**: Full keyboard navigation and screen reader support
+- **Responsive Design**: Adapts to different screen sizes
+
+## Basic Usage
+
+```jsx
+import { StatCard } from '@edu-ux/components';
+
+function Dashboard() {
+  return (
+    <StatCard
+      label="Total Revenue"
+      value="$45,231"
+      icon="💰"
+      trend={{
+        value: 20.1,
+        direction: 'up'
+      }}
+    />
+  );
+}
+```
+
+## Variants
+
+StatCard supports five visual variants to match different types of data:
+
+- **default**: Neutral styling for general metrics
+- **success**: Green styling for positive metrics
+- **warning**: Yellow styling for cautionary metrics
+- **danger**: Red styling for critical metrics
+- **info**: Blue styling for informational metrics
+
+```jsx
+<StatCard variant="success" label="Revenue" value="$45,231" />
+<StatCard variant="warning" label="Orders" value="2,350" />
+<StatCard variant="danger" label="Errors" value="12" />
+<StatCard variant="info" label="Growth" value="23.5%" />
+```
+
+## Sizes
+
+Choose from four size variants to fit your layout needs:
+
+```jsx
+<StatCard size="sm" label="Small" value="1,234" />
+<StatCard size="md" label="Medium" value="1,234" />
+<StatCard size="lg" label="Large" value="1,234" />
+<StatCard size="xl" label="Extra Large" value="1,234" />
+```
+
+## Trend Indicators
+
+Add trend indicators to show percentage changes:
+
+```jsx
+<StatCard
+  label="Revenue Growth"
+  value="$45,231"
+  trend={{
+    value: 20.1,
+    direction: 'up',
+    variant: 'success'
+  }}
+/>
+
+<StatCard
+  label="Order Decline"
+  value="2,350"
+  trend={{
+    value: 5.2,
+    direction: 'down',
+    variant: 'danger'
+  }}
+/>
+```
+
+## Interactive Cards
+
+Make cards clickable for navigation or detailed views:
+
+```jsx
+<StatCard
+  label="Revenue"
+  value="$45,231"
+  clickable
+  onClick={() => navigate('/revenue-details')}
+  trend={{ value: 20.1, direction: 'up' }}
+/>
+```
+
+## Loading States
+
+Show loading state while data is being fetched:
+
+```jsx
+<StatCard
+  label="Revenue"
+  value="$45,231"
+  loading
+  trend={{ value: 20.1, direction: 'up' }}
+/>
+```
+
+## Custom Content
+
+Use atomic subcomponents for complete customization:
+
+```jsx
+<StatCard variant="success">
+  <StatCard.Header>
+    <StatCard.Icon icon="💰" variant="success" />
+    <StatCard.Label>Custom Revenue</StatCard.Label>
+  </StatCard.Header>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+    <StatCard.Value variant="success" size="lg">$45,231</StatCard.Value>
+    <StatCard.Trend value={20.1} direction="up" variant="success" />
+  </div>
+  <StatCard.Footer>
+    <span>From last month</span>
+  </StatCard.Footer>
+</StatCard>
+```
+
+## API Reference
+
+### StatCard Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Custom content to render |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'danger' \| 'info'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size variant |
+| `icon` | `ElementType \| string` | - | Icon to display |
+| `label` | `string` | - | Label text |
+| `value` | `ReactNode` | - | Main value to display |
+| `trend` | `TrendObject` | - | Trend configuration |
+| `footer` | `ReactNode` | - | Footer content |
+| `clickable` | `boolean` | `false` | Whether the card is clickable |
+| `onClick` | `function` | - | Click handler |
+| `loading` | `boolean` | `false` | Whether to show loading state |
+| `className` | `string` | - | Additional CSS classes |
+| `style` | `object` | - | Inline styles |
+
+### Trend Object
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `number` | Yes | Percentage value |
+| `direction` | `'up' \| 'down' \| 'neutral'` | No | Trend direction |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'danger' \| 'info'` | No | Visual variant |
+| `showPercentage` | `boolean` | No | Whether to show percentage symbol |
+
+### Atomic Subcomponents
+
+- **StatCard.Header**: Container for header content including icon and label.
+- **StatCard.Value**: Displays the main metric value with variant and size support.
+- **StatCard.Label**: Displays the metric label text.
+- **StatCard.Icon**: Renders an icon with variant and size support.
+- **StatCard.Trend**: Shows trend indicators with percentage and direction.
+- **StatCard.Footer**: Container for additional information or metadata.
+
+## Best Practices
+
+### Content Organization
+- Use clear, descriptive labels that summarize the metric
+- Keep content concise and well-structured
+- Use consistent sizing within a dashboard layout
+
+### Accessibility
+- Cards with `clickable={true}` are automatically keyboard accessible
+- Loading states disable interaction appropriately
+- Color variants are not the only way to convey information
+- Screen readers can access all text content
+- Focus indicators are provided for interactive cards
+
+### Performance
+- Use `loading` prop while fetching data
+- Consider lazy loading for large numbers of cards
+- Optimize icon usage (prefer SVG over emoji for production)
+- Use React.memo for cards that don't change frequently
+
+### Responsive Design
+- Test StatCard behavior on various screen sizes
+- Ensure touch targets are appropriately sized (minimum 44px)
+- Consider mobile-first design principles
+
+## Related Components
+
+- **Card**: For general content containers
+- **Badge**: For small status indicators
+- **ProgressBar**: For progress tracking
+- **Chart**: For data visualization
