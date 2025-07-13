@@ -1,8 +1,204 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
 import * as TableStories from './Table.stories.jsx';
 
 <Meta of={TableStories} />
 
 # Table
 
-Grid-based layout for structured data.
+A flexible, accessible table component for displaying tabular data with support for variants, sizes, responsive layouts, and atomic subcomponents.
+
+## What is a Table?
+
+A Table is a UI component for presenting data in rows and columns. It is commonly used for:
+
+- Data grids and dashboards
+- User lists and admin panels
+- Reports and analytics
+- Financial and transactional data
+
+## Features
+
+- **Multiple Variants**: Default, striped, bordered, hover, compact
+- **Flexible Sizing**: Small, medium, large
+- **Responsive**: Scrollable container for small screens
+- **Atomic Subcomponents**: Head, Body, Row, Cell, HeaderCell, Footer, Caption, Container
+- **Sortable Columns**: Clickable headers for sorting
+- **Selectable Rows**: Checkbox selection support
+- **Accessibility**: Keyboard navigation, ARIA roles, semantic markup
+- **Custom Content**: Render any React node in cells
+- **Dark Mode & High Contrast**: Adaptive styling
+
+## Basic Usage
+
+```jsx
+import { Table } from '@edu-ux/components';
+
+function UserTable({ users }) {
+  return (
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Email</Table.HeaderCell>
+          <Table.HeaderCell>Role</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {users.map(user => (
+          <Table.Row key={user.id}>
+            <Table.Cell>{user.name}</Table.Cell>
+            <Table.Cell>{user.email}</Table.Cell>
+            <Table.Cell>{user.role}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+}
+```
+
+## Variants
+
+Table supports five visual variants:
+
+- **default**: Standard table
+- **striped**: Alternating row backgrounds
+- **bordered**: Borders around all cells
+- **hover**: Row highlight on hover
+- **compact**: Reduced padding and font size
+
+```jsx
+<Table variant="striped">...</Table>
+<Table variant="bordered">...</Table>
+<Table variant="hover">...</Table>
+<Table variant="compact">...</Table>
+```
+
+## Sizes
+
+Choose from three size variants:
+
+```jsx
+<Table size="sm">...</Table>
+<Table size="md">...</Table>
+<Table size="lg">...</Table>
+```
+
+## Responsive Tables
+
+Enable horizontal scrolling for small screens:
+
+```jsx
+<Table responsive>...</Table>
+```
+
+## Caption and Footer
+
+Add a caption or footer for additional context:
+
+```jsx
+<Table caption="User overview" footer={<Table.Row><Table.Cell colSpan={3}>Showing 3 users</Table.Cell></Table.Row>}>
+  ...
+</Table>
+```
+
+## Sortable Columns
+
+Implement sortable columns with click handlers:
+
+```jsx
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell onClick={handleSort}>Name ▲</Table.HeaderCell>
+      ...
+    </Table.Row>
+  </Table.Head>
+  ...
+</Table>
+```
+
+## Selectable Rows
+
+Add checkboxes for row selection:
+
+```jsx
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell></Table.HeaderCell>
+      <Table.HeaderCell>Name</Table.HeaderCell>
+      ...
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    {data.map(row => (
+      <Table.Row key={row.id}>
+        <Table.Cell>
+          <input type="checkbox" checked={selected.includes(row.id)} onChange={() => toggle(row.id)} />
+        </Table.Cell>
+        <Table.Cell>{row.name}</Table.Cell>
+        ...
+      </Table.Row>
+    ))}
+  </Table.Body>
+</Table>
+```
+
+## API Reference
+
+### Table Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Table content (head, body, etc.) |
+| \`variant\` | \`'default' \| 'striped' \| 'bordered' \| 'hover' \| 'compact'\` | \`'default'\` | Visual variant |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size variant |
+| \`responsive\` | \`boolean\` | \`true\` | Enable responsive container |
+| \`className\` | \`string\` | - | Additional CSS classes |
+| \`style\` | \`object\` | - | Inline styles |
+| \`caption\` | \`ReactNode\` | - | Table caption |
+| \`footer\` | \`ReactNode\` | - | Table footer |
+`}</Markdown>
+
+### Atomic Subcomponents
+
+- **Table.Container**: Responsive wrapper
+- **Table.Head**: Table header section
+- **Table.Body**: Table body section
+- **Table.Row**: Table row
+- **Table.Cell**: Table cell
+- **Table.HeaderCell**: Table header cell
+- **Table.Footer**: Table footer section
+- **Table.Caption**: Table caption
+
+## Best Practices
+
+### Content Organization
+- Use clear, descriptive headers for each column
+- Keep rows concise and avoid overloading with data
+- Use captions and footers for context
+
+### Accessibility
+- Use semantic elements (`<thead>`, `<tbody>`, `<th>`, `<caption>`, etc.)
+- Provide scope attributes for header cells
+- Ensure keyboard navigation and focus states
+- Use sufficient color contrast
+
+### Performance
+- Paginate or virtualize large tables
+- Avoid deeply nested tables
+- Use memoization for static data
+
+### Responsive Design
+- Test on various screen sizes
+- Use the responsive container for horizontal scrolling
+- Avoid fixed widths unless necessary
+
+## Related Components
+
+- **DataGrid**: For advanced data manipulation
+- **Pagination**: For paginated tables
+- **Badge**: For status indicators
+- **Button**: For actions in table rows
