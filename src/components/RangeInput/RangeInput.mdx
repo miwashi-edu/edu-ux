@@ -1,7 +1,61 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as RangeInputStories from './RangeInput.stories.jsx';
 
-<Meta title="Interactive Elements/RangeInput" />
+<Meta of={RangeInputStories} />
 
 # RangeInput
 
-Drag-to-select a numeric value.
+A flexible, accessible range slider component for numeric input.
+
+## Usage
+
+```jsx
+import { RangeInput } from 'edu-ux';
+
+<RangeInput label="Volume" min={0} max={100} />
+```
+
+## Features
+
+- Native range slider
+- Custom min/max/step values
+- Value display (optional)
+- Keyboard accessible
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red styling
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type         | Default   | Description                       |
+|--------------|--------------|-----------|-----------------------------------|
+| \`value\`        | \`number\`     | 50        | Current value                     |
+| \`min\`          | \`number\`     | 0         | Minimum value                     |
+| \`max\`          | \`number\`     | 100       | Maximum value                     |
+| \`step\`         | \`number\`     | 1         | Step increment                    |
+| \`disabled\`     | \`boolean\`    | false     | Disable the input                 |
+| \`label\`        | \`ReactNode\`  | -         | Label text                        |
+| \`error\`        | \`ReactNode\`  | -         | Error message                     |
+| \`showValue\`    | \`boolean\`    | true      | Show current value                |
+| \`onChange\`     | \`function\`   | -         | Change event handler              |
+| \`className\`    | \`string\`     | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Use appropriate min/max values for your use case
+- Consider step size for precision vs usability
+
+## UX Warning
+
+> **Do not use range inputs for discrete choices.**
+> Use radio buttons or dropdowns for a limited set of predefined options.

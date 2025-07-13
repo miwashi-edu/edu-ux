@@ -1,7 +1,63 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ToggleStories from './Toggle.stories.jsx';
 
-<Meta title="Interactive Elements/Toggle" />
+<Meta of={ToggleStories} />
 
 # Toggle
 
-On/off UI for boolean settings.
+A flexible, accessible toggle switch component for binary states.
+
+## Usage
+
+```jsx
+import { Toggle } from 'edu-ux';
+
+<Toggle label="Notifications" />
+```
+
+## Features
+
+- Smooth animations
+- Multiple sizes
+- Keyboard accessible
+- Binary state (on/off)
+
+## States
+
+- **checked**: On state
+- **disabled**: Non-interactive
+
+## Sizes
+
+- **sm**: Small
+- **md**: Medium (default)
+- **lg**: Large
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                        | Default   | Description                       |
+|--------------|-----------------------------|-----------|-----------------------------------|
+| \`checked\`      | \`boolean\`                 | false     | Whether toggle is on              |
+| \`disabled\`     | \`boolean\`                 | false     | Disable the toggle                |
+| \`label\`        | \`ReactNode\`               | -         | Label text                        |
+| \`size\`         | \`'sm' \| 'md' \| 'lg'\`    | 'md'      | Toggle size                       |
+| \`onChange\`     | \`function\`                | -         | Change event handler              |
+| \`className\`    | \`string\`                  | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Use for binary on/off states
+- Consider size for touch targets
+
+## UX Warning
+
+> **Do not use toggles for multiple choice selections.**
+> Use radio buttons or checkboxes for more than two options.

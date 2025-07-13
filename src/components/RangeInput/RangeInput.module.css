@@ -1,1 +1,71 @@
-/* CSS Module */
+.rangeField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: 1em;
+}
+.label {
+  font-weight: 500;
+  color: #222;
+}
+.rangeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.input {
+  flex: 1;
+  height: 0.5em;
+  border-radius: 0.25em;
+  background: #e5e7eb;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+  border: none;
+}
+.input::-moz-range-thumb {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+  border: none;
+}
+.input:focus {
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+.value {
+  min-width: 3em;
+  text-align: center;
+  font-weight: 500;
+  color: #2563eb;
+}
+.disabled .input {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.disabled .value {
+  color: #aaa;
+}
+.error .input {
+  background: #fef2f2;
+}
+.error .input::-webkit-slider-thumb {
+  background: #dc2626;
+}
+.error .input::-moz-range-thumb {
+  background: #dc2626;
+}
+.errorMsg {
+  color: #dc2626;
+  font-size: 0.9em;
+}

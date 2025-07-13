@@ -1,3 +1,1 @@
-import FileInput from './FileInput';
-
-export { FileInput };
+export * from './FileInput';

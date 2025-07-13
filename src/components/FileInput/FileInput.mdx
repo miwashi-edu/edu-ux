@@ -1,7 +1,60 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as FileInputStories from './FileInput.stories.jsx';
 
-<Meta title="Interactive Elements/FileInput" />
+<Meta of={FileInputStories} />
 
 # FileInput
 
-Lets user upload files.
+A flexible, accessible file input component for uploading files.
+
+## Usage
+
+```jsx
+import { FileInput } from 'edu-ux';
+
+<FileInput label="Upload" />
+```
+
+## Features
+
+- Native file picker
+- Accept specific file types
+- Multiple file selection
+- Keyboard accessible
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                        | Default   | Description                       |
+|--------------|-----------------------------|-----------|-----------------------------------|
+| \`value\`        | \`FileList \| File[]\`         | -         | Selected files                    |
+| \`placeholder\`  | \`string\`                  | 'Choose file...' | Placeholder text          |
+| \`disabled\`     | \`boolean\`                 | false     | Disable the input                 |
+| \`label\`        | \`ReactNode\`               | -         | Label text                        |
+| \`error\`        | \`ReactNode\`               | -         | Error message                     |
+| \`accept\`       | \`string\`                  | -         | Accepted file types               |
+| \`multiple\`     | \`boolean\`                 | false     | Allow multiple file selection     |
+| \`onChange\`     | \`function\`                | -         | Change event handler              |
+| \`className\`    | \`string\`                  | -         | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Use accept to restrict file types
+- Show selected file names clearly
+
+## UX Warning
+
+> **Do not use file inputs for sensitive data uploads without proper security.**
+> Always validate and sanitize files on the server.
