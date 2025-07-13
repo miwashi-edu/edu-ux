@@ -2,7 +2,7 @@ import React from 'react';
 import { Toggle } from './Toggle';
 
 export default {
-  title: 'FormInputs/Toggle',
+  title: 'Interactive Elements/Toggle',
   component: Toggle,
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Stepper } from './Stepper';
 
 export default {
-  title: 'FormInputs/Stepper',
+  title: 'Interactive Elements/Stepper',
   component: Stepper,
 };
 

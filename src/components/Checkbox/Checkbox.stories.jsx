@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox } from './Checkbox';
 
 export default {
-  title: 'FormInputs/Checkbox',
+  title: 'Interactive Elements/Checkbox',
   component: Checkbox,
 };
 

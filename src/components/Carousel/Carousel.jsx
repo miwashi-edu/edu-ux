@@ -170,7 +170,6 @@ const Carousel = React.forwardRef(({
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseLeave}
       role="region"
       aria-label="Carousel"
       {...props}

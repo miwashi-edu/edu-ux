@@ -2,7 +2,7 @@ import React from 'react';
 import { DateInput } from './DateInput';
 
 export default {
-  title: 'FormInputs/DateInput',
+  title: 'Interactive Elements/DateInput',
   component: DateInput,
 };
 

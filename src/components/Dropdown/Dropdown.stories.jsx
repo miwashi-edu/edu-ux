@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown } from './Dropdown';
 
 export default {
-  title: 'FormInputs/Dropdown',
+  title: 'Interactive Elements/Dropdown',
   component: Dropdown,
 };
 

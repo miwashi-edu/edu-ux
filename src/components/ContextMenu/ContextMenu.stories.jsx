@@ -2,7 +2,7 @@ import React from 'react';
 import { ContextMenu } from './ContextMenu';
 
 export default {
-  title: 'InteractiveElements/ContextMenu',
+  title: 'Interactive Elements/ContextMenu',
   component: ContextMenu,
 };
 

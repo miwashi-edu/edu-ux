@@ -2,7 +2,7 @@ import React from 'react';
 import { RangeInput } from './RangeInput';
 
 export default {
-  title: 'FormInputs/RangeInput',
+  title: 'Interactive Elements/RangeInput',
   component: RangeInput,
 };
 

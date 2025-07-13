@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
-  title: 'ExperienceEnhancers/ThemeSwitcher',
+  title: 'Interactive Elements/ThemeSwitcher',
   component: ThemeSwitcher,
 };
 

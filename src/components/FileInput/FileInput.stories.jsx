@@ -2,7 +2,7 @@ import React from 'react';
 import { FileInput } from './FileInput';
 
 export default {
-  title: 'FormInputs/FileInput',
+  title: 'Interactive Elements/FileInput',
   component: FileInput,
 };
 

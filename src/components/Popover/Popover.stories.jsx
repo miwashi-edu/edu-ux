@@ -2,7 +2,7 @@ import React from 'react';
 import { Popover } from './Popover';
 
 export default {
-  title: 'InteractiveElements/Popover',
+  title: 'Interactive Elements/Popover',
   component: Popover,
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination } from './Pagination';
 
 export default {
-  title: 'Navigation/Pagination',
+  title: 'Interactive Elements/Pagination',
   component: Pagination,
 };
 

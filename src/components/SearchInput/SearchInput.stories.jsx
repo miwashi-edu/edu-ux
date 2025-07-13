@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchInput } from './SearchInput';
 
 export default {
-  title: 'FormInputs/SearchInput',
+  title: 'Interactive Elements/SearchInput',
   component: SearchInput,
 };
 
