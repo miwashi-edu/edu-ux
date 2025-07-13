@@ -1,3 +1,2 @@
-import FAB from './FAB';
-
-export { FAB };
+export { default } from './FAB.jsx';
+export { FABAtom } from './FAB.jsx';

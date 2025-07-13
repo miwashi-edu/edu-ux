@@ -1,7 +1,189 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as FABStories from './FAB.stories.jsx';
 
-<Meta title="Interactive Elements/FAB" />
+<Meta of={FABStories} />
 
 # FAB
 
-Floating action button, typically for primary action.
+A Floating Action Button (FAB) component that provides quick access to primary actions, typically positioned in a fixed location on the screen.
+
+## Overview
+
+The FAB component is a circular button that floats above the content, usually containing the primary action for a screen. It's commonly used in mobile-first designs and follows Material Design principles.
+
+## Features
+
+- **Multiple variants**: Primary, secondary, success, warning, and error styles
+- **Three sizes**: Small, medium, and large
+- **Flexible positioning**: Five different position options
+- **Hover labels**: Optional labels that appear on hover
+- **Accessibility**: ARIA labels and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+
+## Usage
+
+```jsx
+import FAB from './components/FAB';
+
+// Basic usage
+<FAB 
+  icon={<PlusIcon />} 
+  label="Add new item"
+  onClick={handleAdd}
+/>
+
+// With custom position and variant
+<FAB 
+  icon={<EditIcon />}
+  label="Edit"
+  variant="secondary"
+  position="top-right"
+  size="large"
+  onClick={handleEdit}
+/>
+```
+
+## Examples
+
+### Variants
+
+<Markdown>{`
+The component supports five different visual variants:
+
+- **Primary**: Blue background for main actions
+- **Secondary**: Gray background for secondary actions
+- **Success**: Green background for positive actions
+- **Warning**: Yellow background for caution actions
+- **Error**: Red background for destructive actions
+`}</Markdown>
+
+<Canvas>
+  <Story of={FABStories.AllVariants} />
+</Canvas>
+
+### Individual Variants
+
+<Canvas>
+  <Story of={FABStories.Primary} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Secondary} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Success} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Warning} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Error} />
+</Canvas>
+
+### Sizes
+
+<Markdown>{`
+The component comes in three sizes to fit different contexts:
+`}</Markdown>
+
+<Canvas>
+  <Story of={FABStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Large} />
+</Canvas>
+
+### Positions
+
+<Markdown>{`
+FABs can be positioned in five different locations:
+`}</Markdown>
+
+<Canvas>
+  <Story of={FABStories.TopLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.TopRight} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.BottomLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={FABStories.Center} />
+</Canvas>
+
+### Interactive Example
+
+<Markdown>{`
+A functional FAB that increments a counter:
+`}</Markdown>
+
+<Canvas>
+  <Story of={FABStories.Interactive} />
+</Canvas>
+
+### States
+
+<Markdown>{`
+FABs can be disabled to prevent interaction:
+`}</Markdown>
+
+<Canvas>
+  <Story of={FABStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`icon\` | \`ReactNode\` | - | The icon to display in the FAB |
+| \`label\` | \`string\` | - | Optional label that appears on hover |
+| \`variant\` | \`'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'\` | \`'primary'\` | The visual variant of the FAB |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the FAB |
+| \`position\` | \`'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right' \| 'center'\` | \`'bottom-right'\` | The position of the FAB |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the FAB is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### FABAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The content to display |
+| \`variant\` | \`'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'\` | \`'primary'\` | The visual variant of the FAB |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the FAB |
+| \`position\` | \`'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right' \| 'center'\` | \`'bottom-right'\` | The position of the FAB |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the FAB is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses `aria-label` for screen reader support
+- Implements proper focus management
+- Supports keyboard navigation
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Use for primary actions**: Reserve FABs for the most important action on a screen
+2. **Provide clear labels**: Always include descriptive labels for accessibility
+3. **Choose appropriate positioning**: Consider the user's thumb reach on mobile devices
+4. **Limit to one per screen**: Avoid multiple FABs that could confuse users
+5. **Use consistent icons**: Choose icons that clearly represent the action
+
+## Related Components
+
+- [Button](./Button.mdx) - For standard buttons
+- [IconButton](./IconButton.mdx) - For icon-only buttons
+- [Tooltip](./Tooltip.mdx) - For additional information on hover

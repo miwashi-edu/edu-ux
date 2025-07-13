@@ -1,1 +1,216 @@
-/* CSS Module */
+.fab {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-family: inherit;
+  outline: none;
+  user-select: none;
+}
+
+.fab:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.fab:active:not(.disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fab:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Variants */
+.primary {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.secondary {
+  background-color: #6b7280;
+  color: #ffffff;
+}
+
+.success {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.warning {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.error {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* Sizes */
+.small {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.medium {
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+}
+
+.large {
+  width: 72px;
+  height: 72px;
+  font-size: 32px;
+}
+
+/* Positions */
+.top-left {
+  top: 24px;
+  left: 24px;
+}
+
+.top-right {
+  top: 24px;
+  right: 24px;
+}
+
+.bottom-left {
+  bottom: 24px;
+  left: 24px;
+}
+
+.bottom-right {
+  bottom: 24px;
+  right: 24px;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center:hover:not(.disabled) {
+  transform: translate(-50%, calc(-50% - 2px));
+}
+
+.center:active:not(.disabled) {
+  transform: translate(-50%, -50%);
+}
+
+/* Label */
+.fab-label {
+  position: absolute;
+  right: 100%;
+  margin-right: 12px;
+  padding: 8px 12px;
+  background-color: #1f2937;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.fab-label::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid #1f2937;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.fab:hover .fab-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .fab {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .fab:hover:not(.disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .top-left,
+  .top-right {
+    top: 16px;
+  }
+  
+  .bottom-left,
+  .bottom-right {
+    bottom: 16px;
+  }
+  
+  .top-left,
+  .bottom-left {
+    left: 16px;
+  }
+  
+  .top-right,
+  .bottom-right {
+    right: 16px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .fab {
+    border: 2px solid currentColor;
+  }
+  
+  .fab-label {
+    border: 1px solid #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .fab {
+    transition: none;
+  }
+  
+  .fab:hover:not(.disabled) {
+    transform: none;
+  }
+  
+  .fab-label {
+    transition: none;
+  }
+}
