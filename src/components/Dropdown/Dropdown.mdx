@@ -1,7 +1,60 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as DropdownStories from './Dropdown.stories.jsx';
 
-<Meta title="Interactive Elements/Dropdown" />
+<Meta of={DropdownStories} />
 
 # Dropdown
 
-Single or multi-option selector.
+A flexible, accessible dropdown component for selecting from a list of options.
+
+## Usage
+
+```jsx
+import { Dropdown } from 'edu-ux';
+
+<Dropdown options={options} label="Select Option" />
+```
+
+## Features
+
+- Click outside to close
+- Keyboard accessible
+- Custom options format
+- Error states
+
+## States
+
+- **disabled**: Non-interactive
+- **error**: Shows error message and red border
+
+## Accessibility
+
+- Keyboard and screen reader accessible
+- Proper ARIA attributes
+- Always provide a label
+
+## API Reference
+
+<Markdown>{`
+| Prop         | Type                        | Default           | Description                       |
+|--------------|-----------------------------|-------------------|-----------------------------------|
+| \`options\`      | \`Array<{value, label}>\`   | []                | Array of options                  |
+| \`value\`        | \`string\`                  | -                 | Selected option value             |
+| \`placeholder\`  | \`string\`                  | 'Select an option...' | Placeholder text          |
+| \`disabled\`     | \`boolean\`                 | false             | Disable the dropdown              |
+| \`label\`        | \`ReactNode\`               | -                 | Label text                        |
+| \`error\`        | \`ReactNode\`               | -                 | Error message                     |
+| \`onChange\`     | \`function\`                | -                 | Change event handler              |
+| \`className\`    | \`string\`                  | -                 | Custom className                  |
+`}</Markdown>
+
+## Best Practices
+
+- Always provide a label for accessibility
+- Keep option lists reasonable in length
+- Use clear, descriptive option labels
+
+## UX Warning
+
+> **Avoid dropdowns with too many options.**
+> Consider searchable dropdowns or pagination for large lists.

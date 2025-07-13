@@ -1,1 +1,81 @@
-/* CSS Module */
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: 1em;
+}
+.label {
+  font-weight: 500;
+  color: #222;
+}
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.trigger:hover {
+  border-color: #2563eb;
+}
+.trigger:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+.trigger.open {
+  border-color: #2563eb;
+}
+.arrow {
+  font-size: 0.8em;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+.open .arrow {
+  transform: rotate(180deg);
+}
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.option {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.option:hover {
+  background: #f3f4f6;
+}
+.option.selected {
+  background: #eff6ff;
+  color: #2563eb;
+}
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.error .trigger {
+  border-color: #dc2626;
+}
+.errorMsg {
+  color: #dc2626;
+  font-size: 0.9em;
+}

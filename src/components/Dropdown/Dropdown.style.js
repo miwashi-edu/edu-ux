@@ -1,1 +1,58 @@
-export const DropdownStyles = {};
+export const dropdownStyles = {
+  base: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.25em',
+    fontSize: '1em',
+  },
+  label: {
+    fontWeight: 500,
+    color: '#222',
+  },
+  trigger: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0.5em 1em',
+    border: '1px solid #d1d5db',
+    borderRadius: 4,
+    background: '#fff',
+    fontSize: '1em',
+    cursor: 'pointer',
+    transition: 'border-color 0.2s',
+    outline: 'none',
+  },
+  options: {
+    position: 'absolute',
+    top: '100%',
+    left: 0,
+    right: 0,
+    background: '#fff',
+    border: '1px solid #d1d5db',
+    borderRadius: 4,
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    zIndex: 1000,
+    maxHeight: '200px',
+    overflowY: 'auto',
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  option: {
+    padding: '0.5em 1em',
+    cursor: 'pointer',
+    transition: 'background 0.2s',
+  },
+  selected: {
+    background: '#eff6ff',
+    color: '#2563eb',
+  },
+  error: {
+    borderColor: '#dc2626',
+  },
+  errorMsg: {
+    color: '#dc2626',
+    fontSize: '0.9em',
+  },
+};
