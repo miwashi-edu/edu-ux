@@ -1,7 +1,181 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as IconButtonStories from './IconButton.stories.jsx';
 
-<Meta title="Interactive Elements/IconButton" />
+<Meta of={IconButtonStories} />
 
 # IconButton
 
-Button with just an icon, often for quick actions.
+A button component that displays only an icon, perfect for compact actions and toolbar interfaces.
+
+## Overview
+
+The IconButton component provides a clean, accessible way to create icon-only buttons. It supports multiple variants, sizes, and states including loading and disabled states.
+
+## Features
+
+- **Multiple variants**: Default, primary, secondary, success, warning, error, and ghost styles
+- **Three sizes**: Small, medium, and large
+- **Interactive states**: Loading spinner and disabled states
+- **Accessibility**: ARIA labels and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+
+## Usage
+
+```jsx
+import IconButton from './components/IconButton';
+
+// Basic usage
+<IconButton 
+  icon={<HeartIcon />} 
+  onClick={handleLike}
+  aria-label="Like post"
+/>
+
+// With variant and size
+<IconButton 
+  icon={<EditIcon />}
+  variant="primary"
+  size="large"
+  onClick={handleEdit}
+/>
+
+// Loading state
+<IconButton 
+  icon={<SaveIcon />}
+  loading={true}
+  onClick={handleSave}
+/>
+```
+
+## Examples
+
+### Variants
+
+<Markdown>{`
+The component supports seven different visual variants:
+
+- **Default**: Gray background for general use
+- **Primary**: Blue background for primary actions
+- **Secondary**: Gray background for secondary actions
+- **Success**: Green background for positive actions
+- **Warning**: Yellow background for caution actions
+- **Error**: Red background for destructive actions
+- **Ghost**: Transparent background for subtle actions
+`}</Markdown>
+
+<Canvas>
+  <Story of={IconButtonStories.AllVariants} />
+</Canvas>
+
+### Individual Variants
+
+<Canvas>
+  <Story of={IconButtonStories.Primary} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Secondary} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Success} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Warning} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Error} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Ghost} />
+</Canvas>
+
+### Sizes
+
+<Markdown>{`
+The component comes in three sizes to fit different contexts:
+`}</Markdown>
+
+<Canvas>
+  <Story of={IconButtonStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Large} />
+</Canvas>
+
+### Interactive Example
+
+<Markdown>{`
+A functional like button that changes state:
+`}</Markdown>
+
+<Canvas>
+  <Story of={IconButtonStories.Interactive} />
+</Canvas>
+
+### States
+
+<Markdown>{`
+IconButtons can be disabled or show loading states:
+`}</Markdown>
+
+<Canvas>
+  <Story of={IconButtonStories.Disabled} />
+</Canvas>
+
+<Canvas>
+  <Story of={IconButtonStories.Loading} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`icon\` | \`ReactNode\` | - | The icon to display in the button |
+| \`variant\` | \`'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'ghost'\` | \`'default'\` | The visual variant of the button |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the button |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the button is disabled |
+| \`loading\` | \`boolean\` | \`false\` | Whether the button is in loading state |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### IconButtonAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The content to display |
+| \`variant\` | \`'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'ghost'\` | \`'default'\` | The visual variant of the button |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the button |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the button is disabled |
+| \`loading\` | \`boolean\` | \`false\` | Whether the button is in loading state |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Always provide `aria-label` for screen reader support
+- Implements proper focus management
+- Supports keyboard navigation
+- Loading state shows animated spinner
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Always include aria-label**: Icon-only buttons need descriptive labels for accessibility
+2. **Choose appropriate variants**: Use variants that match the action's importance
+3. **Consider loading states**: Show loading feedback for async actions
+4. **Use consistent sizing**: Maintain consistent button sizes within interfaces
+5. **Test with screen readers**: Ensure buttons are properly announced
+
+## Related Components
+
+- [Button](./Button.mdx) - For buttons with text labels
+- [FAB](./FAB.mdx) - For floating action buttons
+- [Tooltip](./Tooltip.mdx) - For additional information on hover
