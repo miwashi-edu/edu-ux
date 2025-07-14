@@ -1,1 +1,154 @@
 /* CSS Module */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+  outline: none;
+  user-select: none;
+  position: relative;
+}
+
+.link:hover:not(.disabled) {
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Variants */
+.default {
+  color: #6b7280;
+}
+
+.default:hover:not(.disabled) {
+  color: #374151;
+}
+
+.primary {
+  color: #3b82f6;
+}
+
+.primary:hover:not(.disabled) {
+  color: #2563eb;
+}
+
+.secondary {
+  color: #6b7280;
+}
+
+.secondary:hover:not(.disabled) {
+  color: #4b5563;
+}
+
+.success {
+  color: #10b981;
+}
+
+.success:hover:not(.disabled) {
+  color: #059669;
+}
+
+.warning {
+  color: #f59e0b;
+}
+
+.warning:hover:not(.disabled) {
+  color: #d97706;
+}
+
+.error {
+  color: #ef4444;
+}
+
+.error:hover:not(.disabled) {
+  color: #dc2626;
+}
+
+/* Sizes */
+.small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.medium {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.large {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+/* External link */
+.external {
+  font-weight: 500;
+}
+
+.externalIcon {
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.external:hover .externalIcon {
+  opacity: 1;
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.disabled:hover {
+  text-decoration: none;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .link {
+    transition: none;
+  }
+  
+  .small {
+    font-size: 0.8125rem;
+  }
+  
+  .large {
+    font-size: 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .link {
+    text-decoration: underline;
+  }
+  
+  .link:hover:not(.disabled) {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+  
+  .externalIcon {
+    transition: none;
+  }
+}
