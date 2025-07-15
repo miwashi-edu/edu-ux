@@ -18,20 +18,54 @@ export default {
   },
 };
 
-export const Basic = (args) => <Toggle {...args} />;
+const Template = (args) => {
+  const [checked, setChecked] = useState(args.checked || false);
+  return (
+    <Toggle 
+      {...args} 
+      checked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
+
+export const Basic = Template.bind({});
 Basic.args = { label: 'Toggle', checked: false };
 
-export const Checked = (args) => <Toggle {...args} checked={true} label="Checked" />;
+export const Checked = Template.bind({});
+Checked.args = { checked: true, label: 'Checked' };
 
-export const Disabled = (args) => <Toggle {...args} disabled={true} label="Disabled" />;
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true, label: 'Disabled' };
 
-export const Sizes = (args) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-    <Toggle {...args} size="sm" label="Small" />
-    <Toggle {...args} size="md" label="Medium" />
-    <Toggle {...args} size="lg" label="Large" />
-  </div>
-);
+export const Sizes = () => {
+  const [smallChecked, setSmallChecked] = useState(false);
+  const [mediumChecked, setMediumChecked] = useState(false);
+  const [largeChecked, setLargeChecked] = useState(false);
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Toggle 
+        size="sm" 
+        label="Small" 
+        checked={smallChecked}
+        onChange={(e) => setSmallChecked(e.target.checked)}
+      />
+      <Toggle 
+        size="md" 
+        label="Medium" 
+        checked={mediumChecked}
+        onChange={(e) => setMediumChecked(e.target.checked)}
+      />
+      <Toggle 
+        size="lg" 
+        label="Large" 
+        checked={largeChecked}
+        onChange={(e) => setLargeChecked(e.target.checked)}
+      />
+    </div>
+  );
+};
 
 export const Controlled = () => {
   const [checked, setChecked] = useState(false);
