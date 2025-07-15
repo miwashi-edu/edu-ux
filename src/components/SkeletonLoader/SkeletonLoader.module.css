@@ -17,6 +17,19 @@
   overflow: hidden;
 }
 
+.skeletonItem--small { border-radius: 2px; }
+.skeletonItem--medium { border-radius: 4px; }
+.skeletonItem--large { border-radius: 6px; }
+
+.skeletonItem--text {}
+.skeletonItem--avatar {}
+.skeletonItem--image {}
+.skeletonItem--button {}
+.skeletonItem--card {}
+.skeletonItem--list {}
+.skeletonItem--table {}
+.skeletonItem--custom {}
+
 /* Size variants */
 .skeletonLoader--small .skeletonItem {
   border-radius: 2px;
@@ -79,6 +92,8 @@
   background-color: #e5e7eb;
   border-radius: 2px;
   width: 100%;
+  min-width: 4rem;
+  min-height: 0.5rem;
 }
 
 .skeletonLoader--small .textLine {
@@ -91,10 +106,12 @@
 
 /* Avatar skeleton */
 .avatarSkeleton {
-  width: 100%;
-  height: 100%;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background-color: #e5e7eb;
+  min-width: 2rem;
+  min-height: 2rem;
 }
 
 .skeletonLoader--small .avatarSkeleton {
@@ -114,13 +131,15 @@
 
 /* Image skeleton */
 .imageSkeleton {
-  width: 100%;
-  height: 100%;
+  width: 12rem;
+  height: 8rem;
   background-color: #e5e7eb;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 6rem;
+  min-height: 4rem;
 }
 
 .imagePlaceholder {

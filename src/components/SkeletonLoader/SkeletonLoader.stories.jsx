@@ -483,3 +483,139 @@ LoadingState.args = {
   size: 'medium',
   animated: true
 };
+
+// Side-by-side comparison for text
+export const TextComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="text" count={3} />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio.</p>
+        <p>Vitae scelerisque enim ligula venenatis dolor.</p>
+      </div>
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for avatar
+export const AvatarComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="avatar" count={1} width="4rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" style={{ width: '4rem', height: '4rem', borderRadius: '50%' }} />
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for image
+export const ImageComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="image" count={1} width="12rem" height="8rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Example" style={{ width: '12rem', height: '8rem', objectFit: 'cover', borderRadius: '4px' }} />
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for button
+export const ButtonComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="button" count={1} width="8rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <button style={{ width: '8rem', height: '2.5rem', borderRadius: '4px', background: '#3b82f6', color: 'white', border: 'none' }}>Button</button>
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for card
+export const CardComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="card" count={1} width="16rem" height="20rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <div style={{ width: '16rem', height: '20rem', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', background: '#fff', display: 'flex', flexDirection: 'column' }}>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Card" style={{ width: '100%', height: '40%', objectFit: 'cover' }} />
+        <div style={{ padding: '1rem', flex: 1 }}>
+          <h5 style={{ margin: 0 }}>Card Title</h5>
+          <p style={{ margin: '0.5rem 0 0 0' }}>Some card content goes here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for list
+export const ListComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="list" count={1} width="20rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <div style={{ width: '20rem', padding: '1rem', background: '#fff', borderRadius: '4px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar" style={{ width: '3rem', height: '3rem', borderRadius: '50%' }} />
+          <div>
+            <div style={{ fontWeight: 600 }}>List Title</div>
+            <div style={{ color: '#555' }}>List item text</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Side-by-side comparison for table
+export const TableComparison = (args) => (
+  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem', padding: '2rem' }}>
+    <div>
+      <h4>Skeleton</h4>
+      <SkeletonLoader {...args} type="table" count={1} width="24rem" />
+    </div>
+    <div>
+      <h4>Real Content</h4>
+      <table style={{ width: '24rem', borderCollapse: 'collapse', background: '#fff', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+        <thead>
+          <tr>
+            <th style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Header 1</th>
+            <th style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Header 2</th>
+            <th style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Header 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 1</td>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 2</td>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 3</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 4</td>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 5</td>
+            <td style={{ padding: '0.5rem', borderBottom: '1px solid #eee' }}>Cell 6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+);

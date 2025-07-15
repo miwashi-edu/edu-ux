@@ -26,12 +26,21 @@ const SkeletonLoader = ({
   const renderSkeletonItems = () => {
     const items = [];
     for (let i = 0; i < count; i++) {
+      // Compute per-item classes for type, variant, and size
+      const itemTypeClass = styles[`skeletonItem--${type}`] || '';
+      const itemVariantClass = styles[`skeletonItem--${variant}`] || '';
+      const itemSizeClass = styles[`skeletonItem--${size}`] || '';
       items.push(
         <div
           key={i}
-          className={`${styles.skeletonItem} ${skeletonStyles.skeletonItem} ${
-            animated ? styles.animated : ''
-          }`}
+          className={[
+            styles.skeletonItem,
+            skeletonStyles.skeletonItem,
+            animated ? styles.animated : '',
+            itemTypeClass,
+            itemVariantClass,
+            itemSizeClass
+          ].filter(Boolean).join(' ')}
           style={{
             width,
             height: type === 'text' ? height : undefined,
