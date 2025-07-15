@@ -242,3 +242,27 @@
     font-size: 0.875rem;
   }
 }
+
+.progressFill--success {
+  background-color: #10b981;
+}
+
+.progressFill--warning {
+  background-color: #f59e0b;
+}
+
+.progressFill--error {
+  background-color: #ef4444;
+}
+
+.progressFill--gradient {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: gradientShift 2s ease-in-out infinite;
+}
+
+.progressFill--animated {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background-size: 200% 100%;
+  animation: gradientShift 2s ease-in-out infinite;
+}
