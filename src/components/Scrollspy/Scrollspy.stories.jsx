@@ -109,6 +109,24 @@ export const Default = {
         size="md"
         position="left"
         fixed={false}
+        showExit={true}
+      />
+      {sampleContent}
+    </>
+  )
+};
+
+// Fixed navigation story
+export const Fixed = {
+  render: () => (
+    <>
+      <Scrollspy
+        items={sampleItems}
+        variant="default"
+        size="md"
+        position="left"
+        fixed={true}
+        showExit={true}
       />
       {sampleContent}
     </>

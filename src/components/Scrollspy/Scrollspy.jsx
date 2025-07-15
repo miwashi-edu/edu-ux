@@ -68,6 +68,8 @@ const Scrollspy = ({
   smooth = true,
   className = '',
   fixed = false,
+  showExit = false,
+  onExit,
   onItemChange,
   ...props 
 }) => {
@@ -139,6 +141,22 @@ const Scrollspy = ({
       className={`${styles.scrollspy} ${fixed ? styles.fixed : ''} ${className}`.trim()}
       {...props}
     >
+      {showExit && (
+        <button
+          type="button"
+          className={styles.exitButton}
+          onClick={() => {
+            if (onExit) {
+              onExit();
+            } else {
+              window.history.back();
+            }
+          }}
+          style={{ marginBottom: '0.5rem', alignSelf: 'flex-start' }}
+        >
+          ⬅ Exit
+        </button>
+      )}
       {items.map((item) => (
         <ScrollspyItemAtom
           key={item.id}
@@ -166,6 +184,8 @@ Scrollspy.propTypes = {
   smooth: PropTypes.bool,
   className: PropTypes.string,
   fixed: PropTypes.bool,
+  showExit: PropTypes.bool,
+  onExit: PropTypes.func,
   onItemChange: PropTypes.func
 };
 
