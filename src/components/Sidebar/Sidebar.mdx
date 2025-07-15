@@ -3,13 +3,13 @@ import * as SidebarStories from './Sidebar.stories.jsx';
 
 <Meta of={SidebarStories} />
 
-# Sidebar
+# Logo
 
 A responsive vertical navigation component that provides a flexible and accessible way to create side navigation with support for collapsible sections and mobile responsiveness.
 
 ## Overview
 
-The Sidebar component is designed to be a vertical navigation element for web applications. It supports various layouts, responsive behavior, and can include navigation items, sections, and custom content.
+The Logo component is designed to be a vertical navigation element for web applications. It supports various layouts, responsive behavior, and can include navigation items, sections, and custom content.
 
 ## Features
 
@@ -24,11 +24,11 @@ The Sidebar component is designed to be a vertical navigation element for web ap
 ## Usage
 
 ```jsx
-import Sidebar from './components/Sidebar';
+import Logo from './components/Logo';
 
 function App() {
   return (
-    <Sidebar
+    <Logo
       items={[
         { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊', active: true },
         { id: 'users', label: 'Users', href: '/users', icon: '👥' },
@@ -72,7 +72,7 @@ function App() {
 
 ## Variants
 
-The Sidebar component supports four visual variants:
+The Logo component supports four visual variants:
 
 ### Default
 The standard sidebar with background color and subtle shadow.
@@ -103,7 +103,7 @@ The sidebar can be positioned on either side:
 
 ## Responsive Behavior
 
-The Sidebar automatically adapts to different screen sizes:
+The Logo automatically adapts to different screen sizes:
 
 - **Desktop**: Full sidebar with all items visible
 - **Tablet**: Responsive layout with potential item wrapping
@@ -111,7 +111,7 @@ The Sidebar automatically adapts to different screen sizes:
 
 ## Accessibility
 
-The Sidebar component includes several accessibility features:
+The Logo component includes several accessibility features:
 
 - Proper ARIA labels and roles
 - Keyboard navigation support
@@ -124,7 +124,7 @@ The Sidebar component includes several accessibility features:
 ### Basic Navigation
 
 ```jsx
-<Sidebar
+<Logo
   items={[
     { id: 'home', label: 'Home', href: '/', active: true },
     { id: 'about', label: 'About', href: '/about' },
@@ -136,7 +136,7 @@ The Sidebar component includes several accessibility features:
 ### With Sections
 
 ```jsx
-<Sidebar
+<Logo
   sections={[
     {
       id: 'main',
@@ -158,24 +158,24 @@ The Sidebar component includes several accessibility features:
 />
 ```
 
-### Collapsible Sidebar
+### Collapsible Logo
 
 ```jsx
-<Sidebar
+<Logo
   items={[
     { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
     { id: 'users', label: 'Users', href: '/users' }
   ]}
   collapsed={false}
   collapsible={true}
-  onToggle={(collapsed) => console.log('Sidebar collapsed:', collapsed)}
+  onToggle={(collapsed) => console.log('Logo collapsed:', collapsed)}
 />
 ```
 
 ### Right Position
 
 ```jsx
-<Sidebar
+<Logo
   items={[
     { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
     { id: 'users', label: 'Users', href: '/users' }

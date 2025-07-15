@@ -1,7 +1,119 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ContainerStories from './Container.stories.jsx';
 
-<Meta title="PageLayout/Container" />
+<Meta of={ContainerStories} />
 
 # Container
 
-A fixed-width wrapper that centers page content.
+A responsive, fixed-width or fluid wrapper for centering and constraining page content. Use Container to create consistent layouts and readable content areas.
+
+## Overview
+
+The Container component provides a flexible way to center and constrain content, supporting multiple max-width breakpoints, fluid layouts, and custom elements.
+
+## Features
+
+- **Max width breakpoints**: xs, sm, md, lg, xl, full
+- **Fluid option**: Stretches to full viewport width
+- **Centering**: Easily center content horizontally
+- **Custom element**: Render as any HTML element
+- **Responsive**: Adapts to screen size
+- **Theme-aware**: Light/dark mode support
+- **Accessible**: Keyboard and screen reader friendly
+
+## Usage
+
+```jsx
+import Container from './components/Container';
+
+<Container maxWidth="lg">
+  <h2>Content</h2>
+  <p>Page content goes here.</p>
+</Container>
+```
+
+## Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| maxWidth  | string   | 'lg'      | Max width: 'xs', 'sm', 'md', 'lg', 'xl', 'full' |
+| fluid     | bool     | false     | If true, container is always 100vw wide     |
+| center    | bool     | true      | If true, container is horizontally centered |
+| as        | element  | 'div'     | Custom element type                         |
+| className | string   | ''        | Additional CSS classes                      |
+`}</Markdown>
+
+## Variants
+
+- **Fixed width**: Constrained to a max width (default)
+- **Fluid**: Stretches to full viewport width
+
+## Accessibility
+
+- Keyboard focusable (tabIndex=0)
+- Uses `role="group"` for screen readers
+
+## Examples
+
+### Default
+
+```jsx
+<Container>
+  <h2>Default Container</h2>
+  <p>This container uses the default maxWidth (lg) and is centered.</p>
+</Container>
+```
+
+### All Max Widths
+
+```jsx
+<Container maxWidth="xs">xs</Container>
+<Container maxWidth="sm">sm</Container>
+<Container maxWidth="md">md</Container>
+<Container maxWidth="lg">lg</Container>
+<Container maxWidth="xl">xl</Container>
+<Container maxWidth="full">full</Container>
+```
+
+### Fluid
+
+```jsx
+<Container fluid>
+  <h2>Fluid Container</h2>
+  <p>This container stretches to the full viewport width.</p>
+</Container>
+```
+
+### Not Centered
+
+```jsx
+<Container center={false}>
+  <h2>Not Centered</h2>
+  <p>This container is not horizontally centered.</p>
+</Container>
+```
+
+### Custom Element
+
+```jsx
+<Container as="section">
+  <h2>Custom Element (section)</h2>
+  <p>This container renders as a &lt;section&gt; element.</p>
+</Container>
+```
+
+## Best Practices
+
+1. Use Container to create consistent page layouts
+2. Choose the right maxWidth for your content
+3. Use fluid for full-bleed sections
+4. Test on different screen sizes
+5. Use semantic elements for accessibility
+
+## Related Components
+
+- **Card**: For grouping related content
+- **Section**: For page sections
+- **Grid**: For layout grids
+- **Main**: For main content area

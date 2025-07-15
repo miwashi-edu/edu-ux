@@ -1,1 +1,102 @@
-/* CSS Module */
+/* Base footer */
+.footer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: var(--footer-bg, #f9fafb);
+  color: var(--footer-color, #374151);
+  border-top: 1px solid #e5e7eb;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.left {
+  flex: 1 1 0;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.center {
+  flex: 2 1 0;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.right {
+  flex: 1 1 0;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Variants */
+.default {
+  background: var(--footer-bg, #f9fafb);
+  color: var(--footer-color, #374151);
+  border-top: 1px solid #e5e7eb;
+}
+.minimal {
+  background: transparent;
+  color: #6b7280;
+  border-top: none;
+}
+.dark {
+  background: #181f2a;
+  color: #f3f4f6;
+  border-top: 1px solid #293040;
+}
+.light {
+  background: #fff;
+  color: #374151;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.5rem;
+    font-size: 0.98rem;
+  }
+  .left, .center, .right {
+    justify-content: flex-start !important;
+    min-width: 0;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .footer, .dark {
+    background: #181f2a;
+    color: #f3f4f6;
+    border-top: 1px solid #293040;
+  }
+  .link {
+    color: #60a5fa;
+  }
+  .link:hover {
+    color: #93c5fd;
+  }
+}

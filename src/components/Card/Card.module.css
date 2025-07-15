@@ -1,1 +1,107 @@
-/* CSS Module */
+/* Base card */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg, #fff);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(16,30,54,0.04);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Variants */
+.default {
+  background: var(--card-bg, #fff);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px 0 rgba(16,30,54,0.04);
+}
+.outlined {
+  background: var(--card-bg, #fff);
+  border: 2px solid #3b82f6;
+  box-shadow: none;
+}
+.elevated {
+  background: var(--card-bg, #fff);
+  border: none;
+  box-shadow: 0 8px 32px 0 rgba(16,30,54,0.12);
+}
+.minimal {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Sizes */
+.sm { max-width: 320px; font-size: 0.95rem; }
+.md { max-width: 480px; font-size: 1rem; }
+.lg { max-width: 640px; font-size: 1.1rem; }
+
+/* Header */
+.header {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.1em;
+  border-bottom: 1px solid #e5e7eb;
+  background: var(--card-header-bg, transparent);
+}
+
+/* Body */
+.body {
+  padding: 1.5rem;
+  flex: 1;
+  background: var(--card-body-bg, transparent);
+}
+
+/* Footer */
+.footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: var(--card-footer-bg, transparent);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* Media */
+.media {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 240px;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding: 0.75rem 1.5rem 1rem 1.5rem;
+  background: var(--card-actions-bg, transparent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card, .sm, .md, .lg {
+    max-width: 100%;
+    font-size: 0.98rem;
+  }
+  .header, .body, .footer, .actions {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .card, .default, .outlined, .elevated {
+    background: #181f2a;
+    color: #f3f4f6;
+    border-color: #293040;
+  }
+  .header, .footer {
+    border-color: #293040;
+  }
+}

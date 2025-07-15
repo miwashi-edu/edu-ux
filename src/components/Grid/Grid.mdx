@@ -1,7 +1,123 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as GridStories from './Grid.stories.jsx';
 
-<Meta title="PageLayout/Grid" />
+<Meta of={GridStories} />
 
 # Grid
 
-Structural layout of rows and columns.
+A responsive, flexible layout system for arranging content in rows and columns. Supports both CSS grid and flexbox row/col patterns.
+
+## Overview
+
+The Grid component provides a powerful way to create layouts with columns, rows, gaps, and responsive breakpoints. Use Grid for dashboards, forms, galleries, and more.
+
+## Features
+
+- **Compound subcomponents**: Grid, Grid.Row, Grid.Col
+- **Columns**: 1-12 columns, customizable
+- **Gap**: Control spacing between items
+- **Alignment**: Align and justify items
+- **Responsive**: xs, sm, md, lg, xl breakpoints
+- **Theme-aware**: Light/dark mode support
+- **Accessible**: Uses `role="grid"` and semantic HTML
+
+## Usage
+
+```jsx
+import Grid from './components/Grid';
+
+<Grid columns={3} gap="md">
+  <Grid.Col>1</Grid.Col>
+  <Grid.Col>2</Grid.Col>
+  <Grid.Col>3</Grid.Col>
+</Grid>
+```
+
+## Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| columns   | number   | 12        | Number of columns in the grid               |
+| gap       | string   | 'md'      | Gap between items: 'none', 'xs', 'sm', 'md', 'lg', 'xl' |
+| className | string   | ''        | Additional CSS classes                      |
+| as        | element  | 'div'     | Custom element type                         |
+`}</Markdown>
+
+### Grid.Row Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| gap       | string   | 'md'      | Gap between columns                         |
+| align     | string   | 'stretch' | Vertical alignment: 'start', 'center', 'end', 'stretch' |
+| justify   | string   | 'start'   | Horizontal alignment: 'start', 'center', 'end', 'between', 'around', 'evenly' |
+| className | string   | ''        | Additional CSS classes                      |
+`}</Markdown>
+
+### Grid.Col Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| span      | number   | 1         | Number of columns to span                   |
+| xs,sm,md,lg,xl | number | -     | Responsive span for breakpoints             |
+| className | string   | ''        | Additional CSS classes                      |
+`}</Markdown>
+
+## Variants
+
+- **Grid**: CSS grid with columns and gap
+- **Grid.Row/Grid.Col**: Flexbox row/col for more control
+
+## Accessibility
+
+- Uses `role="grid"` for screen readers
+- Responsive and keyboard accessible
+
+## Examples
+
+### Basic Grid
+
+```jsx
+<Grid columns={3} gap="md">
+  <Grid.Col>1</Grid.Col>
+  <Grid.Col>2</Grid.Col>
+  <Grid.Col>3</Grid.Col>
+</Grid>
+```
+
+### Row/Col Pattern
+
+```jsx
+<Grid.Row gap="lg" align="center" justify="between">
+  <Grid.Col span={3}>Row Col 1</Grid.Col>
+  <Grid.Col span={6}>Row Col 2</Grid.Col>
+  <Grid.Col span={3}>Row Col 3</Grid.Col>
+</Grid.Row>
+```
+
+### Responsive
+
+```jsx
+<Grid.Row gap="md">
+  <Grid.Col xs={12} sm={6} md={4} lg={3} xl={2}>Responsive 1</Grid.Col>
+  <Grid.Col xs={12} sm={6} md={4} lg={3} xl={2}>Responsive 2</Grid.Col>
+  <Grid.Col xs={12} sm={6} md={4} lg={3} xl={2}>Responsive 3</Grid.Col>
+</Grid.Row>
+```
+
+## Best Practices
+
+1. Use Grid for main layout, Grid.Row/Grid.Col for custom arrangements
+2. Use gap for consistent spacing
+3. Use responsive props for mobile-friendly layouts
+4. Test on different screen sizes
+5. Use semantic elements for accessibility
+
+## Related Components
+
+- **Container**: For layout grouping
+- **Card**: For grouped content
+- **Section**: For page sections
+- **List**: For item lists

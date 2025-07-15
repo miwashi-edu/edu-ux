@@ -1,7 +1,132 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories.jsx';
 
-<Meta title="PageLayout/Card" />
+<Meta of={CardStories} />
 
 # Card
 
-Boxed container for grouping related content or actions.
+A flexible, theme-aware container for grouping related content, actions, or media. Cards are used for dashboards, lists, previews, and more.
+
+## Overview
+
+The Card component provides a visually distinct container for content, supporting headers, footers, media, actions, and multiple variants and sizes.
+
+## Features
+
+- **Atomic subcomponents**: Header, Body, Footer, Media, Actions
+- **Variants**: Default, outlined, elevated, minimal
+- **Sizes**: Small, medium, large
+- **Responsive**: Adapts to screen size
+- **Theme-aware**: Light/dark mode support
+- **Compound component pattern**
+- **Accessibility**: Keyboard and screen reader friendly
+
+## Usage
+
+```jsx
+import Card from './components/Card';
+
+<Card>
+  <Card.Header>Header</Card.Header>
+  <Card.Body>Body content</Card.Body>
+  <Card.Footer>Footer</Card.Footer>
+</Card>
+```
+
+## Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| variant   | string   | 'default' | Visual style: 'default', 'outlined', 'elevated', 'minimal' |
+| size      | string   | 'md'      | Size: 'sm', 'md', 'lg'                      |
+| className | string   | ''        | Additional CSS classes                      |
+| as        | element  | 'div'     | Custom element type                         |
+`}</Markdown>
+
+### Subcomponents
+
+<Markdown>{`
+| Subcomponent   | Description                       |
+|----------------|-----------------------------------|
+| Card.Header    | Top section for title or actions   |
+| Card.Body      | Main content area                 |
+| Card.Footer    | Bottom section for extra info      |
+| Card.Media     | Image or media at the top         |
+| Card.Actions   | Action buttons (usually in footer) |
+`}</Markdown>
+
+## Variants
+
+- **Default**: Standard card with border and subtle shadow
+- **Outlined**: Card with prominent colored border
+- **Elevated**: Card with strong shadow, no border
+- **Minimal**: No border or shadow, transparent background
+
+## Sizes
+
+- **Small (sm)**: Compact card for tight spaces
+- **Medium (md)**: Standard size for most uses
+- **Large (lg)**: For prominent or content-rich cards
+
+## Accessibility
+
+- Keyboard focusable (tabIndex=0)
+- Uses `role="region"` for screen readers
+- Sufficient color contrast in all themes
+
+## Examples
+
+### Basic Card
+
+```jsx
+<Card>
+  <Card.Body>This is a basic card.</Card.Body>
+</Card>
+```
+
+### With Header and Footer
+
+```jsx
+<Card>
+  <Card.Header>Header</Card.Header>
+  <Card.Body>Body</Card.Body>
+  <Card.Footer>Footer</Card.Footer>
+</Card>
+```
+
+### With Media
+
+```jsx
+<Card>
+  <Card.Media src="/path/to/image.jpg" alt="Description" />
+  <Card.Body>Content below image</Card.Body>
+</Card>
+```
+
+### With Actions
+
+```jsx
+<Card>
+  <Card.Body>Actionable content</Card.Body>
+  <Card.Actions>
+    <Button>Cancel</Button>
+    <Button variant="primary">Save</Button>
+  </Card.Actions>
+</Card>
+```
+
+## Best Practices
+
+1. Use Card.Header for titles or key actions
+2. Use Card.Body for main content
+3. Use Card.Footer or Card.Actions for secondary actions
+4. Choose the right variant for your use case
+5. Test in both light and dark mode
+
+## Related Components
+
+- **StatCard**: For metric/statistics display
+- **Accordion**: For collapsible content
+- **Container**: For layout grouping
+- **List**: For grouped items

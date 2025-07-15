@@ -1,7 +1,133 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as FooterStories from './Footer.stories.jsx';
 
-<Meta title="PageLayout/Footer" />
+<Meta of={FooterStories} />
 
 # Footer
 
-Bottom area for copyright, contact, and secondary links.
+A responsive, accessible, and theme-aware footer for your application. Supports left, center, and right content areas, links, and multiple variants.
+
+## Overview
+
+The Footer component provides a flexible way to display copyright, links, and contact info at the bottom of your app. It supports multiple layout areas, variants, and is fully responsive.
+
+## Features
+
+- **Compound subcomponents**: Left, Center, Right, Link
+- **Variants**: Default, minimal, dark, light
+- **Responsive**: Adapts to screen size
+- **Theme-aware**: Light/dark mode support
+- **Accessible**: Uses `role="contentinfo"`
+- **Custom element**: Render as any HTML element
+
+## Usage
+
+```jsx
+import Footer from './components/Footer';
+
+<Footer>
+  <Footer.Left>&copy; 2024 My Company</Footer.Left>
+  <Footer.Center>
+    <Footer.Link href="#">Privacy Policy</Footer.Link>
+    <Footer.Link href="#">Terms</Footer.Link>
+  </Footer.Center>
+  <Footer.Right>Contact: info@example.com</Footer.Right>
+</Footer>
+```
+
+## Props
+
+<Markdown>{`
+| Prop      | Type     | Default   | Description                                 |
+|-----------|----------|-----------|---------------------------------------------|
+| variant   | string   | 'default' | Visual style: 'default', 'minimal', 'dark', 'light' |
+| as        | element  | 'footer'  | Custom element type                         |
+| className | string   | ''        | Additional CSS classes                      |
+`}</Markdown>
+
+### Subcomponents
+
+<Markdown>{`
+| Subcomponent   | Description                       |
+|----------------|-----------------------------------|
+| Footer.Left    | Left-aligned content area          |
+| Footer.Center  | Center-aligned content area        |
+| Footer.Right   | Right-aligned content area         |
+| Footer.Link    | Styled link for footer navigation  |
+`}</Markdown>
+
+## Variants
+
+- **Default**: Standard footer with background and border
+- **Minimal**: Transparent, no border
+- **Dark**: Dark background, light text
+- **Light**: White background, dark text
+
+## Accessibility
+
+- Uses `role="contentinfo"` for screen readers
+- Responsive and keyboard accessible
+
+## Examples
+
+### Default
+
+```jsx
+<Footer>
+  <Footer.Left>&copy; 2024 My Company</Footer.Left>
+  <Footer.Center>
+    <Footer.Link href="#">Privacy Policy</Footer.Link>
+    <Footer.Link href="#">Terms</Footer.Link>
+  </Footer.Center>
+  <Footer.Right>Contact: info@example.com</Footer.Right>
+</Footer>
+```
+
+### Minimal
+
+```jsx
+<Footer variant="minimal">
+  <Footer.Center>Minimal Footer</Footer.Center>
+</Footer>
+```
+
+### Dark
+
+```jsx
+<Footer variant="dark">
+  <Footer.Center>Dark Footer</Footer.Center>
+</Footer>
+```
+
+### Light
+
+```jsx
+<Footer variant="light">
+  <Footer.Center>Light Footer</Footer.Center>
+</Footer>
+```
+
+### With Links
+
+```jsx
+<Footer>
+  <Footer.Left><Footer.Link href="#">Home</Footer.Link></Footer.Left>
+  <Footer.Center><Footer.Link href="#">Docs</Footer.Link></Footer.Center>
+  <Footer.Right><Footer.Link href="#">Contact</Footer.Link></Footer.Right>
+</Footer>
+```
+
+## Best Practices
+
+1. Use Footer.Left, Footer.Center, Footer.Right for layout
+2. Use Footer.Link for navigation links
+3. Choose the right variant for your app theme
+4. Test on different screen sizes
+5. Use semantic elements for accessibility
+
+## Related Components
+
+- **Header**: For top-of-page navigation
+- **Container**: For layout grouping
+- **Card**: For grouped content
+- **Navbar**: For navigation bars

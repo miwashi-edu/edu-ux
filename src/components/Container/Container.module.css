@@ -1,1 +1,41 @@
-/* CSS Module */
+/* Base container */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Max widths */
+.xs { max-width: 320px; }
+.sm { max-width: 480px; }
+.md { max-width: 640px; }
+.lg { max-width: 960px; }
+.xl { max-width: 1200px; }
+.full { max-width: 100vw; }
+
+/* Fluid */
+.fluid { max-width: 100vw !important; padding-left: 0; padding-right: 0; }
+
+/* Centering */
+.center { margin-left: auto; margin-right: auto; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .xs, .sm, .md, .lg, .xl, .full, .container {
+    max-width: 100vw !important;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: var(--container-bg, transparent);
+    color: var(--container-color, #f3f4f6);
+  }
+}
