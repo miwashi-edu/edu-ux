@@ -1,7 +1,299 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as ThemeSwitcherStories from './ThemeSwitcher.stories';
 
-<Meta title="Interactive Elements/ThemeSwitcher" />
+<Meta of={ThemeSwitcherStories} />
 
 # ThemeSwitcher
 
-Toggles between light/dark mode.
+A flexible theme switcher component that allows users to toggle between light, dark, and system themes with multiple visual variants.
+
+## Overview
+
+The ThemeSwitcher component provides an intuitive way for users to switch between different color themes. It includes a ThemeProvider for global theme management and supports various visual styles to match your design system.
+
+## Features
+
+- **Multiple variants**: Default, icon, text, toggle, and dropdown styles
+- **Theme provider**: Global theme management with React Context
+- **System preference**: Automatic detection of user's system theme preference
+- **Persistence**: Theme preference saved to localStorage
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+- **Hydration safe**: Prevents SSR/client mismatch
+
+## Usage
+
+```jsx
+import ThemeSwitcher, { ThemeProvider } from './components/ThemeSwitcher';
+
+// Wrap your app with ThemeProvider
+function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
+      <div className="app">
+        <header>
+          <ThemeSwitcher variant="dropdown" />
+        </header>
+        {/* Your app content */}
+      </div>
+    </ThemeProvider>
+  );
+}
+
+// Use the theme switcher anywhere in your app
+function Header() {
+  return (
+    <header>
+      <ThemeSwitcher variant="icon" />
+    </header>
+  );
+}
+```
+
+## Examples
+
+### Default Variant
+
+The standard theme switcher with icon and label:
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.Default} />
+</Canvas>
+
+<Markdown>{`
+
+### Variants
+
+The component supports five different visual styles:
+
+- **Default**: Icon with text label
+- **Icon**: Icon-only circular button
+- **Text**: Text-only minimal style
+- **Toggle**: Switch-style toggle
+- **Dropdown**: Dropdown menu with all theme options
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.IconOnly} />
+</Canvas>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.TextOnly} />
+</Canvas>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.Toggle} />
+</Canvas>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.Dropdown} />
+</Canvas>
+
+<Markdown>{`
+
+### All Variants
+
+Compare all available variants:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.AllVariants} />
+</Canvas>
+
+<Markdown>{`
+
+### Sizes
+
+Theme switchers come in three sizes:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.Large} />
+</Canvas>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.AllSizes} />
+</Canvas>
+
+<Markdown>{`
+
+### In Context
+
+See how the theme switcher looks in a real application:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.InContext} />
+</Canvas>
+
+<Markdown>{`
+
+### Multiple Switchers
+
+Different variants can be used in different parts of your app:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.MultipleSwitchers} />
+</Canvas>
+
+<Markdown>{`
+
+### Accessibility Demo
+
+Test the accessibility features:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={ThemeSwitcherStories.AccessibilityDemo} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### ThemeSwitcher Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`variant\` | \`'default' \| 'icon' \| 'text' \| 'toggle' \| 'dropdown'\` | \`'default'\` | Visual variant of the theme switcher |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the theme switcher |
+| \`showLabel\` | \`boolean\` | \`true\` | Whether to show the theme label |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### ThemeProvider Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Child components |
+| \`defaultTheme\` | \`'light' \| 'dark' \| 'system'\` | \`'light'\` | Default theme to use |
+
+### useTheme Hook
+
+Returns an object with:
+- \`theme\`: Current theme value
+- \`toggleTheme\`: Function to toggle between light/dark
+- \`setTheme\`: Function to set a specific theme
+
+### ThemeSwitcherButtonAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Button content |
+| \`variant\` | \`'default' \| 'icon' \| 'text' \| 'toggle'\` | \`'default'\` | Visual variant |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the button |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### ThemeSwitcherIconAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`theme\` | \`'light' \| 'dark'\` | \`'light'\` | Theme to display icon for |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### ThemeSwitcherDropdownAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Dropdown content |
+| \`isOpen\` | \`boolean\` | \`false\` | Whether dropdown is open |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Theme Management
+
+### Setting up Theme Provider
+
+Wrap your application with the ThemeProvider to enable theme switching:
+
+```jsx
+import { ThemeProvider } from './components/ThemeSwitcher';
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="system">
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+### Using the useTheme Hook
+
+Access theme state and functions in your components:
+
+```jsx
+import { useTheme } from './components/ThemeSwitcher';
+
+function MyComponent() {
+  const { theme, toggleTheme, setTheme } = useTheme();
+  
+  return (
+    <div>
+      <p>Current theme: {theme}</p>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <button onClick={() => setTheme('dark')}>Set Dark</button>
+    </div>
+  );
+}
+```
+
+### CSS Custom Properties
+
+The component automatically sets CSS custom properties on the document root:
+
+```css
+:root[data-theme="light"] {
+  --theme-bg: #ffffff;
+  --theme-text: #374151;
+  --theme-border: #d1d5db;
+  --theme-hover: #f9fafb;
+  --theme-active: #f3f4f6;
+  --theme-primary: #3b82f6;
+  --theme-primary-hover: #2563eb;
+}
+
+:root[data-theme="dark"] {
+  --theme-bg: #1f2937;
+  --theme-text: #d1d5db;
+  --theme-border: #4b5563;
+  --theme-hover: #374151;
+  --theme-active: #6b7280;
+  --theme-primary: #60a5fa;
+  --theme-primary-hover: #3b82f6;
+}
+```
+
+## Accessibility
+
+- Uses proper ARIA attributes (`aria-label`, `aria-expanded`, `aria-haspopup`)
+- Supports keyboard navigation (Tab, Enter, Space, Escape, Arrow keys)
+- Focus management with proper tabindex values
+- Screen reader friendly with descriptive labels
+- High contrast mode support
+- Reduced motion support for animations
+- Hydration-safe to prevent SSR/client mismatch
+
+## Best Practices
+
+1. **Always wrap with ThemeProvider**: Ensure the ThemeProvider wraps your app
+2. **Use appropriate variants**: Choose variants that fit your design context
+3. **Consider placement**: Place theme switchers in easily accessible locations
+4. **Provide fallbacks**: Ensure your app works without JavaScript
+5. **Test across themes**: Verify all components look good in both themes
+6. **Respect user preferences**: Default to system preference when possible
+
+## Related Components
+
+- [Button](./Button.mdx) - For action buttons
+- [Dropdown](./Dropdown.mdx) - For selection menus
+- [Toggle](./Toggle.mdx) - For simple on/off switches

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getValidationMessageStyles } from './ValidationMessage.style.js';
-import './ValidationMessage.module.css';
+import styles from './ValidationMessage.module.css';
 
 // Atomic subcomponents
 export const ValidationMessageAtom = ({ 
@@ -10,7 +10,6 @@ export const ValidationMessageAtom = ({
   className = '', 
   ...props 
 }) => {
-  const styles = getValidationMessageStyles();
   const baseClass = styles.validationMessage;
   const typeClass = styles[type] || '';
   

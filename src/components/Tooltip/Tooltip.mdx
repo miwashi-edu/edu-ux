@@ -1,7 +1,301 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as TooltipStories from './Tooltip.stories';
 
-<Meta title="Interactive Elements/Tooltip" />
+<Meta of={TooltipStories} />
 
 # Tooltip
 
-Hover-over info bubble.
+A flexible tooltip component that displays additional information when users hover over or focus on elements, supporting multiple positions and visual variants.
+
+## Overview
+
+The Tooltip component provides contextual information to users through hover or focus interactions. It supports various positions, visual styles, and content types while maintaining full accessibility compliance.
+
+## Features
+
+- **Multiple positions**: Eight different positioning options
+- **Visual variants**: Default, info, success, warning, and error styles
+- **Flexible sizing**: Small, medium, and large sizes
+- **Customizable delay**: Configurable show/hide timing
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+- **Viewport awareness**: Automatically adjusts position to stay in view
+
+## Usage
+
+```jsx
+import Tooltip from './components/Tooltip';
+
+// Basic usage
+<Tooltip content="This is a helpful tooltip">
+  <Button>Hover me</Button>
+</Tooltip>
+
+// With custom position and variant
+<Tooltip 
+  content="Informational tooltip" 
+  position="right" 
+  variant="info"
+>
+  <span>Help text</span>
+</Tooltip>
+
+// With custom delay
+<Tooltip content="Delayed tooltip" delay={500}>
+  <Button>Delayed</Button>
+</Tooltip>
+```
+
+## Examples
+
+### Default Tooltip
+
+The standard tooltip with hover interaction:
+
+<Canvas>
+  <Story of={TooltipStories.Default} />
+</Canvas>
+
+<Markdown>{`
+
+### Positions
+
+The component supports eight different positioning options:
+
+- **Top**: Above the trigger, centered
+- **Bottom**: Below the trigger, centered
+- **Left**: To the left of the trigger, centered
+- **Right**: To the right of the trigger, centered
+- **Top-left**: Above the trigger, aligned to the left
+- **Top-right**: Above the trigger, aligned to the right
+- **Bottom-left**: Below the trigger, aligned to the left
+- **Bottom-right**: Below the trigger, aligned to the right
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.Top} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Bottom} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Left} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Right} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.TopLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.TopRight} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.BottomLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.BottomRight} />
+</Canvas>
+
+<Markdown>{`
+
+### All Positions
+
+Compare all available positions:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.AllPositions} />
+</Canvas>
+
+<Markdown>{`
+
+### Variants
+
+Tooltips come in five different visual styles:
+
+- **Default**: Standard dark tooltip
+- **Info**: Blue informational tooltip
+- **Success**: Green success tooltip
+- **Warning**: Orange warning tooltip
+- **Error**: Red error tooltip
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.Info} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Success} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Warning} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Error} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.AllVariants} />
+</Canvas>
+
+<Markdown>{`
+
+### Sizes
+
+Tooltips come in three sizes to match your design needs:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.Large} />
+</Canvas>
+
+<Canvas>
+  <Story of={TooltipStories.AllSizes} />
+</Canvas>
+
+<Markdown>{`
+
+### Interactive Examples
+
+Explore different tooltip behaviors and content types:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.Interactive} />
+</Canvas>
+
+<Markdown>{`
+
+### Form Elements
+
+Tooltips work great with form elements to provide helpful context:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.FormElements} />
+</Canvas>
+
+<Markdown>{`
+
+### Disabled State
+
+Tooltips can be disabled to prevent interaction:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TooltipStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Tooltip Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The element that triggers the tooltip |
+| \`content\` | \`ReactNode\` | - | The content to display in the tooltip |
+| \`position\` | \`'top' \| 'bottom' \| 'left' \| 'right' \| 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'\` | \`'top'\` | The position of the tooltip relative to the trigger |
+| \`variant\` | \`'default' \| 'info' \| 'success' \| 'warning' \| 'error'\` | \`'default'\` | Visual variant of the tooltip |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the tooltip |
+| \`delay\` | \`number\` | \`200\` | Delay before showing tooltip (ms) |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the tooltip is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### TooltipTriggerAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The trigger content |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### TooltipContentAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The tooltip content |
+| \`position\` | \`'top' \| 'bottom' \| 'left' \| 'right' \| 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'\` | \`'top'\` | The position of the tooltip |
+| \`variant\` | \`'default' \| 'info' \| 'success' \| 'warning' \| 'error'\` | \`'default'\` | Visual variant |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the tooltip |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses `role="tooltip"` for proper semantic meaning
+- Supports keyboard navigation with focus/blur events
+- Implements proper ARIA attributes
+- Screen reader friendly with descriptive content
+- High contrast mode support
+- Reduced motion support for animations
+- Viewport-aware positioning to ensure visibility
+
+## Best Practices
+
+1. **Keep content concise**: Tooltips should be brief and to the point
+2. **Use appropriate variants**: Match the tooltip style to the content type
+3. **Consider positioning**: Choose positions that don't interfere with other UI elements
+4. **Test keyboard navigation**: Ensure tooltips work with keyboard focus
+5. **Avoid overuse**: Don't add tooltips to every element
+6. **Provide meaningful content**: Tooltips should add value, not just repeat visible text
+
+## Content Types
+
+Tooltips support various content types:
+
+```jsx
+// Simple text
+<Tooltip content="Simple tooltip text">
+  <Button>Text</Button>
+</Tooltip>
+
+// Rich content with formatting
+<Tooltip content={
+  <div>
+    <strong>Bold text</strong>
+    <br />
+    With line breaks
+  </div>
+}>
+  <Button>Rich</Button>
+</Tooltip>
+
+// Complex structured content
+<Tooltip content={
+  <div>
+    <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Title</div>
+    <div style={{ fontSize: '0.75rem', opacity: 0.9 }}>
+      Detailed description with multiple elements
+    </div>
+  </div>
+}>
+  <Button>Complex</Button>
+</Tooltip>
+```
+
+## Related Components
+
+- [Popover](./Popover.mdx) - For more complex overlay content
+- [Alert](./Alert.mdx) - For persistent notifications
+- [Badge](./Badge.mdx) - For status indicators

@@ -1,4 +1,4 @@
-import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
 import * as ValidationMessageStories from './ValidationMessage.stories.jsx';
 
 <Meta of={ValidationMessageStories} />
@@ -46,7 +46,7 @@ import ValidationMessage from './components/ValidationMessage';
 
 ## Examples
 
-<Markdown>
+<Markdown>{`
 
 ### Basic Validation States
 
@@ -57,17 +57,17 @@ The component supports four different validation states:
 - **Warning**: Yellow styling for warnings
 - **Error**: Red styling for error messages
 
-</Markdown>
+`}</Markdown>
 
 <Canvas>
   <Story of={ValidationMessageStories.AllStates} />
 </Canvas>
 
-<Markdown>
+<Markdown>{`
 
 ### Individual States
 
-</Markdown>
+`}</Markdown>
 
 <Canvas>
   <Story of={ValidationMessageStories.Info} />
@@ -85,25 +85,25 @@ The component supports four different validation states:
   <Story of={ValidationMessageStories.Error} />
 </Canvas>
 
-<Markdown>
+<Markdown>{`
 
 ### Conditional Rendering
 
-The component can be conditionally rendered using the `show` prop:
+The component can be conditionally rendered using the \`show\` prop:
 
-</Markdown>
+`}</Markdown>
 
 <Canvas>
   <Story of={ValidationMessageStories.Hidden} />
 </Canvas>
 
-<Markdown>
+<Markdown>{`
 
 ### Long Messages
 
 The component handles long messages gracefully:
 
-</Markdown>
+`}</Markdown>
 
 <Canvas>
   <Story of={ValidationMessageStories.LongMessage} />
@@ -111,26 +111,26 @@ The component handles long messages gracefully:
 
 ## API Reference
 
-<Markdown>
+<Markdown>{`
 
 ### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `message` | `string` | - | The validation message to display |
-| `type` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | The type of validation message |
-| `show` | `boolean` | `true` | Whether to show the validation message |
-| `className` | `string` | `''` | Additional CSS classes |
+| \`message\` | \`string\` | - | The validation message to display |
+| \`type\` | \`'info' \\| 'success' \\| 'warning' \\| 'error'\` | \`'info'\` | The type of validation message |
+| \`show\` | \`boolean\` | \`true\` | Whether to show the validation message |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
 
 ### ValidationMessageAtom Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `children` | `ReactNode` | - | The content to display |
-| `type` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | The type of validation message |
-| `className` | `string` | `''` | Additional CSS classes |
+| \`children\` | \`ReactNode\` | - | The content to display |
+| \`type\` | \`'info' \\| 'success' \\| 'warning' \\| 'error'\` | \`'info'\` | The type of validation message |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
 
-</Markdown>
+`}</Markdown>
 
 ## Accessibility
 

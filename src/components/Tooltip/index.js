@@ -1,3 +1,2 @@
-import Tooltip from './Tooltip';
-
-export { Tooltip };
+export { default } from './Tooltip.jsx';
+export { TooltipTriggerAtom, TooltipContentAtom } from './Tooltip.jsx';
