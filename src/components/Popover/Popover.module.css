@@ -1,1 +1,274 @@
-/* CSS Module */
+.popover {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+  user-select: none;
+}
+
+.content {
+  position: absolute;
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #374151;
+  animation: popoverEnter 0.2s ease-out;
+  outline: none;
+}
+
+/* Positions */
+.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+}
+
+.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+}
+
+.left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 0.5rem;
+}
+
+.right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+}
+
+.top-left {
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 0.5rem;
+}
+
+.top-right {
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.bottom-left {
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+}
+
+.bottom-right {
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+}
+
+/* Arrow */
+.content::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+.top::before {
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: #e5e7eb;
+}
+
+.bottom::before {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: #e5e7eb;
+}
+
+.left::before {
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: #e5e7eb;
+}
+
+.right::before {
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: #e5e7eb;
+}
+
+.top-left::before {
+  bottom: -12px;
+  right: 1rem;
+  border-top-color: #e5e7eb;
+}
+
+.top-right::before {
+  bottom: -12px;
+  left: 1rem;
+  border-top-color: #e5e7eb;
+}
+
+.bottom-left::before {
+  top: -12px;
+  right: 1rem;
+  border-bottom-color: #e5e7eb;
+}
+
+.bottom-right::before {
+  top: -12px;
+  left: 1rem;
+  border-bottom-color: #e5e7eb;
+}
+
+/* Animation */
+@keyframes popoverEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.top {
+  animation: popoverEnterTop 0.2s ease-out;
+}
+
+@keyframes popoverEnterTop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.bottom {
+  animation: popoverEnterBottom 0.2s ease-out;
+}
+
+@keyframes popoverEnterBottom {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.left {
+  animation: popoverEnterLeft 0.2s ease-out;
+}
+
+@keyframes popoverEnterLeft {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(0.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+}
+
+.right {
+  animation: popoverEnterRight 0.2s ease-out;
+}
+
+@keyframes popoverEnterRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-0.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+}
+
+.top-left,
+.top-right,
+.bottom-left,
+.bottom-right {
+  animation: popoverEnterCorner 0.2s ease-out;
+}
+
+@keyframes popoverEnterCorner {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .content {
+    min-width: 180px;
+    max-width: 280px;
+    padding: 0.625rem;
+    font-size: 0.8125rem;
+  }
+  
+  .top,
+  .bottom {
+    left: 0;
+    transform: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .left,
+  .right {
+    top: 0;
+    transform: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .content {
+    border-width: 2px;
+  }
+  
+  .content::before {
+    border-width: 8px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+}

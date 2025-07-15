@@ -1,3 +1,2 @@
-import Popover from './Popover';
-
-export { Popover };
+export { default } from './Popover.jsx';
+export { PopoverTriggerAtom, PopoverContentAtom } from './Popover.jsx';

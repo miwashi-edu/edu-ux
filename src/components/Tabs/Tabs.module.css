@@ -1,1 +1,308 @@
-/* CSS Module */
+/* Base tabs container */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabs.vertical {
+  flex-direction: row;
+}
+
+/* Tabs list */
+.tabsList {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  background: transparent;
+  gap: 0;
+}
+
+.tabsList.vertical {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 1px solid #e5e7eb;
+  min-width: 200px;
+}
+
+/* Sizes */
+.tabsList.sm {
+  gap: 0.25rem;
+}
+
+.tabsList.md {
+  gap: 0.5rem;
+}
+
+.tabsList.lg {
+  gap: 1rem;
+}
+
+/* Variants */
+.tabsList.default {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabsList.bordered {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  background: #f9fafb;
+}
+
+.tabsList.pills {
+  gap: 0.5rem;
+  border: none;
+}
+
+.tabsList.underline {
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Tab trigger */
+.tabTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+  position: relative;
+}
+
+.tabTrigger:hover {
+  color: #374151;
+  background: #f3f4f6;
+}
+
+.tabTrigger:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.tabTrigger.active {
+  color: #3b82f6;
+  background: #eff6ff;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.tabTrigger.disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.tabTrigger.disabled:hover {
+  color: #9ca3af;
+  background: transparent;
+}
+
+/* Variant-specific trigger styles */
+.tabsList.bordered .tabTrigger {
+  border: 1px solid transparent;
+  margin: 0.125rem;
+}
+
+.tabsList.bordered .tabTrigger.active {
+  background: #ffffff;
+  border-color: #d1d5db;
+  color: #374151;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tabsList.pills .tabTrigger {
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.tabsList.pills .tabTrigger.active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.tabsList.pills .tabTrigger.active:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.tabsList.underline .tabTrigger {
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+}
+
+.tabsList.underline .tabTrigger.active {
+  border-bottom-color: #3b82f6;
+  background: transparent;
+  color: #374151;
+}
+
+/* Vertical orientation */
+.tabsList.vertical .tabTrigger {
+  justify-content: flex-start;
+  border-bottom: none;
+  border-right: 2px solid transparent;
+  border-radius: 0;
+  text-align: left;
+}
+
+.tabsList.vertical .tabTrigger.active {
+  border-right-color: #3b82f6;
+  border-bottom: none;
+}
+
+.tabsList.vertical.underline .tabTrigger {
+  border-right: 2px solid transparent;
+  border-bottom: none;
+}
+
+.tabsList.vertical.underline .tabTrigger.active {
+  border-right-color: #3b82f6;
+}
+
+/* Tab content */
+.tabContent {
+  flex: 1;
+  padding: 1.5rem 0;
+  outline: none;
+}
+
+.tabs.vertical .tabContent {
+  padding: 0 1.5rem;
+}
+
+/* Size variations */
+.tabsList.sm .tabTrigger {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.tabsList.lg .tabTrigger {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .tabsList {
+    gap: 0.25rem;
+  }
+  
+  .tabTrigger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .tabsList.vertical {
+    min-width: 150px;
+  }
+  
+  .tabs.vertical {
+    flex-direction: column;
+  }
+  
+  .tabsList.vertical {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    min-width: auto;
+  }
+  
+  .tabsList.vertical .tabTrigger {
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    justify-content: center;
+  }
+  
+  .tabsList.vertical .tabTrigger.active {
+    border-right: none;
+    border-bottom-color: #3b82f6;
+  }
+  
+  .tabs.vertical .tabContent {
+    padding: 1rem 0;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tabTrigger {
+    border-width: 2px;
+  }
+  
+  .tabTrigger.active {
+    border-width: 3px;
+  }
+  
+  .tabsList.bordered {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .tabTrigger {
+    transition: none;
+  }
+}
+
+/* Focus visible for better accessibility */
+.tabTrigger:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tabsList {
+    border-color: #374151;
+  }
+  
+  .tabTrigger {
+    color: #9ca3af;
+  }
+  
+  .tabTrigger:hover {
+    color: #d1d5db;
+    background: #374151;
+  }
+  
+  .tabTrigger.active {
+    color: #60a5fa;
+    background: #1e3a8a;
+    border-color: #60a5fa;
+  }
+  
+  .tabsList.bordered {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .tabsList.bordered .tabTrigger.active {
+    background: #111827;
+    border-color: #4b5563;
+    color: #d1d5db;
+  }
+  
+  .tabsList.pills .tabTrigger {
+    background: #374151;
+    border-color: #4b5563;
+    color: #9ca3af;
+  }
+  
+  .tabsList.pills .tabTrigger.active {
+    background: #60a5fa;
+    color: #000000;
+    border-color: #60a5fa;
+  }
+}

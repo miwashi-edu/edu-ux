@@ -68,3 +68,4 @@ Button.displayName = 'Button';
 Button.Icon = ButtonIcon;
 
 export { Button };
+export default Button;

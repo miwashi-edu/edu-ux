@@ -1,7 +1,213 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as PopoverStories from './Popover.stories';
 
-<Meta title="Interactive Elements/Popover" />
+<Meta of={PopoverStories} />
 
 # Popover
 
-Expands with additional info when clicked or hovered.
+A popover component that displays additional content when triggered, supporting multiple positions and trigger types.
+
+## Overview
+
+The Popover component provides a flexible way to show contextual information, menus, or additional content that appears when users interact with a trigger element. It supports both click and hover triggers with various positioning options.
+
+## Features
+
+- **Multiple positions**: Eight different positioning options
+- **Trigger types**: Click and hover activation
+- **Controlled state**: Support for external state management
+- **Accessibility**: ARIA attributes and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+- **Smooth animations**: Entrance animations with reduced motion support
+
+## Usage
+
+```jsx
+import Popover from './components/Popover';
+import Button from './components/Button';
+
+// Basic usage
+<Popover
+  trigger={<Button>Click me</Button>}
+  content={<div>Additional information here</div>}
+  position="bottom"
+/>
+
+// Hover trigger
+<Popover
+  trigger={<Button>Hover me</Button>}
+  content={<div>Hover content</div>}
+  triggerType="hover"
+  position="top"
+/>
+
+// Controlled popover
+<Popover
+  trigger={<Button>Controlled</Button>}
+  content={<div>Controlled content</div>}
+  open={isOpen}
+  onOpenChange={setIsOpen}
+/>
+```
+
+## Examples
+
+### Positions
+
+<Markdown>{`
+The component supports eight different positioning options:
+
+- **Top**: Above the trigger, centered
+- **Bottom**: Below the trigger, centered
+- **Left**: To the left of the trigger, centered
+- **Right**: To the right of the trigger, centered
+- **Top-left**: Above the trigger, aligned to the left
+- **Top-right**: Above the trigger, aligned to the right
+- **Bottom-left**: Below the trigger, aligned to the left
+- **Bottom-right**: Below the trigger, aligned to the right
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.AllPositions} />
+</Canvas>
+
+<Markdown>{`
+
+### Individual Positions
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.Top} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.Bottom} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.Left} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.Right} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.TopLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.TopRight} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.BottomLeft} />
+</Canvas>
+
+<Canvas>
+  <Story of={PopoverStories.BottomRight} />
+</Canvas>
+
+<Markdown>{`
+
+### Trigger Types
+
+Popovers can be triggered by clicking or hovering:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.HoverTrigger} />
+</Canvas>
+
+<Markdown>{`
+
+### Interactive Example
+
+A controlled popover with external state management:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.Interactive} />
+</Canvas>
+
+<Markdown>{`
+
+### Rich Content
+
+Popovers can contain complex content like user profiles:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.RichContent} />
+</Canvas>
+
+<Markdown>{`
+
+### States
+
+Popovers can be disabled to prevent interaction:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={PopoverStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`trigger\` | \`ReactNode\` | - | The element that triggers the popover |
+| \`content\` | \`ReactNode\` | - | The content to display in the popover |
+| \`position\` | \`'top' \| 'bottom' \| 'left' \| 'right' \| 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'\` | \`'bottom'\` | The position of the popover relative to the trigger |
+| \`triggerType\` | \`'click' \| 'hover'\` | \`'click'\` | How the popover is triggered |
+| \`open\` | \`boolean\` | \`false\` | Whether the popover is open (controlled) |
+| \`onOpenChange\` | \`function\` | - | Callback when open state changes |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the popover is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### PopoverTriggerAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The trigger content |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### PopoverContentAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The popover content |
+| \`position\` | \`'top' \| 'bottom' \| 'left' \| 'right' \| 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'\` | \`'bottom'\` | The position of the popover |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses `role="tooltip"` for the popover content
+- Implements `aria-expanded` and `aria-haspopup` on the trigger
+- Supports keyboard navigation with Escape key to close
+- Click outside to close functionality
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Choose appropriate position**: Consider available space and content length
+2. **Use descriptive content**: Make popover content clear and actionable
+3. **Consider trigger type**: Use hover for quick info, click for actions
+4. **Handle edge cases**: Ensure popovers work on mobile and small screens
+5. **Test keyboard navigation**: Ensure all interactions work without a mouse
+
+## Related Components
+
+- [Tooltip](./Tooltip.mdx) - For simple text tooltips
+- [Modal](./Modal.mdx) - For full-screen overlays
+- [Dropdown](./Dropdown.mdx) - For selection menus

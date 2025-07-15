@@ -1,7 +1,179 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as PaginationStories from './Pagination.stories.jsx';
 
-<Meta title="Interactive Elements/Pagination" />
+<Meta of={PaginationStories} />
 
 # Pagination
 
-UI for moving between pages of results or content.
+A pagination component that provides navigation through multiple pages of content with customizable controls and styling.
+
+## Overview
+
+The Pagination component offers a complete solution for navigating through paginated content. It supports various configurations including first/last page buttons, previous/next navigation, and customizable page ranges.
+
+## Features
+
+- **Multiple variants**: Default, bordered, and rounded styles
+- **Three sizes**: Small, medium, and large
+- **Flexible controls**: Optional first/last and previous/next buttons
+- **Smart page range**: Configurable maximum visible pages
+- **Accessibility**: ARIA labels and keyboard navigation
+- **Responsive design**: Adapts to different screen sizes
+
+## Usage
+
+```jsx
+import Pagination from './components/Pagination';
+
+// Basic usage
+<Pagination 
+  currentPage={1}
+  totalPages={10}
+  onPageChange={(page) => console.log('Page changed to:', page)}
+/>
+
+// Custom configuration
+<Pagination 
+  currentPage={3}
+  totalPages={15}
+  showFirstLast={false}
+  showPrevNext={true}
+  maxVisible={7}
+  variant="rounded"
+  size="large"
+  onPageChange={handlePageChange}
+/>
+```
+
+## Examples
+
+### Variants
+
+<Markdown>{`
+The component supports three different visual variants:
+
+- **Default**: Standard pagination with subtle borders
+- **Bordered**: Pagination with prominent borders
+- **Rounded**: Pagination with rounded button corners
+`}</Markdown>
+
+<Canvas>
+  <Story of={PaginationStories.AllVariants} />
+</Canvas>
+
+### Individual Variants
+
+<Canvas>
+  <Story of={PaginationStories.Bordered} />
+</Canvas>
+
+<Canvas>
+  <Story of={PaginationStories.Rounded} />
+</Canvas>
+
+### Sizes
+
+<Markdown>{`
+The component comes in three sizes to fit different contexts:
+`}</Markdown>
+
+<Canvas>
+  <Story of={PaginationStories.AllSizes} />
+</Canvas>
+
+<Canvas>
+  <Story of={PaginationStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={PaginationStories.Large} />
+</Canvas>
+
+### Interactive Example
+
+<Markdown>{`
+A functional pagination that tracks the current page:
+`}</Markdown>
+
+<Canvas>
+  <Story of={PaginationStories.Interactive} />
+</Canvas>
+
+### Configurations
+
+<Markdown>{`
+Different pagination configurations for various use cases:
+`}</Markdown>
+
+<Canvas>
+  <Story of={PaginationStories.NoFirstLast} />
+</Canvas>
+
+<Canvas>
+  <Story of={PaginationStories.NoPrevNext} />
+</Canvas>
+
+<Canvas>
+  <Story of={PaginationStories.Minimal} />
+</Canvas>
+
+### States
+
+<Markdown>{`
+Pagination can be disabled to prevent interaction:
+`}</Markdown>
+
+<Canvas>
+  <Story of={PaginationStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`currentPage\` | \`number\` | \`1\` | Current active page |
+| \`totalPages\` | \`number\` | \`1\` | Total number of pages |
+| \`onPageChange\` | \`function\` | - | Callback when page changes |
+| \`showFirstLast\` | \`boolean\` | \`true\` | Show first/last page buttons |
+| \`showPrevNext\` | \`boolean\` | \`true\` | Show previous/next page buttons |
+| \`maxVisible\` | \`number\` | \`5\` | Maximum number of page buttons to show |
+| \`size\` | \`'small' \| 'medium' \| 'large'\` | \`'medium'\` | The size of the pagination |
+| \`variant\` | \`'default' \| 'bordered' \| 'rounded'\` | \`'default'\` | The visual variant of the pagination |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the pagination is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### PaginationItemAtom Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | The content to display |
+| \`active\` | \`boolean\` | \`false\` | Whether the item is the current page |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the item is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses semantic `<nav>` element with proper `aria-label`
+- Implements `aria-current="page"` for the active page
+- Provides descriptive `aria-label` for navigation buttons
+- Supports keyboard navigation
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Choose appropriate size**: Use larger sizes for touch interfaces
+2. **Limit visible pages**: Keep `maxVisible` reasonable to avoid cluttered UI
+3. **Provide clear feedback**: Show current page and total pages when possible
+4. **Handle edge cases**: Ensure pagination works with single page or empty results
+5. **Test keyboard navigation**: Ensure all buttons are accessible via keyboard
+
+## Related Components
+
+- [Button](./Button.mdx) - For individual action buttons
+- [IconButton](./IconButton.mdx) - For icon-only buttons
+- [Table](./Table.mdx) - For tabular data with pagination

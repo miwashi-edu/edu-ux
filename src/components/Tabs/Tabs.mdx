@@ -1,7 +1,205 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown, Canvas, Story } from '@storybook/addon-docs/blocks';
+import * as TabsStories from './Tabs.stories';
 
-<Meta title="Interactive Elements/Tabs" />
+<Meta of={TabsStories} />
 
 # Tabs
 
-Horizontal switchers for toggling between views.
+A flexible tabs component that organizes content into multiple sections, supporting various visual styles and orientations.
+
+## Overview
+
+The Tabs component provides a clean way to organize and display related content in separate sections. It supports multiple visual variants, sizes, and orientations while maintaining full accessibility compliance.
+
+## Features
+
+- **Multiple variants**: Default, bordered, pills, and underline styles
+- **Flexible orientation**: Horizontal and vertical layouts
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **Controlled state**: Support for external state management
+- **Responsive design**: Adapts to different screen sizes
+- **Compound components**: Flexible composition pattern
+
+## Usage
+
+```jsx
+import Tabs from './components/Tabs';
+
+// Basic usage
+<Tabs defaultValue="account">
+  <Tabs.List>
+    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+    <Tabs.Trigger value="password">Password</Tabs.Trigger>
+    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="account">
+    <div>Account settings content</div>
+  </Tabs.Content>
+  <Tabs.Content value="password">
+    <div>Password settings content</div>
+  </Tabs.Content>
+  <Tabs.Content value="settings">
+    <div>General settings content</div>
+  </Tabs.Content>
+</Tabs>
+
+// Controlled usage
+<Tabs value={activeTab} onValueChange={setActiveTab}>
+  {/* Tab content */}
+</Tabs>
+```
+
+## Examples
+
+### Default Variant
+
+The standard tabs with a clean, minimal design:
+
+<Canvas>
+  <Story of={TabsStories.Default} />
+</Canvas>
+
+<Markdown>{`
+
+### Variants
+
+The component supports four different visual styles:
+
+- **Default**: Clean, minimal design with bottom border
+- **Bordered**: Contained tabs with background and borders
+- **Pills**: Rounded pill-style tabs
+- **Underline**: Simple underline indicator
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TabsStories.Bordered} />
+</Canvas>
+
+<Canvas>
+  <Story of={TabsStories.Pills} />
+</Canvas>
+
+<Canvas>
+  <Story of={TabsStories.Underline} />
+</Canvas>
+
+<Markdown>{`
+
+### Sizes
+
+Tabs come in three sizes to match your design needs:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TabsStories.Small} />
+</Canvas>
+
+<Canvas>
+  <Story of={TabsStories.Large} />
+</Canvas>
+
+<Markdown>{`
+
+### Vertical Orientation
+
+Tabs can be displayed vertically for sidebar navigation:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TabsStories.Vertical} />
+</Canvas>
+
+<Markdown>{`
+
+### Interactive Example
+
+A controlled tabs component with external state management:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TabsStories.Interactive} />
+</Canvas>
+
+<Markdown>{`
+
+### Disabled State
+
+Individual tabs can be disabled to prevent interaction:
+
+`}</Markdown>
+
+<Canvas>
+  <Story of={TabsStories.Disabled} />
+</Canvas>
+
+## API Reference
+
+<Markdown>{`
+### Tabs Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Tab list and content components |
+| \`defaultValue\` | \`string\` | - | Default active tab value |
+| \`value\` | \`string\` | - | Controlled active tab value |
+| \`onValueChange\` | \`function\` | - | Callback when active tab changes |
+| \`variant\` | \`'default' \| 'bordered' \| 'pills' \| 'underline'\` | \`'default'\` | Visual variant of the tabs |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the tabs |
+| \`orientation\` | \`'horizontal' \| 'vertical'\` | \`'horizontal'\` | Orientation of the tabs |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### Tabs.List Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Tab trigger components |
+| \`variant\` | \`'default' \| 'bordered' \| 'pills' \| 'underline'\` | \`'default'\` | Visual variant |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Size of the tabs |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### Tabs.Trigger Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Tab trigger content |
+| \`value\` | \`string\` | - | Unique value for the tab |
+| \`disabled\` | \`boolean\` | \`false\` | Whether the tab is disabled |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+
+### Tabs.Content Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`children\` | \`ReactNode\` | - | Tab content |
+| \`value\` | \`string\` | - | Unique value for the tab |
+| \`className\` | \`string\` | \`''\` | Additional CSS classes |
+`}</Markdown>
+
+## Accessibility
+
+- Uses proper ARIA attributes (`role="tablist"`, `role="tab"`, `role="tabpanel"`)
+- Implements `aria-selected` and `aria-disabled` on triggers
+- Supports keyboard navigation (Enter, Space, Arrow keys)
+- Focus management with proper tabindex values
+- Screen reader friendly with descriptive labels
+- High contrast mode support
+- Reduced motion support for animations
+
+## Best Practices
+
+1. **Use descriptive labels**: Make tab labels clear and concise
+2. **Limit tab count**: Avoid too many tabs to prevent cognitive overload
+3. **Group related content**: Keep related information in the same tab
+4. **Consider mobile**: Use appropriate orientation for mobile devices
+5. **Provide fallbacks**: Ensure content is accessible even without JavaScript
+6. **Test keyboard navigation**: Verify all interactions work without a mouse
+
+## Related Components
+
+- [Accordion](./Accordion.mdx) - For collapsible content sections
+- [Modal](./Modal.mdx) - For overlay content
+- [Drawer](./Drawer.mdx) - For slide-out panels

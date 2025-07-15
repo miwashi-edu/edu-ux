@@ -1,3 +1,2 @@
-import Tabs from './Tabs';
-
-export { Tabs };
+export { default } from './Tabs.jsx';
+export { TabsListAtom, TabsTriggerAtom, TabsContentAtom } from './Tabs.jsx';

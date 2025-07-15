@@ -1,3 +1,2 @@
-import Pagination from './Pagination';
-
-export { Pagination };
+export { default } from './Pagination.jsx';
+export { PaginationItemAtom } from './Pagination.jsx';
