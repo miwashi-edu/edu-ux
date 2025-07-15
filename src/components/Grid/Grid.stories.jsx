@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from './Grid';
 
 export default {
-  title: 'PageLayout/Grid',
+  title: 'Page Layout/Grid',
   component: Grid,
 };
 

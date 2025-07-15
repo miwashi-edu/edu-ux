@@ -2,7 +2,7 @@ import React from 'react';
 import Container from './Container';
 
 export default {
-  title: 'PageLayout/Container',
+  title: 'Page Layout/Container',
   component: Container,
 };
 

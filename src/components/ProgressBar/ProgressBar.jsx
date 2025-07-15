@@ -45,6 +45,20 @@ const ProgressBar = ({
 
   const progressBarId = `progress-${Math.random().toString(36).substr(2, 9)}`;
 
+  // Calculate class names for progressFill and label
+  const progressFillClass = [
+    styles.progressFill,
+    styles[`progressFill--${variant}`],
+    styles[`progressFill--${size}`],
+    isAnimating ? styles.animating : '',
+    isIndeterminate ? styles.indeterminate : ''
+  ].filter(Boolean).join(' ');
+
+  const labelClass = [
+    styles.label,
+    styles[`label--${size}`]
+  ].filter(Boolean).join(' ');
+
   return (
     <div
       className={combinedClassName}
@@ -60,7 +74,7 @@ const ProgressBar = ({
     >
       {/* Label */}
       {showLabel && labelPosition === 'top' && (
-        <div className={styles.label}>
+        <div className={labelClass}>
           {isIndeterminate ? 'Loading...' : `${Math.round(percentage)}%`}
         </div>
       )}
@@ -69,9 +83,7 @@ const ProgressBar = ({
       <div className={styles.progressContainer}>
         {/* Progress Fill */}
         <div
-          className={`${styles.progressFill} ${isAnimating ? styles.animating : ''} ${
-            isIndeterminate ? styles.indeterminate : ''
-          }`}
+          className={progressFillClass}
           style={{
             width: isIndeterminate ? '100%' : `${displayValue}%`,
             transition: animated && !isIndeterminate ? 'width 0.3s ease-out' : 'none'
@@ -91,7 +103,7 @@ const ProgressBar = ({
 
       {/* Label */}
       {showLabel && labelPosition === 'bottom' && (
-        <div className={styles.label}>
+        <div className={labelClass}>
           {isIndeterminate ? 'Loading...' : `${Math.round(percentage)}%`}
         </div>
       )}

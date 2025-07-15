@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from './Footer';
 
 export default {
-  title: 'PageLayout/Footer',
+  title: 'Page Layout/Footer',
   component: Footer,
 };
 

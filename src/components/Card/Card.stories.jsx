@@ -3,7 +3,7 @@ import Card from './Card';
 import Button from '../Button';
 
 export default {
-  title: 'PageLayout/Card',
+  title: 'Page Layout/Card',
   component: Card,
 };
 
