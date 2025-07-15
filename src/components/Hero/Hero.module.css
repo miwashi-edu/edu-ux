@@ -1,1 +1,155 @@
-/* CSS Module */
+/* Base styles */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+  padding: 2rem 1rem;
+  background: var(--hero-bg, #f5f7fa);
+  color: var(--hero-color, #222);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.inner {
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  text-align: inherit;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 1.5rem 0;
+  color: var(--hero-subtitle, #555);
+}
+
+.content {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Image styles */
+.imageWrapper {
+  z-index: 1;
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+.image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+}
+
+/* Variants */
+.default {}
+
+.minimal {
+  background: none;
+  box-shadow: none;
+  color: var(--hero-color, #222);
+}
+
+.overlay {
+  background: linear-gradient(120deg, #222 0%, #444 100%);
+  color: #fff;
+}
+.overlayLayer {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.image-left, .image-right {
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 400px;
+}
+.image-left .inner {
+  order: 2;
+  align-items: flex-start;
+  text-align: left;
+}
+.image-right .inner {
+  order: 1;
+  align-items: flex-end;
+  text-align: right;
+}
+.image-left .imageWrapper {
+  order: 1;
+  margin-right: 2rem;
+}
+.image-right .imageWrapper {
+  order: 2;
+  margin-left: 2rem;
+}
+
+/* Sizes */
+.sm {
+  min-height: 180px;
+  padding: 1rem 0.5rem;
+}
+.md {
+  min-height: 320px;
+  padding: 2rem 1rem;
+}
+.lg {
+  min-height: 480px;
+  padding: 3rem 2rem;
+}
+
+/* Alignment */
+.align-center {
+  align-items: center;
+  text-align: center;
+}
+.align-left {
+  align-items: flex-start;
+  text-align: left;
+}
+.align-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .hero, .image-left, .image-right {
+    flex-direction: column !important;
+    min-height: 320px;
+  }
+  .imageWrapper {
+    margin: 0 0 1.5rem 0 !important;
+    max-width: 100%;
+  }
+  .inner {
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
