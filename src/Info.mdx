@@ -13,29 +13,170 @@ A categorized reference list of common UX components used in web development, ea
 ### [Header](http://localhost:6006/?path=/docs/page-layout-header--docs)
 Topmost section, usually holds logo, nav, and user access. Often includes branding and quick access to key actions. [See Storybook](http://localhost:6006/?path=/docs/page-layout-header--docs)
 
+**UX Goals:**
+- Anchor user orientation and brand identity
+- Provide immediate access to navigation and key actions
+
+**When to Use:**
+- On every page for consistency
+- To house navigation, search, and user profile access
+
+**UX Risks:**
+- Overcrowding with too many actions or links
+- Insufficient contrast or unclear boundaries
+
+**CSS Notes:**
+- Uses flexbox/grid for layout, sticky positioning, and shadow for separation
+
+---
+
 ### [Footer](http://localhost:6006/?path=/docs/page-layout-footer--docs)
 Bottom area for copyright, contact, and secondary links. Good for legal info, links, and site-wide actions. [See Storybook](http://localhost:6006/?path=/docs/page-layout-footer--docs)
+
+**UX Goals:**
+- Provide closure and access to secondary information
+- Reduce cognitive load by grouping less critical links
+
+**When to Use:**
+- For legal, contact, or site-wide links
+- To reinforce brand and provide help resources
+
+**UX Risks:**
+- Overloading with too much content
+- Low contrast or small text
+
+**CSS Notes:**
+- Uses padding, background color, and border-top for separation
+
+---
 
 ### [Logo](http://localhost:6006/?path=/docs/page-layout-logo--docs)
 Vertical area for nav or tools, left or right aligned. [See Storybook](http://localhost:6006/?path=/docs/page-layout-logo--docs)
 
+**UX Goals:**
+- Instantly recognizable brand anchor
+- Aids in user orientation
+
+**When to Use:**
+- In header, sidebar, or splash screens
+
+**UX Risks:**
+- Too large or too small disrupts balance
+- Unclear or low-contrast logos harm recognition
+
+**CSS Notes:**
+- Uses fixed sizing, margin, and alignment utilities
+
+---
+
 ### [Main](http://localhost:6006/?path=/docs/page-layout-main--docs)
 The primary content area of a page. Should be unique per page for accessibility. [See Storybook](http://localhost:6006/?path=/docs/page-layout-main--docs)
+
+**UX Goals:**
+- Focus user attention on core content
+- Support accessibility and screen reader navigation
+
+**When to Use:**
+- As the main content wrapper on every page
+
+**UX Risks:**
+- Multiple main elements confuse assistive tech
+- Insufficient spacing reduces readability
+
+**CSS Notes:**
+- Uses margin, padding, and max-width for readability
+
+---
 
 ### [Container](http://localhost:6006/?path=/docs/page-layout-container--docs)
 A fixed-width wrapper that centers page content. Useful for consistent layouts. [See Storybook](http://localhost:6006/?path=/docs/page-layout-container--docs)
 
+**UX Goals:**
+- Maintain consistent content width for readability
+- Center content for balanced layouts
+
+**When to Use:**
+- For main content, forms, or cards
+
+**UX Risks:**
+- Too wide or too narrow harms scanability
+
+**CSS Notes:**
+- Uses max-width, margin auto, and responsive breakpoints
+
+---
+
 ### [Grid](http://localhost:6006/?path=/docs/page-layout-grid--docs)
 Structural layout of rows and columns. Enables responsive design. [See Storybook](http://localhost:6006/?path=/docs/page-layout-grid--docs)
+
+**UX Goals:**
+- Organize content for easy scanning
+- Support responsive, adaptable layouts
+
+**When to Use:**
+- For dashboards, galleries, or multi-column layouts
+
+**UX Risks:**
+- Overly complex grids can confuse users
+- Poor spacing reduces clarity
+
+**CSS Notes:**
+- Uses CSS grid/flexbox, gap, and media queries
+
+---
 
 ### [Section](http://localhost:6006/?path=/docs/page-layout-section--docs)
 Thematic division of content. [See Storybook](http://localhost:6006/?path=/docs/page-layout-section--docs)
 
+**UX Goals:**
+- Break content into digestible, thematic blocks
+- Aid in visual hierarchy and flow
+
+**When to Use:**
+- For separating topics, features, or steps
+
+**UX Risks:**
+- Too many sections can fragment the experience
+
+**CSS Notes:**
+- Uses padding, margin, and background color for separation
+
+---
+
 ### [Hero](http://localhost:6006/?path=/docs/page-layout-hero--docs)
 Large top area often with image and call-to-action. [See Storybook](http://localhost:6006/?path=/docs/page-layout-hero--docs)
 
+**UX Goals:**
+- Capture attention and communicate primary value
+- Guide users to the main action
+
+**When to Use:**
+- On landing pages or major sections
+
+**UX Risks:**
+- Overly large or busy heroes can distract from content
+
+**CSS Notes:**
+- Uses large typography, background images, and flex alignment
+
+---
+
 ### [Card](http://localhost:6006/?path=/docs/page-layout-card--docs)
 Boxed container for grouping related content or actions. [See Storybook](http://localhost:6006/?path=/docs/page-layout-card--docs)
+
+**UX Goals:**
+- Group related information for easy scanning
+- Provide clear boundaries for actions or content
+
+**When to Use:**
+- For product, profile, or info summaries
+
+**UX Risks:**
+- Too many cards can overwhelm
+- Inconsistent card sizes break flow
+
+**CSS Notes:**
+- Uses border-radius, shadow, and spacing
 
 ---
 
@@ -44,29 +185,171 @@ Boxed container for grouping related content or actions. [See Storybook](http://
 ### [Navbar](http://localhost:6006/?path=/docs/navigation-navbar--docs)
 Main site-wide navigation menu. Supports branding, links, and responsive layouts. [See Storybook](http://localhost:6006/?path=/docs/navigation-navbar--docs)
 
+**UX Goals:**
+- Provide clear, consistent access to main sections
+- Support user orientation and flow
+
+**When to Use:**
+- On every page for primary navigation
+
+**UX Risks:**
+- Overcrowding with too many links
+- Poor mobile adaptation
+
+**CSS Notes:**
+- Uses flexbox, sticky/fixed positioning, and responsive menus
+
+---
+
 ### [Breadcrumbs](http://localhost:6006/?path=/docs/navigation-breadcrumbs--docs)
 Trail showing user’s path within site hierarchy. Improves navigation and orientation. [See Storybook](http://localhost:6006/?path=/docs/navigation-breadcrumbs--docs)
+
+**UX Goals:**
+- Help users understand their location in the site
+- Enable quick navigation to parent sections
+
+**When to Use:**
+- In multi-level or hierarchical sites
+
+**UX Risks:**
+- Overly long breadcrumbs can clutter
+- Inconsistent labeling confuses users
+
+**CSS Notes:**
+- Uses inline-flex, separators, and ellipsis for overflow
+
+---
 
 ### [Pagination](http://localhost:6006/?path=/docs/navigation-pagination--docs)
 UI for moving between pages of results or content. [See Storybook](http://localhost:6006/?path=/docs/navigation-pagination--docs)
 
+**UX Goals:**
+- Allow users to navigate large data sets efficiently
+- Provide clear feedback on current location
+
+**When to Use:**
+- For search results, tables, or multi-page content
+
+**UX Risks:**
+- Too many page links overwhelm
+- Small or low-contrast controls harm usability
+
+**CSS Notes:**
+- Uses flex, spacing, and active state highlighting
+
+---
+
 ### [Tabs](http://localhost:6006/?path=/docs/navigation-tabs--docs)
 Horizontal switchers for toggling between views. [See Storybook](http://localhost:6006/?path=/docs/navigation-tabs--docs)
+
+**UX Goals:**
+- Enable quick switching between related content
+- Keep context visible and accessible
+
+**When to Use:**
+- For related but distinct content areas
+
+**UX Risks:**
+- Too many tabs reduce scanability
+- Inconsistent tab order breaks flow
+
+**CSS Notes:**
+- Uses flex, border-bottom, and active tab highlighting
+
+---
 
 ### [Accordion](http://localhost:6006/?path=/docs/overlays-and-feedback-accordion--docs)
 Collapsible panels for showing/hiding content. Great for FAQs and settings. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-accordion--docs)
 
+**UX Goals:**
+- Organize content in expandable sections
+- Reduce cognitive load by hiding less relevant info
+
+**When to Use:**
+- For FAQs, settings, or step-by-step guides
+
+**UX Risks:**
+- Nested accordions can confuse users
+- Poorly labeled headers break automation
+
+**CSS Notes:**
+- Uses border, transitions, and ARIA attributes
+
+---
+
 ### [Hamburger menu](http://localhost:6006/?path=/docs/navigation-hamburgermenu--docs)
 Mobile toggle icon for a collapsed menu. [See Storybook](http://localhost:6006/?path=/docs/navigation-hamburgermenu--docs)
+
+**UX Goals:**
+- Save space on small screens
+- Provide access to navigation without clutter
+
+**When to Use:**
+- On mobile or minimal UIs
+
+**UX Risks:**
+- Hidden navigation can reduce discoverability
+- Unclear icons harm recognition
+
+**CSS Notes:**
+- Uses icon SVG, transitions, and overlay menus
+
+---
 
 ### [Mega menu](http://localhost:6006/?path=/docs/navigation-megamenu--docs)
 Large dropdown with nested nav options. [See Storybook](http://localhost:6006/?path=/docs/navigation-megamenu--docs)
 
+**UX Goals:**
+- Expose many navigation options in a structured way
+- Support quick scanning and access
+
+**When to Use:**
+- For large sites with many sections
+
+**UX Risks:**
+- Overly complex menus overwhelm users
+- Poor grouping breaks flow
+
+**CSS Notes:**
+- Uses grid/flex, hover/focus states, and shadow
+
+---
+
 ### [Scrollspy](http://localhost:6006/?path=/docs/navigation-scrollspy--docs)
 Auto-highlights nav based on scroll location. Useful for long, sectioned pages. [See Storybook](http://localhost:6006/?path=/docs/navigation-scrollspy--docs)
 
+**UX Goals:**
+- Keep users oriented in long content
+- Enable quick jumps to sections
+
+**When to Use:**
+- For documentation, guides, or dashboards
+
+**UX Risks:**
+- Too many sections can clutter nav
+- Poor highlight contrast reduces clarity
+
+**CSS Notes:**
+- Uses position: sticky, active class, and smooth scroll
+
+---
+
 ### [Drawer](http://localhost:6006/?path=/docs/navigation-drawer--docs)
 Slide-out panel, often used for nav on mobile. [See Storybook](http://localhost:6006/?path=/docs/navigation-drawer--docs)
+
+**UX Goals:**
+- Provide off-canvas access to navigation or tools
+- Keep main content uncluttered
+
+**When to Use:**
+- For mobile nav, filters, or settings
+
+**UX Risks:**
+- Can obscure content if not managed
+- Poor animation or focus management harms flow
+
+**CSS Notes:**
+- Uses transform, transition, and overlay
 
 ---
 
@@ -75,66 +358,228 @@ Slide-out panel, often used for nav on mobile. [See Storybook](http://localhost:
 ### [Input field](http://localhost:6006/?path=/docs/form-inputs-inputfield--docs)
 Standard one-line text entry. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-inputfield--docs)
 
+**UX Goals:**
+- Enable fast, accurate data entry
+- Support keyboard and assistive tech
+
+**When to Use:**
+- For short, single-line input
+
+**UX Risks:**
+- Poor labeling or feedback increases errors
+- Small touch targets harm usability
+
+**CSS Notes:**
+- Uses border, padding, and focus ring
+
+---
+
 ### [Textarea](http://localhost:6006/?path=/docs/form-inputs-textarea--docs)
 Multi-line text entry for longer input. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-textarea--docs)
+
+**UX Goals:**
+- Allow users to enter and review longer text
+- Support resizing and accessibility
+
+**When to Use:**
+- For comments, messages, or descriptions
+
+**UX Risks:**
+- Fixed size can frustrate users
+- No feedback on max length
+
+**CSS Notes:**
+- Uses min-height, resize, and border
+
+---
 
 ### [Dropdown / Select](http://localhost:6006/?path=/docs/form-inputs-dropdown--docs)
 Single or multi-option selector. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-dropdown--docs)
 
+**UX Goals:**
+- Simplify selection from a list
+- Prevent invalid input
+
+**When to Use:**
+- For limited, known options
+
+**UX Risks:**
+- Too many options overwhelm
+- Poor keyboard support harms accessibility
+
+**CSS Notes:**
+- Uses custom arrow, border, and focus state
+
+---
+
 ### [Radio button](http://localhost:6006/?path=/docs/form-inputs-radiobutton--docs)
 Select one item from a group. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-radiobutton--docs)
+
+**UX Goals:**
+- Make mutually exclusive choices clear
+- Support quick selection
+
+**When to Use:**
+- For 2-5 options, single choice
+
+**UX Risks:**
+- Too many options reduce scanability
+- Poor spacing or labeling
+
+**CSS Notes:**
+- Uses circle, checked state, and label alignment
+
+---
 
 ### [Checkbox](http://localhost:6006/?path=/docs/form-inputs-checkbox--docs)
 Toggle selection of one or more options. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-checkbox--docs)
 
+**UX Goals:**
+- Allow multiple selections
+- Provide clear feedback on state
+
+**When to Use:**
+- For lists of toggles or multi-select
+
+**UX Risks:**
+- Indeterminate state can confuse
+- Small targets harm accessibility
+
+**CSS Notes:**
+- Uses square, checkmark, and focus ring
+
+---
+
 ### [Toggle / Switch](http://localhost:6006/?path=/docs/form-inputs-toggle--docs)
 On/off UI for boolean settings. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-toggle--docs)
+
+**UX Goals:**
+- Make binary choices fast and clear
+- Support touch and keyboard
+
+**When to Use:**
+- For settings, preferences, or feature flags
+
+**UX Risks:**
+- Unclear labels or states
+- Too small for touch
+
+**CSS Notes:**
+- Uses rounded track, thumb, and transition
+
+---
 
 ### [Range input](http://localhost:6006/?path=/docs/form-inputs-rangeinput--docs)
 Drag-to-select a numeric value. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-rangeinput--docs)
 
+**UX Goals:**
+- Enable quick, visual selection of a value
+- Provide feedback on current value
+
+**When to Use:**
+- For volume, brightness, or filters
+
+**UX Risks:**
+- No numeric feedback frustrates users
+- Small thumb is hard to drag
+
+**CSS Notes:**
+- Uses custom thumb, track, and focus state
+
+---
+
 ### [Date input](http://localhost:6006/?path=/docs/form-inputs-dateinput--docs)
 Calendar interface for date selection. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-dateinput--docs)
+
+**UX Goals:**
+- Prevent invalid dates, support fast selection
+- Aid in planning and scheduling
+
+**When to Use:**
+- For booking, scheduling, or filtering by date
+
+**UX Risks:**
+- Poor mobile support or unclear format
+- No feedback on invalid dates
+
+**CSS Notes:**
+- Uses calendar popover, input, and highlight
+
+---
 
 ### [Search input](http://localhost:6006/?path=/docs/form-inputs-searchinput--docs)
 Field to enter search terms. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-searchinput--docs)
 
+**UX Goals:**
+- Enable fast, accurate searching
+- Support keyboard and clear feedback
+
+**When to Use:**
+- For filtering, searching, or quick navigation
+
+**UX Risks:**
+- No feedback on empty or invalid search
+- Poor placeholder text
+
+**CSS Notes:**
+- Uses icon, border, and focus ring
+
+---
+
 ### [File input](http://localhost:6006/?path=/docs/form-inputs-fileinput--docs)
 Lets user upload files. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-fileinput--docs)
+
+**UX Goals:**
+- Make file selection and upload clear and safe
+- Provide feedback on selected files
+
+**When to Use:**
+- For attachments, profile images, or document uploads
+
+**UX Risks:**
+- No feedback on upload progress
+- Poor error handling
+
+**CSS Notes:**
+- Uses button, label, and file list
+
+---
 
 ### [Stepper](http://localhost:6006/?path=/docs/form-inputs-stepper--docs)
 Progress through a multi-part form. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-stepper--docs)
 
-### [Error / Helper text](http://localhost:6006/?path=/docs/form-inputs-validationmessage--docs)
-Feedback message for validation. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-validationmessage--docs)
+**UX Goals:**
+- Guide users through complex flows step by step
+- Reduce overwhelm by chunking tasks
+
+**When to Use:**
+- For onboarding, checkout, or surveys
+
+**UX Risks:**
+- Too many steps frustrate users
+- No progress feedback
+
+**CSS Notes:**
+- Uses progress bar, step indicators, and transitions
 
 ---
 
-## 🔘 Interactive Elements
+### [Error / Helper text](http://localhost:6006/?path=/docs/form-inputs-validationmessage--docs)
+Feedback message for validation. [See Storybook](http://localhost:6006/?path=/docs/form-inputs-validationmessage--docs)
 
-### [Button](http://localhost:6006/?path=/docs/interactive-elements-button--docs)
-Clickable element for actions. Supports variants, icons, and loading states. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-button--docs)
+**UX Goals:**
+- Provide clear, actionable feedback
+- Reduce errors and frustration
 
-### [Link](http://localhost:6006/?path=/docs/interactive-elements-link--docs)
-Navigates to another page or section. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-link--docs)
+**When to Use:**
+- For form validation and guidance
 
-### [Icon button](http://localhost:6006/?path=/docs/interactive-elements-iconbutton--docs)
-Button with just an icon, often for quick actions. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-iconbutton--docs)
+**UX Risks:**
+- Vague or missing messages
+- Poor color contrast
 
-### [Chip](http://localhost:6006/?path=/docs/interactive-elements-chip--docs)
-Small element showing tags or selections. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-chip--docs)
-
-### [Tooltip](http://localhost:6006/?path=/docs/interactive-elements-tooltip--docs)
-Hover-over info bubble. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-tooltip--docs)
-
-### [Popover](http://localhost:6006/?path=/docs/interactive-elements-popover--docs)
-Expands with additional info when clicked or hovered. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-popover--docs)
-
-### [Context menu](http://localhost:6006/?path=/docs/interactive-elements-contextmenu--docs)
-Right-click menu with options. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-contextmenu--docs)
-
-### [FAB](http://localhost:6006/?path=/docs/interactive-elements-fab--docs)
-Floating action button, typically for primary action. [See Storybook](http://localhost:6006/?path=/docs/interactive-elements-fab--docs)
+**CSS Notes:**
+- Uses color, icon, and spacing
 
 ---
 
@@ -143,23 +588,133 @@ Floating action button, typically for primary action. [See Storybook](http://loc
 ### [Modal](http://localhost:6006/?path=/docs/overlays-and-feedback-modal--docs)
 Dialog that overlays the page for focused interaction. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-modal--docs)
 
+**UX Goals:**
+- Focus user attention on a task or message
+- Prevent background interaction
+
+**When to Use:**
+- For confirmations, forms, or alerts
+
+**UX Risks:**
+- Overuse disrupts flow
+- Poor focus management harms accessibility
+
+**CSS Notes:**
+- Uses fixed position, overlay, and transitions
+
+---
+
 ### [Toast](http://localhost:6006/?path=/docs/overlays-and-feedback-toast--docs)
 Brief message that auto-dismisses. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-toast--docs)
+
+**UX Goals:**
+- Provide non-intrusive, timely feedback
+- Avoid blocking user flow
+
+**When to Use:**
+- For confirmations, errors, or status updates
+
+**UX Risks:**
+- Too many toasts overwhelm
+- Short duration can cause missed messages
+
+**CSS Notes:**
+- Uses fixed position, animation, and color
+
+---
 
 ### [Backdrop](http://localhost:6006/?path=/docs/overlays-and-feedback-backdrop--docs)
 Dimmed screen behind a modal or drawer. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-backdrop--docs)
 
+**UX Goals:**
+- Focus attention on overlay content
+- Prevent interaction with background
+
+**When to Use:**
+- With modals, drawers, or popovers
+
+**UX Risks:**
+- Too opaque or dark can feel jarring
+- No escape route frustrates users
+
+**CSS Notes:**
+- Uses opacity, z-index, and transitions
+
+---
+
 ### [Alert](http://localhost:6006/?path=/docs/overlays-and-feedback-alert--docs)
 Persistent notification for warning or info. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-alert--docs)
+
+**UX Goals:**
+- Communicate important info or warnings
+- Remain visible until dismissed or resolved
+
+**When to Use:**
+- For errors, warnings, or persistent info
+
+**UX Risks:**
+- Overuse causes alert fatigue
+- Poor color contrast
+
+**CSS Notes:**
+- Uses color, icon, and spacing
+
+---
 
 ### [Progress bar](http://localhost:6006/?path=/docs/overlays-and-feedback-progressbar--docs)
 Indicates task or loading progress. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-progressbar--docs)
 
+**UX Goals:**
+- Set user expectations for wait times
+- Reduce anxiety during loading
+
+**When to Use:**
+- For uploads, downloads, or long tasks
+
+**UX Risks:**
+- No feedback on completion
+- Indeterminate bars can frustrate
+
+**CSS Notes:**
+- Uses width transition, color, and label
+
+---
+
 ### [Spinner](http://localhost:6006/?path=/docs/overlays-and-feedback-spinner--docs)
 Animation indicating loading state. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-spinner--docs)
 
+**UX Goals:**
+- Indicate ongoing activity
+- Reassure users that progress is happening
+
+**When to Use:**
+- For short, indeterminate waits
+
+**UX Risks:**
+- No context or label can confuse
+- Overuse causes distraction
+
+**CSS Notes:**
+- Uses animation, color, and size
+
+---
+
 ### [Skeleton loader](http://localhost:6006/?path=/docs/overlays-and-feedback-skeletonloader--docs)
 Placeholder UI while loading real content. [See Storybook](http://localhost:6006/?path=/docs/overlays-and-feedback-skeletonloader--docs)
+
+**UX Goals:**
+- Reduce perceived wait time
+- Set expectations for content layout
+
+**When to Use:**
+- For loading lists, cards, or images
+
+**UX Risks:**
+- Overuse can feel artificial
+- Poor contrast or animation
+
+**CSS Notes:**
+- Uses gradient animation, shape, and spacing
 
 ---
 
@@ -168,38 +723,228 @@ Placeholder UI while loading real content. [See Storybook](http://localhost:6006
 ### [Table](http://localhost:6006/?path=/docs/data-display-table--docs)
 Grid-based layout for structured data. [See Storybook](http://localhost:6006/?path=/docs/data-display-table--docs)
 
+**UX Goals:**
+- Present data for easy scanning and comparison
+- Support sorting and filtering
+
+**When to Use:**
+- For structured, tabular data
+
+**UX Risks:**
+- Too many columns or rows overwhelm
+- Poor alignment or spacing
+
+**CSS Notes:**
+- Uses table, th/td, and responsive scroll
+
+---
+
 ### [List](http://localhost:6006/?path=/docs/data-display-list--docs)
 Vertical collection of items. [See Storybook](http://localhost:6006/?path=/docs/data-display-list--docs)
+
+**UX Goals:**
+- Present items in a scannable, vertical flow
+- Support selection or actions per item
+
+**When to Use:**
+- For menus, feeds, or item groups
+
+**UX Risks:**
+- Overly long lists reduce usability
+- No grouping or headers
+
+**CSS Notes:**
+- Uses ul/ol, spacing, and hover states
+
+---
 
 ### [Tree view](http://localhost:6006/?path=/docs/data-display-treeview--docs)
 Expandable hierarchy of items. [See Storybook](http://localhost:6006/?path=/docs/data-display-treeview--docs)
 
+**UX Goals:**
+- Visualize nested relationships
+- Enable quick navigation and expansion
+
+**When to Use:**
+- For file systems, categories, or org charts
+
+**UX Risks:**
+- Deep nesting can overwhelm
+- Poor expand/collapse feedback
+
+**CSS Notes:**
+- Uses indentation, icons, and transitions
+
+---
+
 ### [Badge](http://localhost:6006/?path=/docs/data-display-badge--docs)
 Count or status indicator. [See Storybook](http://localhost:6006/?path=/docs/data-display-badge--docs)
+
+**UX Goals:**
+- Draw attention to status or counts
+- Support quick scanning
+
+**When to Use:**
+- For notifications, status, or counts
+
+**UX Risks:**
+- Overuse reduces impact
+- Poor color contrast
+
+**CSS Notes:**
+- Uses color, border-radius, and size
+
+---
 
 ### [Avatar](http://localhost:6006/?path=/docs/data-display-avatar--docs)
 User icon, photo, or initials. [See Storybook](http://localhost:6006/?path=/docs/data-display-avatar--docs)
 
+**UX Goals:**
+- Personalize the experience
+- Aid in user recognition
+
+**When to Use:**
+- For profiles, comments, or lists
+
+**UX Risks:**
+- Low-res or missing images
+- Poor fallback for initials
+
+**CSS Notes:**
+- Uses circle, image, and background color
+
+---
+
 ### [Timeline](http://localhost:6006/?path=/docs/data-display-timeline--docs)
 Ordered events shown over time. [See Storybook](http://localhost:6006/?path=/docs/data-display-timeline--docs)
+
+**UX Goals:**
+- Visualize sequences or history
+- Support scanning and comparison
+
+**When to Use:**
+- For activity feeds, project history, or events
+
+**UX Risks:**
+- Too dense or unclear labels
+- Poor contrast for events
+
+**CSS Notes:**
+- Uses vertical/horizontal lines, icons, and spacing
+
+---
 
 ### [Carousel](http://localhost:6006/?path=/docs/data-display-carousel--docs)
 Horizontally scrollable group of content. [See Storybook](http://localhost:6006/?path=/docs/data-display-carousel--docs)
 
+**UX Goals:**
+- Present multiple items in limited space
+- Enable quick browsing
+
+**When to Use:**
+- For images, cards, or featured content
+
+**UX Risks:**
+- Hidden items reduce discoverability
+- Poor swipe/arrow controls
+
+**CSS Notes:**
+- Uses flex, overflow-x, and navigation dots/arrows
+
+---
+
 ### [Gallery](http://localhost:6006/?path=/docs/data-display-gallery--docs)
 Grid of media or images. [See Storybook](http://localhost:6006/?path=/docs/data-display-gallery--docs)
+
+**UX Goals:**
+- Present visual content for scanning
+- Support selection or preview
+
+**When to Use:**
+- For images, videos, or media collections
+
+**UX Risks:**
+- Poor spacing or alignment
+- No feedback on selection
+
+**CSS Notes:**
+- Uses grid, gap, and hover states
+
+---
 
 ### [Label / Tag](http://localhost:6006/?path=/docs/data-display-label--docs)
 Small markers for categories or info. [See Storybook](http://localhost:6006/?path=/docs/data-display-label--docs)
 
+**UX Goals:**
+- Categorize or annotate content
+- Aid in filtering or scanning
+
+**When to Use:**
+- For categories, statuses, or filters
+
+**UX Risks:**
+- Too many labels clutter UI
+- Low contrast
+
+**CSS Notes:**
+- Uses color, border-radius, and font size
+
+---
+
 ### [Chart](http://localhost:6006/?path=/docs/data-display-chart--docs)
 Graphical data representation. [See Storybook](http://localhost:6006/?path=/docs/data-display-chart--docs)
+
+**UX Goals:**
+- Visualize trends, comparisons, or distributions
+- Support quick insights
+
+**When to Use:**
+- For analytics, dashboards, or reports
+
+**UX Risks:**
+- Overly complex or unclear charts
+- Poor color choices
+
+**CSS Notes:**
+- Uses SVG, color, and legend
+
+---
 
 ### [Meter](http://localhost:6006/?path=/docs/data-display-meter--docs)
 Graph showing a value relative to max. [See Storybook](http://localhost:6006/?path=/docs/data-display-meter--docs)
 
+**UX Goals:**
+- Show progress or status at a glance
+- Support comparison to a goal
+
+**When to Use:**
+- For quotas, goals, or health indicators
+
+**UX Risks:**
+- No context for value
+- Poor color contrast
+
+**CSS Notes:**
+- Uses bar, color, and label
+
+---
+
 ### [Stat card](http://localhost:6006/?path=/docs/data-display-statcard--docs)
 Key metrics in compact display. [See Storybook](http://localhost:6006/?path=/docs/data-display-statcard--docs)
+
+**UX Goals:**
+- Highlight important metrics
+- Support scanning and comparison
+
+**When to Use:**
+- For dashboards, summaries, or KPIs
+
+**UX Risks:**
+- Too many stats reduce focus
+- Poor alignment or spacing
+
+**CSS Notes:**
+- Uses card, large font, and color
 
 ---
 
@@ -208,26 +953,168 @@ Key metrics in compact display. [See Storybook](http://localhost:6006/?path=/doc
 ### [Scroll area](http://localhost:6006/?path=/docs/experience-enhancers-scrollarea--docs)
 Div with scrollable overflow. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-scrollarea--docs)
 
+**UX Goals:**
+- Enable access to overflow content
+- Support touch and keyboard navigation
+
+**When to Use:**
+- For lists, tables, or side panels
+
+**UX Risks:**
+- Hidden scrollbars reduce discoverability
+- Poor keyboard support
+
+**CSS Notes:**
+- Uses overflow, custom scrollbar, and focus ring
+
+---
+
 ### [Snap section](http://localhost:6006/?path=/docs/experience-enhancers-snapsection--docs)
 Content that aligns during scroll. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-snapsection--docs)
+
+**UX Goals:**
+- Guide users through content in logical steps
+- Reduce cognitive load by chunking
+
+**When to Use:**
+- For presentations, onboarding, or feature tours
+
+**UX Risks:**
+- Overuse can feel restrictive
+- Poor snap points break flow
+
+**CSS Notes:**
+- Uses scroll-snap-type, alignment, and spacing
+
+---
 
 ### [Parallax](http://localhost:6006/?path=/docs/experience-enhancers-parallax--docs)
 Layers scroll at different speeds. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-parallax--docs)
 
+**UX Goals:**
+- Add depth and engagement to scrolling
+- Guide attention to key content
+
+**When to Use:**
+- For landing pages or visual storytelling
+
+**UX Risks:**
+- Overuse distracts from content
+- Motion can cause discomfort
+
+**CSS Notes:**
+- Uses transform, translate, and scroll events
+
+---
+
 ### [Sticky element](http://localhost:6006/?path=/docs/experience-enhancers-stickyelement--docs)
 Stays fixed while user scrolls. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-stickyelement--docs)
+
+**UX Goals:**
+- Keep key actions or info visible
+- Support quick access
+
+**When to Use:**
+- For nav, actions, or summaries
+
+**UX Risks:**
+- Too many sticky elements clutter UI
+- Can obscure content
+
+**CSS Notes:**
+- Uses position: sticky, z-index, and spacing
+
+---
 
 ### [Infinite scroll](http://localhost:6006/?path=/docs/experience-enhancers-infinitescroll--docs)
 Loads new items as user scrolls down. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-infinitescroll--docs)
 
+**UX Goals:**
+- Enable seamless content discovery
+- Reduce friction in browsing
+
+**When to Use:**
+- For feeds, galleries, or product lists
+
+**UX Risks:**
+- No feedback on end of content
+- Hard to reach footer or actions
+
+**CSS Notes:**
+- Uses scroll event, loading indicator, and spacing
+
+---
+
 ### [Drag and drop](http://localhost:6006/?path=/docs/experience-enhancers-draganddrop--docs)
 Allows reordering or moving items. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-draganddrop--docs)
+
+**UX Goals:**
+- Enable intuitive reordering or grouping
+- Support direct manipulation
+
+**When to Use:**
+- For lists, kanban, or file uploads
+
+**UX Risks:**
+- Poor feedback on drop targets
+- Hard to use on touch devices
+
+**CSS Notes:**
+- Uses drag events, highlight, and cursor
+
+---
 
 ### [Zoom / Pan](http://localhost:6006/?path=/docs/experience-enhancers-zoompan--docs)
 Interaction with large visual elements. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-zoompan--docs)
 
+**UX Goals:**
+- Enable detailed inspection of content
+- Support smooth navigation
+
+**When to Use:**
+- For maps, images, or diagrams
+
+**UX Risks:**
+- Overly sensitive or laggy controls
+- No reset or home button
+
+**CSS Notes:**
+- Uses transform, scale, and drag
+
+---
+
 ### [Guided tour](http://localhost:6006/?path=/docs/experience-enhancers-guidedtour--docs)
 UI to walk users through features. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-guidedtour--docs)
 
+**UX Goals:**
+- Onboard users and highlight key features
+- Reduce learning curve
+
+**When to Use:**
+- For new users, major updates, or complex flows
+
+**UX Risks:**
+- Too long or intrusive tours
+- No skip or exit option
+
+**CSS Notes:**
+- Uses overlay, highlight, and step indicators
+
+---
+
 ### [Theme switcher](http://localhost:6006/?path=/docs/experience-enhancers-themeswitcher--docs)
 Toggles between light/dark mode. [See Storybook](http://localhost:6006/?path=/docs/experience-enhancers-themeswitcher--docs)
+
+**UX Goals:**
+- Support user preference and accessibility
+- Reduce eye strain in different environments
+
+**When to Use:**
+- For apps with long usage or diverse users
+
+**UX Risks:**
+- Inconsistent theming across components
+- Poor contrast in custom themes
+
+**CSS Notes:**
+- Uses CSS variables, toggle, and color schemes
