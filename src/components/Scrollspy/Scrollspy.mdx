@@ -1,7 +1,236 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as ScrollspyStories from './Scrollspy.stories.jsx';
 
-<Meta title="Navigation/Scrollspy" />
+<Meta of={ScrollspyStories} />
 
 # Scrollspy
 
-Auto-highlights nav based on scroll location.
+A navigation component that automatically highlights navigation items based on the current scroll position, providing a smooth and intuitive way to navigate through long content sections.
+
+## Overview
+
+The Scrollspy component is designed to provide automatic navigation highlighting based on scroll position. It's perfect for long pages with multiple sections, documentation sites, or any content that benefits from visual navigation feedback.
+
+## Features
+
+- **Automatic Highlighting**: Automatically highlights the current section based on scroll position
+- **Smooth Scrolling**: Supports smooth scrolling to target sections
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import Scrollspy from './components/Scrollspy';
+
+function App() {
+  return (
+    <div style={{ display: 'flex' }}>
+      <Scrollspy
+        items={[
+          { id: 'section1', label: 'Introduction' },
+          { id: 'section2', label: 'Features' },
+          { id: 'section3', label: 'Getting Started' },
+          { id: 'section4', label: 'Advanced Usage' },
+          { id: 'section5', label: 'API Reference' }
+        ]}
+        variant="default"
+        size="md"
+        position="left"
+        onItemClick={(item) => console.log('Clicked:', item.label)}
+      />
+      
+      <div style={{ flex: 1 }}>
+        <section id="section1">
+          <h1>Introduction</h1>
+          <p>This is the introduction section.</p>
+        </section>
+        
+        <section id="section2">
+          <h1>Features</h1>
+          <p>This section covers the main features.</p>
+        </section>
+        
+        {/* More sections... */}
+      </div>
+    </div>
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| items | array | [] | Navigation items array |
+| items[].id | string | - | Unique identifier for the item (must match section id) |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Optional link URL for the item |
+| items[].icon | string | - | Optional icon for the item |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| position | string | 'left' | Position: 'left', 'right' |
+| offset | number | 0 | Offset from top when calculating active section |
+| threshold | number | 0.5 | Threshold for determining when a section is active (0-1) |
+| smooth | boolean | true | Whether to use smooth scrolling |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a navigation item is clicked |
+| onItemChange | function | - | Callback when active item changes |
+`}</Markdown>
+
+## Variants
+
+The Scrollspy component supports four visual variants:
+
+### Default
+The standard scrollspy with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around each item.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact scrollspy for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger scrollspy for prominent navigation areas
+
+## Positions
+
+The scrollspy can be positioned on either side:
+
+- **Left**: Default position, positioned on the left side
+- **Right**: Alternative position, positioned on the right side
+
+## Responsive Behavior
+
+The Scrollspy automatically adapts to different screen sizes:
+
+- **Desktop**: Full scrollspy with all items visible
+- **Tablet**: Responsive layout with potential item wrapping
+- **Mobile**: Compact layout with touch-friendly interactions
+
+## Accessibility
+
+The Scrollspy component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+- Reduced motion support
+
+## Examples
+
+### Basic Scrollspy
+
+```jsx
+<Scrollspy
+  items={[
+    { id: 'overview', label: 'Overview' },
+    { id: 'installation', label: 'Installation' },
+    { id: 'usage', label: 'Usage' },
+    { id: 'api', label: 'API Reference' }
+  ]}
+  variant="default"
+  size="md"
+  position="left"
+/>
+```
+
+### With Icons
+
+```jsx
+<Scrollspy
+  items={[
+    { id: 'overview', label: 'Overview', icon: '📋' },
+    { id: 'installation', label: 'Installation', icon: '⚙️' },
+    { id: 'usage', label: 'Usage', icon: '💡' },
+    { id: 'api', label: 'API Reference', icon: '📚' }
+  ]}
+  variant="default"
+  size="md"
+  position="left"
+/>
+```
+
+### With Custom Offset
+
+```jsx
+<Scrollspy
+  items={[
+    { id: 'section1', label: 'Section 1' },
+    { id: 'section2', label: 'Section 2' },
+    { id: 'section3', label: 'Section 3' }
+  ]}
+  variant="default"
+  size="md"
+  position="left"
+  offset={100} // Account for fixed header
+  threshold={0.3} // More sensitive activation
+/>
+```
+
+### Right Position
+
+```jsx
+<Scrollspy
+  items={[
+    { id: 'section1', label: 'Section 1' },
+    { id: 'section2', label: 'Section 2' },
+    { id: 'section3', label: 'Section 3' }
+  ]}
+  variant="default"
+  size="md"
+  position="right"
+/>
+```
+
+### With Header
+
+```jsx
+<Scrollspy
+  items={[
+    { id: 'section1', label: 'Section 1' },
+    { id: 'section2', label: 'Section 2' },
+    { id: 'section3', label: 'Section 3' }
+  ]}
+  variant="default"
+  size="md"
+  position="left"
+  header={
+    <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+      <h3>Table of Contents</h3>
+      <p>Navigate through sections</p>
+    </div>
+  }
+/>
+```
+
+## Best Practices
+
+1. **Matching IDs**: Ensure section IDs match the item IDs exactly
+2. **Appropriate Offset**: Set the correct offset if you have a fixed header
+3. **Clear Labels**: Use descriptive labels for navigation items
+4. **Logical Order**: Arrange items in the same order as sections
+5. **Performance**: Avoid too many items for better performance
+6. **Accessibility**: Test keyboard navigation thoroughly
+
+## Related Components
+
+- **Navbar**: For horizontal navigation
+- **Sidebar**: For vertical navigation
+- **Breadcrumbs**: For secondary navigation
+- **Tabs**: For content switching within a page

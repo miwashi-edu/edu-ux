@@ -1,7 +1,201 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as SidebarStories from './Sidebar.stories.jsx';
 
-<Meta title="PageLayout/Sidebar" />
+<Meta of={SidebarStories} />
 
 # Sidebar
 
-Vertical area for nav or tools, left or right aligned.
+A responsive vertical navigation component that provides a flexible and accessible way to create side navigation with support for collapsible sections and mobile responsiveness.
+
+## Overview
+
+The Sidebar component is designed to be a vertical navigation element for web applications. It supports various layouts, responsive behavior, and can include navigation items, sections, and custom content.
+
+## Features
+
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Collapsible**: Can be collapsed to save space
+- **Flexible Layout**: Support for items, sections, and custom content
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import Sidebar from './components/Sidebar';
+
+function App() {
+  return (
+    <Sidebar
+      items={[
+        { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊', active: true },
+        { id: 'users', label: 'Users', href: '/users', icon: '👥' },
+        { id: 'settings', label: 'Settings', href: '/settings', icon: '⚙️' }
+      ]}
+      variant="default"
+      size="md"
+      position="left"
+      collapsed={false}
+      collapsible={true}
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| items | array | [] | Navigation items array |
+| items[].id | string | - | Unique identifier for the item |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Link URL for the item |
+| items[].active | boolean | false | Whether the item is currently active |
+| items[].icon | string | - | Icon for the item (emoji or icon component) |
+| sections | array | [] | Navigation sections array |
+| sections[].id | string | - | Unique identifier for the section |
+| sections[].title | string | - | Section title |
+| sections[].items | array | - | Items in the section |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| position | string | 'left' | Position: 'left', 'right' |
+| collapsed | boolean | false | Whether the sidebar is collapsed |
+| collapsible | boolean | true | Whether the sidebar can be collapsed |
+| overlay | boolean | true | Whether to show overlay on mobile |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a navigation item is clicked |
+| onToggle | function | - | Callback when sidebar is toggled |
+`}</Markdown>
+
+## Variants
+
+The Sidebar component supports four visual variants:
+
+### Default
+The standard sidebar with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the sidebar.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact sidebar for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger sidebar for prominent navigation areas
+
+## Positions
+
+The sidebar can be positioned on either side:
+
+- **Left**: Default position, slides in from the left
+- **Right**: Alternative position, slides in from the right
+
+## Responsive Behavior
+
+The Sidebar automatically adapts to different screen sizes:
+
+- **Desktop**: Full sidebar with all items visible
+- **Tablet**: Responsive layout with potential item wrapping
+- **Mobile**: Collapsible menu with overlay support
+
+## Accessibility
+
+The Sidebar component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+
+## Examples
+
+### Basic Navigation
+
+```jsx
+<Sidebar
+  items={[
+    { id: 'home', label: 'Home', href: '/', active: true },
+    { id: 'about', label: 'About', href: '/about' },
+    { id: 'contact', label: 'Contact', href: '/contact' }
+  ]}
+/>
+```
+
+### With Sections
+
+```jsx
+<Sidebar
+  sections={[
+    {
+      id: 'main',
+      title: 'Main Navigation',
+      items: [
+        { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
+        { id: 'users', label: 'Users', href: '/users' }
+      ]
+    },
+    {
+      id: 'admin',
+      title: 'Administration',
+      items: [
+        { id: 'settings', label: 'Settings', href: '/settings' },
+        { id: 'reports', label: 'Reports', href: '/reports' }
+      ]
+    }
+  ]}
+/>
+```
+
+### Collapsible Sidebar
+
+```jsx
+<Sidebar
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
+    { id: 'users', label: 'Users', href: '/users' }
+  ]}
+  collapsed={false}
+  collapsible={true}
+  onToggle={(collapsed) => console.log('Sidebar collapsed:', collapsed)}
+/>
+```
+
+### Right Position
+
+```jsx
+<Sidebar
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
+    { id: 'users', label: 'Users', href: '/users' }
+  ]}
+  position="right"
+/>
+```
+
+## Best Practices
+
+1. **Keep it Simple**: Don't overload the sidebar with too many items
+2. **Logical Grouping**: Use sections to group related items
+3. **Clear Labels**: Make sure navigation labels are descriptive
+4. **Active States**: Clearly indicate the current page
+5. **Responsive Design**: Test on different screen sizes
+6. **Accessibility**: Ensure keyboard navigation works properly
+
+## Related Components
+
+- **Navbar**: For horizontal navigation
+- **Header**: For page-level headers
+- **Drawer**: For slide-out navigation panels
+- **Breadcrumbs**: For secondary navigation

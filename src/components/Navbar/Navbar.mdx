@@ -1,7 +1,190 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as NavbarStories from './Navbar.stories.jsx';
 
-<Meta title="Navigation/Navbar" />
+<Meta of={NavbarStories} />
 
 # Navbar
 
-Main site-wide navigation menu.
+A responsive navigation bar component that provides a flexible and accessible way to create site navigation.
+
+## Overview
+
+The Navbar component is designed to be the primary navigation element for web applications. It supports various layouts, responsive behavior, and can include branding, navigation links, and action buttons.
+
+## Features
+
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Flexible Layout**: Support for brand, navigation, and action areas
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import Navbar from './components/Navbar';
+
+function App() {
+  return (
+    <Navbar
+      brand={{
+        text: 'MyApp',
+        icon: '🚀',
+        href: '/'
+      }}
+      items={[
+        { id: 'home', label: 'Home', href: '/', active: true },
+        { id: 'about', label: 'About', href: '/about' },
+        { id: 'contact', label: 'Contact', href: '/contact' }
+      ]}
+      actions={
+        <Button variant="primary">Sign Up</Button>
+      }
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| brand | object | - | Brand configuration object |
+| brand.text | string | - | Brand text/name |
+| brand.icon | string | - | Brand icon (emoji or icon component) |
+| brand.href | string | - | Brand link URL |
+| items | array | [] | Navigation items array |
+| items[].id | string | - | Unique identifier for the item |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Link URL for the item |
+| items[].active | boolean | false | Whether the item is currently active |
+| items[].icon | string | - | Icon for the item (emoji or icon component) |
+| actions | node | - | Action buttons or content to display on the right |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| fixed | boolean | false | Whether the navbar is fixed to the top |
+| transparent | boolean | false | Whether the navbar is transparent |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a navigation item is clicked |
+| onBrandClick | function | - | Callback when the brand is clicked |
+`}</Markdown>
+
+## Variants
+
+The Navbar component supports four visual variants:
+
+### Default
+The standard navbar with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the navbar.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact navbar for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger navbar for prominent navigation areas
+
+## Responsive Behavior
+
+The Navbar automatically adapts to different screen sizes:
+
+- **Desktop**: Full navigation with all items visible
+- **Tablet**: Responsive layout with potential item wrapping
+- **Mobile**: Collapsible menu with hamburger button (when using HamburgerMenu component)
+
+## Accessibility
+
+The Navbar component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+
+## Examples
+
+### Basic Navigation
+
+```jsx
+<Navbar
+  brand={{ text: 'MyApp', href: '/' }}
+  items={[
+    { id: 'home', label: 'Home', href: '/', active: true },
+    { id: 'about', label: 'About', href: '/about' },
+    { id: 'contact', label: 'Contact', href: '/contact' }
+  ]}
+/>
+```
+
+### With Actions
+
+```jsx
+<Navbar
+  brand={{ text: 'MyApp', icon: '🚀', href: '/' }}
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', active: true },
+    { id: 'users', label: 'Users', href: '/users' },
+    { id: 'settings', label: 'Settings', href: '/settings' }
+  ]}
+  actions={
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Button variant="secondary">Login</Button>
+      <Button variant="primary">Sign Up</Button>
+    </div>
+  }
+/>
+```
+
+### Fixed Navigation
+
+```jsx
+<Navbar
+  brand={{ text: 'MyApp', href: '/' }}
+  items={[
+    { id: 'home', label: 'Home', href: '/', active: true },
+    { id: 'about', label: 'About', href: '/about' }
+  ]}
+  fixed={true}
+/>
+```
+
+### Transparent Navigation
+
+```jsx
+<Navbar
+  brand={{ text: 'MyApp', href: '/' }}
+  items={[
+    { id: 'home', label: 'Home', href: '/', active: true },
+    { id: 'about', label: 'About', href: '/about' }
+  ]}
+  transparent={true}
+/>
+```
+
+## Best Practices
+
+1. **Keep it Simple**: Don't overload the navbar with too many items
+2. **Clear Branding**: Make sure your brand is clearly visible
+3. **Logical Order**: Arrange navigation items in a logical order
+4. **Active States**: Clearly indicate the current page
+5. **Responsive Design**: Test on different screen sizes
+6. **Accessibility**: Ensure keyboard navigation works properly
+
+## Related Components
+
+- **Header**: For page-level headers with more content
+- **Sidebar**: For vertical navigation
+- **HamburgerMenu**: For mobile navigation menus
+- **Breadcrumbs**: For secondary navigation

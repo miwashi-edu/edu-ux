@@ -1,7 +1,249 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as DrawerStories from './Drawer.stories.jsx';
 
-<Meta title="Navigation/Drawer" />
+<Meta of={DrawerStories} />
 
 # Drawer
 
-Slide-out panel, often used for nav on mobile.
+A slide-out panel component that provides a flexible and accessible way to create overlay navigation, forms, or content panels with support for multiple positions and animations.
+
+## Overview
+
+The Drawer component is designed to be a slide-out panel that can be used for navigation, forms, or any content that needs to be displayed as an overlay. It supports various positions, sizes, and animations with full accessibility support.
+
+## Features
+
+- **Multiple Positions**: Left, right, top, and bottom positioning
+- **Multiple Sizes**: Small, medium, large, and extra large sizes
+- **Animation Support**: Slide, fade, and scale animations
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import Drawer from './components/Drawer';
+import Button from './components/Button';
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div>
+      <Button onClick={() => setIsOpen(true)}>
+        Open Drawer
+      </Button>
+      
+      <Drawer
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        variant="default"
+        size="md"
+        position="right"
+        animation="slide"
+      >
+        <div style={{ padding: '2rem' }}>
+          <h2>Drawer Content</h2>
+          <p>This is the content inside the drawer.</p>
+          <Button onClick={() => setIsOpen(false)}>
+            Close Drawer
+          </Button>
+        </div>
+      </Drawer>
+    </div>
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| isOpen | boolean | false | Whether the drawer is open |
+| onClose | function | - | Callback when drawer is closed |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg', 'xl' |
+| position | string | 'right' | Position: 'left', 'right', 'top', 'bottom' |
+| animation | string | 'slide' | Animation: 'slide', 'fade', 'scale' |
+| overlay | boolean | true | Whether to show overlay |
+| header | node | - | Optional header content |
+| footer | node | - | Optional footer content |
+| className | string | '' | Additional CSS classes |
+| children | node | - | Drawer content |
+`}</Markdown>
+
+## Variants
+
+The Drawer component supports four visual variants:
+
+### Default
+The standard drawer with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the drawer.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Four size options are available:
+
+- **Small (sm)**: Compact drawer (320px width/height)
+- **Medium (md)**: Standard size (480px width/height)
+- **Large (lg)**: Larger drawer (640px width/height)
+- **Extra Large (xl)**: Maximum size (full width/height)
+
+## Positions
+
+The drawer can be positioned in four directions:
+
+- **Left**: Slides in from the left side
+- **Right**: Slides in from the right side (default)
+- **Top**: Slides in from the top
+- **Bottom**: Slides in from the bottom
+
+## Animations
+
+Three animation types are available:
+
+- **Slide**: Smooth sliding animation (default)
+- **Fade**: Fade in/out animation
+- **Scale**: Scale in/out animation
+
+## Responsive Behavior
+
+The Drawer automatically adapts to different screen sizes:
+
+- **Desktop**: Full drawer with all features
+- **Tablet**: Responsive layout with adjusted sizing
+- **Mobile**: Full-width/height drawer with touch-friendly interactions
+
+## Accessibility
+
+The Drawer component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support (Escape key to close)
+- Focus management
+- Screen reader compatibility
+- High contrast support
+- Reduced motion support
+
+## Examples
+
+### Basic Drawer
+
+```jsx
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  variant="default"
+  size="md"
+  position="right"
+>
+  <div style={{ padding: '2rem' }}>
+    <h2>Drawer Content</h2>
+    <p>This is the content inside the drawer.</p>
+  </div>
+</Drawer>
+```
+
+### With Header and Footer
+
+```jsx
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  variant="default"
+  size="md"
+  position="right"
+  header={
+    <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+      <h3>Drawer Header</h3>
+    </div>
+  }
+  footer={
+    <div style={{ padding: '1rem', borderTop: '1px solid #e5e7eb' }}>
+      <Button variant="primary">Save Changes</Button>
+    </div>
+  }
+>
+  <div style={{ padding: '2rem' }}>
+    <p>Drawer content goes here.</p>
+  </div>
+</Drawer>
+```
+
+### Left Position
+
+```jsx
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  variant="default"
+  size="md"
+  position="left"
+>
+  <div style={{ padding: '2rem' }}>
+    <h2>Left Drawer</h2>
+    <p>This drawer slides in from the left.</p>
+  </div>
+</Drawer>
+```
+
+### Top Position
+
+```jsx
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  variant="default"
+  size="md"
+  position="top"
+>
+  <div style={{ padding: '2rem' }}>
+    <h2>Top Drawer</h2>
+    <p>This drawer slides in from the top.</p>
+  </div>
+</Drawer>
+```
+
+### Bottom Position
+
+```jsx
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  variant="default"
+  size="md"
+  position="bottom"
+>
+  <div style={{ padding: '2rem' }}>
+    <h2>Bottom Drawer</h2>
+    <p>This drawer slides in from the bottom.</p>
+  </div>
+</Drawer>
+```
+
+## Best Practices
+
+1. **Clear Purpose**: Use drawers for focused, specific tasks
+2. **Appropriate Size**: Choose the right size for your content
+3. **Escape Key**: Always support closing with the Escape key
+4. **Focus Management**: Ensure proper focus handling
+5. **Mobile Friendly**: Test on mobile devices
+6. **Performance**: Avoid heavy content that might slow down animations
+
+## Related Components
+
+- **Modal**: For centered overlay dialogs
+- **Sidebar**: For persistent vertical navigation
+- **Popover**: For small contextual overlays
+- **Tooltip**: For small informational overlays

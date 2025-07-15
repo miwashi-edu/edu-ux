@@ -1,1 +1,248 @@
-/* CSS Module */
+/* Base header */
+.header {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  gap: 1rem;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1f2937;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.brand:hover {
+  color: #3b82f6;
+}
+
+.brandIcon {
+  font-size: 1.5rem;
+}
+
+.brandText {
+  font-weight: 600;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .container {
+  padding: 0.5rem 1rem;
+  min-height: 3rem;
+}
+
+.sm .brand {
+  font-size: 1.125rem;
+}
+
+.sm .brandIcon {
+  font-size: 1.25rem;
+}
+
+.md .container {
+  padding: 0.75rem 1rem;
+  min-height: 4rem;
+}
+
+.md .brand {
+  font-size: 1.25rem;
+}
+
+.md .brandIcon {
+  font-size: 1.5rem;
+}
+
+.lg .container {
+  padding: 1rem 1.5rem;
+  min-height: 5rem;
+}
+
+.lg .brand {
+  font-size: 1.5rem;
+}
+
+.lg .brandIcon {
+  font-size: 1.75rem;
+}
+
+/* Variants */
+.default {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.minimal {
+  background: transparent;
+  border-bottom: none;
+}
+
+.bordered {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin: 0.5rem 1rem;
+}
+
+.elevated {
+  background: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-bottom: none;
+}
+
+/* Fixed header */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fixed + * {
+  margin-top: 4rem;
+}
+
+/* Transparent header */
+.transparent {
+  background: transparent;
+  border-bottom: none;
+}
+
+.transparent .brand {
+  color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .content {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .actions {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .brand {
+    order: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    flex-direction: row;
+  }
+  
+  .content {
+    order: unset;
+    width: auto;
+  }
+  
+  .actions {
+    order: unset;
+    width: auto;
+  }
+  
+  .brand {
+    order: unset;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom: 2px solid #000000;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .brand {
+    transition: none;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: #1f2937;
+    border-bottom-color: #374151;
+  }
+  
+  .brand {
+    color: #f9fafb;
+  }
+  
+  .brand:hover {
+    color: #60a5fa;
+  }
+  
+  .scrolled {
+    background: rgba(31, 41, 55, 0.95);
+    border-bottom-color: rgba(55, 65, 81, 0.5);
+  }
+}
+
+/* Theme support */
+:root[data-theme="light"] .header {
+  background: #ffffff;
+  border-bottom-color: #e5e7eb;
+}
+
+:root[data-theme="light"] .brand {
+  color: #1f2937;
+}
+
+:root[data-theme="dark"] .header {
+  background: #1f2937;
+  border-bottom-color: #374151;
+}
+
+:root[data-theme="dark"] .brand {
+  color: #f9fafb;
+}

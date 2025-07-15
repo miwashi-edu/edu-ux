@@ -1,7 +1,212 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as BreadcrumbsStories from './Breadcrumbs.stories.jsx';
 
-<Meta title="Navigation/Breadcrumbs" />
+<Meta of={BreadcrumbsStories} />
 
 # Breadcrumbs
 
-Trail showing user’s path within site hierarchy.
+A navigation component that displays a hierarchical trail showing the user's current location within a website's structure, helping users understand their position and navigate back to previous levels.
+
+## Overview
+
+The Breadcrumbs component is designed to provide secondary navigation that shows users their current location within a website's hierarchy. It's particularly useful for deep site structures, e-commerce sites, documentation, and any application with nested content.
+
+## Features
+
+- **Hierarchical Navigation**: Shows the complete path from home to current page
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Multiple Sizes**: Small, medium, and large size options
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+- **Icon Support**: Optional icons for each breadcrumb item
+
+## Usage
+
+```jsx
+import Breadcrumbs from './components/Breadcrumbs';
+
+function App() {
+  return (
+    <Breadcrumbs
+      items={[
+        { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+        { id: 'products', label: 'Products', href: '/products', icon: '📦' },
+        { id: 'electronics', label: 'Electronics', href: '/products/electronics', icon: '📱' },
+        { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones', icon: '📲' }
+      ]}
+      variant="default"
+      size="md"
+      separator="/"
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| items | array | [] | Breadcrumb items array |
+| items[].id | string | - | Unique identifier for the item |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Link URL for the item |
+| items[].icon | string | - | Optional icon for the item (emoji or icon component) |
+| items[].active | boolean | false | Whether the item is the current page (last item) |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| separator | string | '/' | Separator between breadcrumb items |
+| maxItems | number | - | Maximum number of items to show (truncates middle items) |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a breadcrumb item is clicked |
+`}</Markdown>
+
+## Variants
+
+The Breadcrumbs component supports four visual variants:
+
+### Default
+The standard breadcrumbs with background color and subtle styling.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around each item.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact breadcrumbs for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger breadcrumbs for prominent navigation areas
+
+## Responsive Behavior
+
+The Breadcrumbs automatically adapts to different screen sizes:
+
+- **Desktop**: Full breadcrumbs with all items visible
+- **Tablet**: Responsive layout with potential truncation
+- **Mobile**: Compact layout with smart truncation for small screens
+
+## Accessibility
+
+The Breadcrumbs component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+- Semantic HTML structure
+
+## Examples
+
+### Basic Breadcrumbs
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'products', label: 'Products', href: '/products' },
+    { id: 'electronics', label: 'Electronics', href: '/products/electronics' },
+    { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones', active: true }
+  ]}
+/>
+```
+
+### With Icons
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+    { id: 'products', label: 'Products', href: '/products', icon: '📦' },
+    { id: 'electronics', label: 'Electronics', href: '/products/electronics', icon: '📱' },
+    { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones', icon: '📲', active: true }
+  ]}
+  separator=">"
+/>
+```
+
+### With Custom Separator
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'products', label: 'Products', href: '/products' },
+    { id: 'electronics', label: 'Electronics', href: '/products/electronics' },
+    { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones', active: true }
+  ]}
+  separator="→"
+/>
+```
+
+### With Max Items (Truncation)
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'products', label: 'Products', href: '/products' },
+    { id: 'electronics', label: 'Electronics', href: '/products/electronics' },
+    { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones' },
+    { id: 'iphone', label: 'iPhone', href: '/products/electronics/smartphones/iphone' },
+    { id: 'iphone-15', label: 'iPhone 15', href: '/products/electronics/smartphones/iphone/iphone-15', active: true }
+  ]}
+  maxItems={4}
+/>
+```
+
+### Minimal Variant
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'products', label: 'Products', href: '/products' },
+    { id: 'electronics', label: 'Electronics', href: '/products/electronics' },
+    { id: 'smartphones', label: 'Smartphones', href: '/products/electronics/smartphones', active: true }
+  ]}
+  variant="minimal"
+  size="sm"
+/>
+```
+
+### Documentation Style
+
+```jsx
+<Breadcrumbs
+  items={[
+    { id: 'docs', label: 'Documentation', href: '/docs' },
+    { id: 'components', label: 'Components', href: '/docs/components' },
+    { id: 'navigation', label: 'Navigation', href: '/docs/components/navigation' },
+    { id: 'breadcrumbs', label: 'Breadcrumbs', href: '/docs/components/navigation/breadcrumbs', active: true }
+  ]}
+  variant="bordered"
+  separator="›"
+/>
+```
+
+## Best Practices
+
+1. **Clear Hierarchy**: Ensure breadcrumbs reflect the actual site structure
+2. **Descriptive Labels**: Use clear, descriptive labels for each level
+3. **Consistent Separators**: Use consistent separators throughout your site
+4. **Mobile Optimization**: Consider truncation for mobile devices
+5. **Accessibility**: Ensure keyboard navigation works properly
+6. **Current Page**: Always mark the current page as active (last item)
+
+## Related Components
+
+- **Navbar**: For primary horizontal navigation
+- **Sidebar**: For vertical navigation
+- **Header**: For page-level headers
+- **Footer**: For page-level footers

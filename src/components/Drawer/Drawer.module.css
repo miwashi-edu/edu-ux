@@ -1,1 +1,321 @@
-/* CSS Module */
+/* Base drawer container */
+.drawerContainer {
+  position: relative;
+  display: inline-block;
+}
+
+/* Trigger */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  font-size: inherit;
+}
+
+.trigger:hover {
+  color: #3b82f6;
+  background: #f3f4f6;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Positions */
+.left {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%);
+}
+
+.right {
+  right: 0;
+  left: auto;
+  transform: translateX(100%);
+}
+
+.top {
+  top: 0;
+  bottom: auto;
+  transform: translateY(-100%);
+}
+
+.bottom {
+  bottom: 0;
+  top: auto;
+  transform: translateY(100%);
+}
+
+/* Open state */
+.open {
+  transform: translate(0, 0);
+}
+
+/* Sizes */
+.sm.left,
+.sm.right {
+  width: 320px;
+}
+
+.sm.top,
+.sm.bottom {
+  height: 320px;
+}
+
+.md.left,
+.md.right {
+  width: 480px;
+}
+
+.md.top,
+.md.bottom {
+  height: 480px;
+}
+
+.lg.left,
+.lg.right {
+  width: 640px;
+}
+
+.lg.top,
+.lg.bottom {
+  height: 640px;
+}
+
+.xl.left,
+.xl.right {
+  width: 100%;
+}
+
+.xl.top,
+.xl.bottom {
+  height: 100%;
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* Body */
+.body {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* Close button */
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  font-size: 1.125rem;
+}
+
+.close:hover {
+  background: #f3f4f6;
+  color: #3b82f6;
+}
+
+/* Variants */
+.default {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.minimal {
+  background: transparent;
+  border: none;
+}
+
+.bordered {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+}
+
+.elevated {
+  background: #ffffff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: none;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  animation: overlayEnter 0.2s ease-out;
+}
+
+/* Animations */
+@keyframes overlayEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sm.left,
+  .sm.right,
+  .md.left,
+  .md.right,
+  .lg.left,
+  .lg.right,
+  .xl.left,
+  .xl.right {
+    width: 100%;
+  }
+  
+  .sm.top,
+  .sm.bottom,
+  .md.top,
+  .md.bottom,
+  .lg.top,
+  .lg.bottom,
+  .xl.top,
+  .xl.bottom {
+    height: 100%;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .drawer {
+    border: 2px solid #000000;
+  }
+  
+  .header,
+  .footer {
+    border-color: #000000;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .trigger,
+  .close,
+  .overlay {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .drawer {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .trigger {
+    color: #d1d5db;
+  }
+  
+  .trigger:hover {
+    background: #374151;
+    color: #60a5fa;
+  }
+  
+  .header,
+  .footer {
+    border-color: #374151;
+  }
+  
+  .close {
+    color: #d1d5db;
+  }
+  
+  .close:hover {
+    background: #374151;
+    color: #60a5fa;
+  }
+}
+
+/* Theme support */
+:root[data-theme="light"] .drawer {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+:root[data-theme="light"] .trigger {
+  color: #6b7280;
+}
+
+:root[data-theme="light"] .close {
+  color: #6b7280;
+}
+
+:root[data-theme="dark"] .drawer {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:root[data-theme="dark"] .trigger {
+  color: #d1d5db;
+}
+
+:root[data-theme="dark"] .close {
+  color: #d1d5db;
+}

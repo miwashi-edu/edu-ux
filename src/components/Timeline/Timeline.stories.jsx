@@ -2,7 +2,7 @@ import React from 'react';
 import { Timeline } from './Timeline';
 
 export default {
-  title: 'DataDisplay/Timeline',
+  title: 'Data Display/Timeline',
   component: Timeline,
 };
 

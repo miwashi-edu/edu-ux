@@ -1,7 +1,209 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as HeaderStories from './Header.stories.jsx';
 
-<Meta title="PageLayout/Header" />
+<Meta of={HeaderStories} />
 
 # Header
 
-Topmost section, usually holds logo, nav, and user access.
+A page-level header component that provides a flexible and accessible way to create site headers with support for branding, navigation, and action areas.
+
+## Overview
+
+The Header component is designed to be the topmost section of a web page, typically containing branding, navigation, and user actions. It supports various layouts, responsive behavior, and can include custom content and actions.
+
+## Features
+
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Flexible Layout**: Support for brand, content, and action areas
+- **Fixed Positioning**: Option to fix header to the top of the viewport
+- **Transparent Mode**: Support for transparent backgrounds
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import Header from './components/Header';
+import Button from './components/Button';
+
+function App() {
+  return (
+    <Header
+      brand={{
+        text: 'MyApp',
+        icon: '🚀',
+        href: '/'
+      }}
+      content={
+        <nav style={{ display: 'flex', gap: '2rem' }}>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      }
+      actions={
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <Button variant="secondary">Login</Button>
+          <Button variant="primary">Sign Up</Button>
+        </div>
+      }
+      variant="default"
+      size="md"
+      fixed={false}
+      transparent={false}
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| brand | object | - | Brand configuration object |
+| brand.text | string | - | Brand text/name |
+| brand.icon | string | - | Brand icon (emoji or icon component) |
+| brand.href | string | - | Brand link URL |
+| content | node | - | Main content area (navigation, title, etc.) |
+| actions | node | - | Action buttons or content to display on the right |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| fixed | boolean | false | Whether the header is fixed to the top |
+| transparent | boolean | false | Whether the header is transparent |
+| className | string | '' | Additional CSS classes |
+| onBrandClick | function | - | Callback when the brand is clicked |
+`}</Markdown>
+
+## Variants
+
+The Header component supports four visual variants:
+
+### Default
+The standard header with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the header.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact header for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger header for prominent branding areas
+
+## Responsive Behavior
+
+The Header automatically adapts to different screen sizes:
+
+- **Desktop**: Full header with all content visible
+- **Tablet**: Responsive layout with potential content wrapping
+- **Mobile**: Compact layout with mobile-optimized interactions
+
+## Accessibility
+
+The Header component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+
+## Examples
+
+### Basic Header
+
+```jsx
+<Header
+  brand={{ text: 'MyApp', href: '/' }}
+  content={<h1>Welcome to MyApp</h1>}
+/>
+```
+
+### With Navigation
+
+```jsx
+<Header
+  brand={{ text: 'MyApp', icon: '🚀', href: '/' }}
+  content={
+    <nav style={{ display: 'flex', gap: '2rem' }}>
+      <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</a>
+      <a href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About</a>
+      <a href="/services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</a>
+      <a href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</a>
+    </nav>
+  }
+  actions={
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Button variant="secondary">Login</Button>
+      <Button variant="primary">Sign Up</Button>
+    </div>
+  }
+/>
+```
+
+### Fixed Header
+
+```jsx
+<Header
+  brand={{ text: 'MyApp', href: '/' }}
+  content={<h1>Welcome to MyApp</h1>}
+  fixed={true}
+/>
+```
+
+### Transparent Header
+
+```jsx
+<Header
+  brand={{ text: 'MyApp', href: '/' }}
+  content={<h1>Welcome to MyApp</h1>}
+  transparent={true}
+/>
+```
+
+### With Custom Content
+
+```jsx
+<Header
+  brand={{ text: 'MyApp', icon: '🎨', href: '/' }}
+  content={
+    <div style={{ textAlign: 'center', flex: 1 }}>
+      <h1>Welcome to Our Platform</h1>
+      <p>Discover amazing features and possibilities</p>
+    </div>
+  }
+  actions={
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Button variant="outline">Learn More</Button>
+      <Button variant="primary">Get Started</Button>
+    </div>
+  }
+/>
+```
+
+## Best Practices
+
+1. **Clear Branding**: Make sure your brand is clearly visible
+2. **Logical Layout**: Arrange content in a logical order
+3. **Responsive Design**: Test on different screen sizes
+4. **Accessibility**: Ensure keyboard navigation works properly
+5. **Performance**: Keep header content lightweight
+6. **Consistency**: Use consistent styling across your application
+
+## Related Components
+
+- **Navbar**: For horizontal navigation bars
+- **Sidebar**: For vertical navigation
+- **Footer**: For page-level footers
+- **Breadcrumbs**: For secondary navigation

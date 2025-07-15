@@ -1,7 +1,241 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as HamburgerMenuStories from './HamburgerMenu.stories.jsx';
 
-<Meta title="Navigation/HamburgerMenu" />
+<Meta of={HamburgerMenuStories} />
 
 # HamburgerMenu
 
-Mobile toggle icon for a collapsed menu.
+A mobile-friendly navigation component that provides a collapsible menu triggered by a hamburger icon, perfect for responsive navigation on smaller screens.
+
+## Overview
+
+The HamburgerMenu component is designed to provide mobile-friendly navigation with a collapsible menu triggered by a hamburger icon. It's perfect for responsive designs where space is limited and traditional navigation needs to be hidden.
+
+## Features
+
+- **Mobile-First Design**: Optimized for mobile and tablet devices
+- **Collapsible Menu**: Expandable navigation with smooth animations
+- **Multiple Animations**: Slide, fade, and scale animation options
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import HamburgerMenu from './components/HamburgerMenu';
+
+function App() {
+  return (
+    <HamburgerMenu
+      items={[
+        { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+        { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' },
+        { id: 'services', label: 'Services', href: '/services', icon: '🛠️' },
+        { id: 'contact', label: 'Contact', href: '/contact', icon: '📞' }
+      ]}
+      variant="default"
+      size="md"
+      animation="slide"
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| items | array | [] | Navigation items array |
+| items[].id | string | - | Unique identifier for the item |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Link URL for the item |
+| items[].icon | string | - | Icon for the item (emoji or icon component) |
+| sections | array | [] | Navigation sections array |
+| sections[].id | string | - | Unique identifier for the section |
+| sections[].title | string | - | Section title |
+| sections[].items | array | - | Items in the section |
+| trigger | node | - | Custom trigger element |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| animation | string | 'slide' | Animation: 'slide', 'fade', 'scale' |
+| header | node | - | Optional header content |
+| footer | node | - | Optional footer content |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a navigation item is clicked |
+`}</Markdown>
+
+## Variants
+
+The HamburgerMenu component supports four visual variants:
+
+### Default
+The standard hamburger menu with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the menu.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact hamburger menu for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger hamburger menu for prominent navigation areas
+
+## Animations
+
+Three animation types are available:
+
+- **Slide**: Smooth sliding animation (default)
+- **Fade**: Fade in/out animation
+- **Scale**: Scale in/out animation
+
+## Responsive Behavior
+
+The HamburgerMenu automatically adapts to different screen sizes:
+
+- **Desktop**: Can be used as an alternative navigation method
+- **Tablet**: Responsive layout with touch-friendly interactions
+- **Mobile**: Optimized for mobile devices with full-screen overlay
+
+## Accessibility
+
+The HamburgerMenu component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+- Reduced motion support
+
+## Examples
+
+### Basic HamburgerMenu
+
+```jsx
+<HamburgerMenu
+  items={[
+    { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+    { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' },
+    { id: 'contact', label: 'Contact', href: '/contact', icon: '📞' }
+  ]}
+/>
+```
+
+### With Sections
+
+```jsx
+<HamburgerMenu
+  sections={[
+    {
+      id: 'main',
+      title: 'Main Navigation',
+      items: [
+        { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+        { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' }
+      ]
+    },
+    {
+      id: 'services',
+      title: 'Services',
+      items: [
+        { id: 'services', label: 'Services', href: '/services', icon: '🛠️' },
+        { id: 'contact', label: 'Contact', href: '/contact', icon: '📞' }
+      ]
+    }
+  ]}
+/>
+```
+
+### With Custom Trigger
+
+```jsx
+<HamburgerMenu
+  trigger={
+    <button style={{
+      padding: '0.5rem',
+      background: 'none',
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.375rem',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '2px'
+    }}>
+      <span style={{ width: '20px', height: '2px', background: '#374151' }}></span>
+      <span style={{ width: '20px', height: '2px', background: '#374151' }}></span>
+      <span style={{ width: '20px', height: '2px', background: '#374151' }}></span>
+    </button>
+  }
+  items={[
+    { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+    { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' }
+  ]}
+/>
+```
+
+### With Header and Footer
+
+```jsx
+<HamburgerMenu
+  items={[
+    { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+    { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' },
+    { id: 'contact', label: 'Contact', href: '/contact', icon: '📞' }
+  ]}
+  header={
+    <div style={{ padding: '1rem', borderBottom: '1px solid #e5e7eb' }}>
+      <h3 style={{ margin: 0, color: '#1f2937' }}>MyApp</h3>
+      <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.875rem', color: '#6b7280' }}>
+        Navigation Menu
+      </p>
+    </div>
+  }
+  footer={
+    <div style={{ padding: '1rem', borderTop: '1px solid #e5e7eb' }}>
+      <Button variant="primary" size="sm" style={{ width: '100%' }}>
+        Sign Out
+      </Button>
+    </div>
+  }
+/>
+```
+
+### Different Animations
+
+```jsx
+<HamburgerMenu
+  items={[
+    { id: 'home', label: 'Home', href: '/', icon: '🏠' },
+    { id: 'about', label: 'About', href: '/about', icon: 'ℹ️' }
+  ]}
+  animation="fade" // or "scale"
+/>
+```
+
+## Best Practices
+
+1. **Mobile-First**: Design primarily for mobile devices
+2. **Clear Labels**: Use descriptive labels for navigation items
+3. **Logical Order**: Arrange items in a logical order
+4. **Performance**: Keep the menu lightweight for better performance
+5. **Accessibility**: Test keyboard navigation thoroughly
+6. **Touch-Friendly**: Ensure adequate touch targets for mobile
+
+## Related Components
+
+- **Navbar**: For horizontal navigation bars
+- **Sidebar**: For vertical navigation
+- **Drawer**: For slide-out navigation panels
+- **MegaMenu**: For large dropdown menus

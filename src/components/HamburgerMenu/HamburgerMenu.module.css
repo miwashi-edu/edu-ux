@@ -1,1 +1,362 @@
-/* CSS Module */
+/* Base hamburger menu */
+.hamburgerMenu {
+  position: relative;
+  display: inline-block;
+}
+
+/* Button */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  position: relative;
+}
+
+.button:hover {
+  background: #f3f4f6;
+}
+
+.button.expanded {
+  background: #eff6ff;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.25rem;
+  height: 1rem;
+  position: relative;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: #6b7280;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.button:hover .line {
+  background: #3b82f6;
+}
+
+.button.expanded .line:nth-child(1) {
+  transform: translateY(0.5rem) rotate(45deg);
+}
+
+.button.expanded .line:nth-child(2) {
+  opacity: 0;
+}
+
+.button.expanded .line:nth-child(3) {
+  transform: translateY(-0.5rem) rotate(-45deg);
+}
+
+/* Panel */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem;
+  z-index: 1000;
+  animation: hamburgerMenuEnter 0.2s ease-out;
+  margin-top: 0.5rem;
+}
+
+/* Items */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.item:hover {
+  background: #f9fafb;
+  color: #3b82f6;
+}
+
+.itemIcon {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.itemLabel {
+  flex: 1;
+}
+
+/* Sizes */
+.sm .button {
+  width: 2rem;
+  height: 2rem;
+}
+
+.sm .icon {
+  width: 1rem;
+  height: 0.75rem;
+}
+
+.sm .panel {
+  min-width: 160px;
+  padding: 0.375rem;
+}
+
+.sm .item {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.md .button {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.md .icon {
+  width: 1.25rem;
+  height: 1rem;
+}
+
+.md .panel {
+  min-width: 200px;
+  padding: 0.5rem;
+}
+
+.md .item {
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.lg .button {
+  width: 3rem;
+  height: 3rem;
+}
+
+.lg .icon {
+  width: 1.5rem;
+  height: 1.25rem;
+}
+
+.lg .panel {
+  min-width: 240px;
+  padding: 0.75rem;
+}
+
+.lg .item {
+  padding: 1rem;
+  font-size: 1.125rem;
+}
+
+/* Variants */
+.default .panel {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.minimal .panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.minimal .item:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.bordered .panel {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+}
+
+.elevated .panel {
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Positions */
+.left .panel {
+  left: 0;
+  right: auto;
+}
+
+.right .panel {
+  right: 0;
+  left: auto;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
+/* Animation */
+@keyframes hamburgerMenuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin-top: 0;
+    overflow-y: auto;
+  }
+  
+  .button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .right .button {
+    left: auto;
+    right: 1rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .panel {
+    border: 2px solid #000000;
+  }
+  
+  .item {
+    border: 1px solid transparent;
+  }
+  
+  .item:hover {
+    border-color: #000000;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .button,
+  .line,
+  .item {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .panel {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .button {
+    color: #d1d5db;
+  }
+  
+  .button:hover {
+    background: #374151;
+  }
+  
+  .button.expanded {
+    background: #1e40af;
+  }
+  
+  .line {
+    background: #d1d5db;
+  }
+  
+  .button:hover .line {
+    background: #60a5fa;
+  }
+  
+  .item {
+    color: #f9fafb;
+  }
+  
+  .item:hover {
+    background: #374151;
+    color: #60a5fa;
+  }
+  
+  .mobile .button {
+    background: #1f2937;
+    border-color: #374151;
+  }
+}
+
+/* Theme support */
+:root[data-theme="light"] .panel {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+:root[data-theme="light"] .button {
+  color: #6b7280;
+}
+
+:root[data-theme="light"] .item {
+  color: #374151;
+}
+
+:root[data-theme="dark"] .panel {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:root[data-theme="dark"] .button {
+  color: #d1d5db;
+}
+
+:root[data-theme="dark"] .item {
+  color: #f9fafb;
+}

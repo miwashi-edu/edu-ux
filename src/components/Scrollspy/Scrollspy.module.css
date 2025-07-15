@@ -1,1 +1,355 @@
-/* CSS Module */
+/* Base scrollspy */
+.scrollspy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Items */
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: inherit;
+  text-align: left;
+  width: 100%;
+  position: relative;
+}
+
+.item:hover {
+  color: #3b82f6;
+  background: #f3f4f6;
+}
+
+.item.active {
+  color: #3b82f6;
+  background: #eff6ff;
+  font-weight: 600;
+}
+
+.item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.5rem;
+  background: #3b82f6;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Horizontal layout */
+.scrollspy.horizontal .nav {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.scrollspy.horizontal .item {
+  width: auto;
+  white-space: nowrap;
+}
+
+.scrollspy.horizontal .item.active::before {
+  left: 50%;
+  top: auto;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Vertical layout */
+.scrollspy.vertical .nav {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.scrollspy.vertical .item {
+  width: 100%;
+}
+
+.scrollspy.vertical .item.active::before {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.5rem;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Sizes */
+.scrollspy.sm .item {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.scrollspy.sm .item.active::before {
+  width: 2px;
+  height: 1rem;
+}
+
+.scrollspy.md .item {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.scrollspy.md .item.active::before {
+  width: 3px;
+  height: 1.5rem;
+}
+
+.scrollspy.lg .item {
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem;
+}
+
+.scrollspy.lg .item.active::before {
+  width: 4px;
+  height: 2rem;
+}
+
+/* Variants */
+.scrollspy.default .item {
+  color: #6b7280;
+}
+
+.scrollspy.default .item:hover {
+  color: #3b82f6;
+  background: #f3f4f6;
+}
+
+.scrollspy.default .item.active {
+  color: #3b82f6;
+  background: #eff6ff;
+}
+
+.scrollspy.minimal .item {
+  color: #6b7280;
+  background: transparent;
+}
+
+.scrollspy.minimal .item:hover {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.scrollspy.minimal .item.active {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.scrollspy.minimal .item.active::before {
+  display: none;
+}
+
+.scrollspy.bordered .item {
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.scrollspy.bordered .item:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+  background: #f9fafb;
+}
+
+.scrollspy.bordered .item.active {
+  color: #3b82f6;
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.scrollspy.bordered .item.active::before {
+  display: none;
+}
+
+.scrollspy.elevated .item {
+  color: #6b7280;
+  background: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.scrollspy.elevated .item:hover {
+  color: #3b82f6;
+  background: #f9fafb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.scrollspy.elevated .item.active {
+  color: #3b82f6;
+  background: #eff6ff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.scrollspy.elevated .item.active::before {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .scrollspy.horizontal .nav {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .scrollspy.horizontal .item {
+    width: 100%;
+    white-space: normal;
+  }
+  
+  .scrollspy.horizontal .item.active::before {
+    left: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1.5rem;
+    border-radius: 0 2px 2px 0;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .item {
+    border: 1px solid transparent;
+  }
+  
+  .item:hover,
+  .item.active {
+    border-color: #000000;
+  }
+  
+  .item.active::before {
+    background: #000000;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .item {
+    transition: none;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .item {
+    color: #d1d5db;
+  }
+  
+  .item:hover {
+    background: #374151;
+    color: #60a5fa;
+  }
+  
+  .item.active {
+    background: #1e40af;
+    color: #60a5fa;
+  }
+  
+  .item.active::before {
+    background: #60a5fa;
+  }
+  
+  .scrollspy.bordered .item {
+    border-color: #374151;
+    background: #1f2937;
+  }
+  
+  .scrollspy.bordered .item:hover {
+    border-color: #60a5fa;
+    background: #374151;
+  }
+  
+  .scrollspy.bordered .item.active {
+    border-color: #60a5fa;
+    background: #1e40af;
+  }
+  
+  .scrollspy.elevated .item {
+    background: #1f2937;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .scrollspy.elevated .item:hover {
+    background: #374151;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .scrollspy.elevated .item.active {
+    background: #1e40af;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Theme support */
+:root[data-theme="light"] .item {
+  color: #6b7280;
+}
+
+:root[data-theme="light"] .item:hover {
+  color: #3b82f6;
+  background: #f3f4f6;
+}
+
+:root[data-theme="light"] .item.active {
+  color: #3b82f6;
+  background: #eff6ff;
+}
+
+:root[data-theme="dark"] .item {
+  color: #d1d5db;
+}
+
+:root[data-theme="dark"] .item:hover {
+  color: #60a5fa;
+  background: #374151;
+}
+
+:root[data-theme="dark"] .item.active {
+  color: #60a5fa;
+  background: #1e40af;
+}
+
+.fixed {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1100;
+  max-width: 320px;
+  min-width: 180px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border-radius: 0.75rem;
+  background: var(--sb-fixed-bg, #fff);
+}
+
+@media (max-width: 600px) {
+  .fixed {
+    top: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    max-width: unset;
+    min-width: unset;
+    width: auto;
+    border-radius: 0.5rem;
+  }
+}

@@ -1,7 +1,230 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as MegaMenuStories from './MegaMenu.stories.jsx';
 
-<Meta title="Navigation/MegaMenu" />
+<Meta of={MegaMenuStories} />
 
 # MegaMenu
 
-Large dropdown with nested nav options.
+A large dropdown navigation component that provides a flexible and accessible way to create complex navigation menus with support for sections, descriptions, and rich content.
+
+## Overview
+
+The MegaMenu component is designed to display large dropdown menus with multiple sections, descriptions, and rich content. It's perfect for complex navigation structures, product catalogs, or any content that benefits from a spacious menu layout.
+
+## Features
+
+- **Large Dropdown**: Spacious menu layout for complex navigation
+- **Multiple Sections**: Support for organized content sections
+- **Rich Content**: Support for descriptions, icons, and custom content
+- **Multiple Variants**: Default, minimal, bordered, and elevated styles
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Accessibility**: Built with ARIA attributes and keyboard navigation
+- **Dark Mode Support**: Theme-aware styling
+- **Customizable**: Extensive prop options for customization
+
+## Usage
+
+```jsx
+import MegaMenu from './components/MegaMenu';
+import Button from './components/Button';
+
+function App() {
+  return (
+    <MegaMenu
+      trigger={<Button variant="secondary">Products</Button>}
+      items={[
+        { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊', description: 'View your main dashboard' },
+        { id: 'analytics', label: 'Analytics', href: '/analytics', icon: '📈', description: 'Detailed analytics and reports' },
+        { id: 'users', label: 'User Management', href: '/users', icon: '👥', description: 'Manage users and permissions' },
+        { id: 'settings', label: 'Settings', href: '/settings', icon: '⚙️', description: 'Configure your application' }
+      ]}
+      variant="default"
+      size="md"
+    />
+  );
+}
+```
+
+## Props
+
+<Markdown>{`
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| trigger | node | - | Element that triggers the mega menu |
+| items | array | [] | Navigation items array |
+| items[].id | string | - | Unique identifier for the item |
+| items[].label | string | - | Display text for the item |
+| items[].href | string | - | Link URL for the item |
+| items[].icon | string | - | Icon for the item (emoji or icon component) |
+| items[].description | string | - | Description text for the item |
+| sections | array | [] | Navigation sections array |
+| sections[].id | string | - | Unique identifier for the section |
+| sections[].title | string | - | Section title |
+| sections[].items | array | - | Items in the section |
+| variant | string | 'default' | Visual variant: 'default', 'minimal', 'bordered', 'elevated' |
+| size | string | 'md' | Size: 'sm', 'md', 'lg' |
+| className | string | '' | Additional CSS classes |
+| onItemClick | function | - | Callback when a navigation item is clicked |
+| children | node | - | Custom content to display in the mega menu |
+`}</Markdown>
+
+## Variants
+
+The MegaMenu component supports four visual variants:
+
+### Default
+The standard mega menu with background color and subtle shadow.
+
+### Minimal
+A clean, minimal design with reduced visual weight.
+
+### Bordered
+A bordered variant with a border around the mega menu.
+
+### Elevated
+An elevated variant with a more prominent shadow effect.
+
+## Sizes
+
+Three size options are available:
+
+- **Small (sm)**: Compact mega menu for space-constrained layouts
+- **Medium (md)**: Standard size for most applications
+- **Large (lg)**: Larger mega menu for prominent navigation areas
+
+## Responsive Behavior
+
+The MegaMenu automatically adapts to different screen sizes:
+
+- **Desktop**: Full mega menu with all content visible
+- **Tablet**: Responsive layout with potential content wrapping
+- **Mobile**: Compact layout with mobile-optimized interactions
+
+## Accessibility
+
+The MegaMenu component includes several accessibility features:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support
+
+## Examples
+
+### Basic MegaMenu
+
+```jsx
+<MegaMenu
+  trigger={<Button variant="secondary">Products</Button>}
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊' },
+    { id: 'analytics', label: 'Analytics', href: '/analytics', icon: '📈' },
+    { id: 'users', label: 'Users', href: '/users', icon: '👥' },
+    { id: 'settings', label: 'Settings', href: '/settings', icon: '⚙️' }
+  ]}
+/>
+```
+
+### With Descriptions
+
+```jsx
+<MegaMenu
+  trigger={<Button variant="secondary">Products</Button>}
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊', description: 'View your main dashboard' },
+    { id: 'analytics', label: 'Analytics', href: '/analytics', icon: '📈', description: 'Detailed analytics and reports' },
+    { id: 'users', label: 'User Management', href: '/users', icon: '👥', description: 'Manage users and permissions' },
+    { id: 'settings', label: 'Settings', href: '/settings', icon: '⚙️', description: 'Configure your application' }
+  ]}
+/>
+```
+
+### With Sections
+
+```jsx
+<MegaMenu
+  trigger={<Button variant="secondary">Products</Button>}
+  sections={[
+    {
+      id: 'main',
+      title: 'Main Features',
+      items: [
+        { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊' },
+        { id: 'analytics', label: 'Analytics', href: '/analytics', icon: '📈' }
+      ]
+    },
+    {
+      id: 'admin',
+      title: 'Administration',
+      items: [
+        { id: 'users', label: 'User Management', href: '/users', icon: '👥' },
+        { id: 'settings', label: 'Settings', href: '/settings', icon: '⚙️' }
+      ]
+    }
+  ]}
+/>
+```
+
+### With Custom Trigger
+
+```jsx
+<MegaMenu
+  trigger={
+    <button style={{
+      padding: '0.75rem 1rem',
+      background: 'none',
+      border: '1px solid #e5e7eb',
+      borderRadius: '0.375rem',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem'
+    }}>
+      <span>🎯</span>
+      <span>Solutions</span>
+      <span>▼</span>
+    </button>
+  }
+  items={[
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: '📊' },
+    { id: 'analytics', label: 'Analytics', href: '/analytics', icon: '📈' }
+  ]}
+/>
+```
+
+### With Rich Content
+
+```jsx
+<MegaMenu
+  trigger={<Button variant="secondary">Rich Content</Button>}
+  variant="default"
+  size="lg"
+>
+  <div style={{ padding: '1rem', borderTop: '1px solid #e5e7eb' }}>
+    <h4 style={{ margin: '0 0 0.5rem 0' }}>Featured Content</h4>
+    <p style={{ margin: 0, fontSize: '0.875rem', color: '#6b7280' }}>
+      This is an example of rich content in a mega menu. You can include any React components here.
+    </p>
+    <div style={{ marginTop: '1rem' }}>
+      <Button variant="primary" size="sm">Learn More</Button>
+    </div>
+  </div>
+</MegaMenu>
+```
+
+## Best Practices
+
+1. **Clear Organization**: Use sections to organize related items
+2. **Descriptive Labels**: Use clear, descriptive labels for navigation items
+3. **Appropriate Size**: Choose the right size for your content
+4. **Performance**: Avoid too many items for better performance
+5. **Accessibility**: Test keyboard navigation thoroughly
+6. **Mobile Friendly**: Ensure the menu works well on mobile devices
+
+## Related Components
+
+- **Navbar**: For horizontal navigation bars
+- **Dropdown**: For simple dropdown menus
+- **HamburgerMenu**: For mobile navigation menus
+- **Breadcrumbs**: For secondary navigation
