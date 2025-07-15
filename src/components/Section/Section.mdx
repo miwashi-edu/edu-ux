@@ -1,7 +1,42 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as SectionStories from './Section.stories.jsx';
 
-<Meta title="PageLayout/Section" />
+<Meta of={SectionStories} />
 
 # Section
 
 Thematic division of content.
+
+## What is Section?
+
+The Section component is used to create thematic groupings of content within a page, helping to organize and visually separate different areas.
+
+## Basic Usage
+
+```jsx
+import { Section } from './Section';
+
+function Example() {
+  return (
+    <Section>
+      <h2>Section Title</h2>
+      <p>This is a section of the page.</p>
+    </Section>
+  );
+}
+```
+
+## Features
+
+- Semantic `<section>` tag for accessibility
+- Useful for grouping related content
+- Works with page layout components
+
+## API Reference
+
+<Markdown>{`
+| Prop      | Type      | Default | Description                        |
+|-----------|-----------|---------|------------------------------------|
+| children  | ReactNode | -       | Content to render inside Section   |
+| className | string    | ''      | Additional CSS classes             |
+`}</Markdown>

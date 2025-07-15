@@ -1,7 +1,42 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import * as MainStories from './Main.stories.jsx';
 
-<Meta title="PageLayout/Main" />
+<Meta of={MainStories} />
 
 # Main
 
 The primary content area of a page.
+
+## What is Main?
+
+The Main component represents the main content area of a page layout, typically used to wrap the core content and distinguish it from navigation, sidebars, or footers.
+
+## Basic Usage
+
+```jsx
+import { Main } from './Main';
+
+function Example() {
+  return (
+    <Main>
+      <h1>Hello, world!</h1>
+      <p>This is the main content area.</p>
+    </Main>
+  );
+}
+```
+
+## Features
+
+- Semantic `<main>` tag for accessibility
+- Flexible container for any content
+- Integrates with page layout components
+
+## API Reference
+
+<Markdown>{`
+| Prop      | Type      | Default | Description                      |
+|-----------|-----------|---------|----------------------------------|
+| children  | ReactNode | -       | Content to render inside Main    |
+| className | string    | ''      | Additional CSS classes           |
+`}</Markdown>
